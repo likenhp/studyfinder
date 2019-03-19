@@ -2,7 +2,6 @@
 
 class Yelp{
     constructor(inputText){
-        debugger;
         this.inputField = inputText;
         this.handleYelpSuccess = this.handleYelpSuccess.bind(this);
         this.handleYelpError = this.handleYelpError.bind(this);
@@ -15,7 +14,7 @@ class Yelp{
             method: 'get',
             data: {
                 'apikey': 'dJbz7ePRpBcLEb3zCwg_1tAT3gLiUJKFoMm6EfhSjQZOrd_TJCBeypMPGz6YX5G9hN6tA3A0QQIqOG5c-Sx59kj5--M5xt5YCswAeIc0S4q5EBIbWAULDSiL90OQXHYx',
-                'location': 'irvine'
+                'term': this.inputField,
             },
             success: this.handleYelpSuccess,
             error: this.handleYelpError,
