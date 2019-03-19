@@ -15,7 +15,9 @@ class Weather {
     }
     handleWeatherDataSuccess(response){
     console.log("it works", response);
-        
+    var apparentTemp = response.currently.apparentTemperature;
+    var icon = response.currently.icon;
+    $(".weather").append(apparentTemp, icon);
     }
     handleWeatherDataError(response){
         console.log(response);
