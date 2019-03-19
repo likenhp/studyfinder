@@ -10,7 +10,7 @@ body {
 }
 
 .leftContainer {
-    height: 100%;
+    height: 70%;
     background-color: hotpink;
     /* justify-content: center; */
     /* display: flex; */
@@ -41,12 +41,12 @@ body {
 .weather {
     height: 100%;
     background-color: purple;
+    overflow: scroll;
+    background-size: contain;
 }
-
 
 #yelp{
     height: 30%;
-    width: 100%;
     display: flex;
     flex-direction: column;
     background-color: lightblue;
