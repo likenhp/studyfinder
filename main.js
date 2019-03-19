@@ -32,4 +32,4 @@ var twitter = new TwitterLocation(results);
             position: orangeCountyCoordinates, map: map
         }
     );
-}
+
