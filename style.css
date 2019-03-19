@@ -5,30 +5,23 @@ body {
 }
 
 .container {
-    display: flex;
-    width: 100%;
+    background-color: blue;
     height: 100%;
 }
 
 .leftContainer {
-    display: inline-block;
-    width: 100%;
-    height: 70%;
+    height: 100%;
     background-color: hotpink;
-    position: relative;
-    justify-content: center;
-    display: flex;
-    flex-wrap: wrap;
+    /* justify-content: center; */
+    /* display: flex; */
 }
 
 #map {
     height: 100%;
-    width: 100%;
     position: absolute;
 }
 
 .location {
-    top: 25%;
     position: absolute;
 }
 
@@ -41,17 +34,15 @@ body {
 .results {
     bottom: 0;
     position: absolute;
-    width: 100%;
     height: 30%;
     background-color: lime;
 }
 
 .weather {
-    display: inline-block;
-    width: 20%;
     height: 100%;
     background-color: purple;
 }
+
 
 #yelp{
     height: 30%;
@@ -66,3 +57,4 @@ body {
     height: 30%;
     width: 100%;
 }
+
