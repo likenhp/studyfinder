@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    height: 100vh;
+    color: white;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.leftContainer {
+    display: inline-block;
+    width: 80%;
+    height: 100%;
+    background-color: hotpink;
+    justify-content: center;
+    position: relative;
+}
+
+.location {
+    height: 70%;
+    background-color: blue;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#locationInput {
+    font-size: 3.5rem;
+    letter-spacing: 3px;
+    text-transform: lowercase;
+}
+
+.results {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    background-color: lime;
+}
+
+.weather {
+    display: inline-block;
+    width: 20%;
+    height: 100%;
+    background-color: purple;
+}
