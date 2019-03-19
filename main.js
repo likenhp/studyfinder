@@ -6,6 +6,7 @@ var orangeCountyCoordinates = {
 
 function initializeApp() {
     var weather = new Weather();
+    var yelp = new Yelp();
 }
 
 
