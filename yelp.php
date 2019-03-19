@@ -1,6 +1,6 @@
 
 <?php
-$proxyURL = "https://api.yelp.com/v3/businesses/search?term=brewery";
+$proxyURL = "https://api.yelp.com/v3/businesses/search?";
 $api_key = 'Authorization: Bearer ' . $_GET['apikey'];
 
 header("Access-Control-Allow-Origin: *");

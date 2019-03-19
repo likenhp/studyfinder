@@ -1,12 +1,7 @@
+globalResponse = null;
+
 class Yelp{
     constructor(){
-        this.yelpDomElements = {
-            row: null,
-            image: null,
-            name: null,
-            rating: null,
-            phone: null,
-        }
         this.handleYelpSuccess = this.handleYelpSuccess.bind(this);
         this.handleYelpError = this.handleYelpError.bind(this);
         this.getDataFromYelp();
@@ -25,8 +20,25 @@ class Yelp{
         })
     }
     handleYelpSuccess(response){
-        console.log('yep', response);
-    }
+        globalResponse = response;
+        for (var i = 0; i < globalResponse.businesses.length; i++){
+            var restaurantImage = globalResponse.businesses[i].image_url;
+            var restaurantName = globalResponse.businesses[i].name;
+            var restaurantRating = globalResponse.businesses[i].rating;
+            var domImage = $('<img />', {
+                src: restaurantImage
+            }).appendTo(('#yelp'));
+            var domName = $('<h1 />', {
+                class: 'restName',
+                text: restaurantName
+            }).appendTo(('#yelp'));
+            var domRating = $('<p />', {
+                class: 'rating',
+                text: restaurantRating
+            }).appendTo(('#yelp'));
+            console.log('yep', globalResponse);
+        }
+}
     handleYelpError(response){
         console.log('nope', response);
     }
