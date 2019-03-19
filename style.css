@@ -15,17 +15,20 @@ body {
     width: 80%;
     height: 100%;
     background-color: hotpink;
-    justify-content: center;
     position: relative;
+    justify-content: center;
+    display: flex;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+    position: absolute;
 }
 
 .location {
-    height: 70%;
-    background-color: blue;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    top: 25%;
+    position: absolute;
 }
 
 #locationInput {
