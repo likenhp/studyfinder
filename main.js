@@ -1,6 +1,5 @@
 $(document).ready(initializeApp);
 
-
 var results = {};
 var twitter = new TwitterLocation(results);
 
