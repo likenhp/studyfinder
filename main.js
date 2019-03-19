@@ -5,7 +5,9 @@ var orangeCountyCoordinates = {
 };
 
 function initializeApp() {
+    var weather = new Weather();
 }
+
 
 function initMap() {
     var map = new google.maps.Map(
