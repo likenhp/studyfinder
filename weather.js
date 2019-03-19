@@ -16,8 +16,17 @@ class Weather {
     handleWeatherDataSuccess(response){
     console.log("it works", response);
     var apparentTemp = response.currently.apparentTemperature;
+    var tempF = `${apparentTemp} F ${String.fromCharCode(176)}`
     var icon = response.currently.icon;
-    $(".weather").append(apparentTemp, icon);
+    var unixTimestamp = response.currently.time;
+    
+    var unixTime = new Date(unixTimestamp*1000);
+    var day = unixTime.toDateString();
+    var hour = unixTime.getHours();
+    var minutes = unixTime.getMinutes();
+    var currentDate = `${hour}:${minutes}, ${day}`
+
+    $(".weather").append(tempF, icon, currentDate);
     }
     handleWeatherDataError(response){
         console.log(response);
