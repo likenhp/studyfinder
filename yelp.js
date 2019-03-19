@@ -1,4 +1,4 @@
-globalResponse = null;
+
 
 class Yelp{
     constructor(){
@@ -20,11 +20,11 @@ class Yelp{
         })
     }
     handleYelpSuccess(response){
-        globalResponse = response;
-        for (var i = 0; i < globalResponse.businesses.length; i++){
-            var restaurantImage = globalResponse.businesses[i].image_url;
-            var restaurantName = globalResponse.businesses[i].name;
-            var restaurantRating = globalResponse.businesses[i].rating;
+        results = response;
+        for (var i = 0; i < results.businesses.length; i++){
+            var restaurantImage = results.businesses[i].image_url;
+            var restaurantName = results.businesses[i].name;
+            var restaurantRating = results.businesses[i].rating;
             var domImage = $('<img />', {
                 src: restaurantImage
             }).appendTo(('#yelp'));
@@ -36,7 +36,7 @@ class Yelp{
                 class: 'rating',
                 text: restaurantRating
             }).appendTo(('#yelp'));
-            console.log('yep', globalResponse);
+            console.log('yep', results);
         }
 }
     handleYelpError(response){
