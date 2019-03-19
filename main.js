@@ -24,3 +24,6 @@ function clickHandler() {
     debugger;
     markers = new Maps();
 }
+
+var twitter = new TwitterLocation(results);
+
