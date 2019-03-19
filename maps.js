@@ -1,61 +1,26 @@
 class Maps {
-    constructor() {
-        this.locations = {
-            Del: {
-                lat: 33.649998,
-                lng: -117.744933
-            },
-            Omomo: {
-                lat: 33.671621,
-                lng: -117.788938
-            },
-        }; // locations obtained from yelp
+    constructor(yelpResults) {
+        this.map = new google.maps.Map(document.getElementById('map'), {
+            center: orangeCountyCoordinates,
+            zoom: 11.5
+        });
+        this.yelpResults = results;
+        this.geocoder = new google.maps.Geocoder();
 
-        this.initMap();
-
-        this.setMarkers();
+        this.getCoordinates();
     }
 
-    initMap() {
-        var locations = {
-            Del: {
-                lat: 33.649998,
-                lng: -117.744933
-            },
-            Omomo: {
-                lat: 33.671621,
-                lng: -117.788938
-            },
-        };
-    
-        map = new google.maps.Map(
-            document.getElementById('map'), {
-                zoom: 11.5, center: orangeCountyCoordinates
-            }
-        );
-
-        this.setMarkers();
-    
-        // for (var key in locations) {
-        //     marker = new google.maps.Marker({
-        //         position: locations[key],
-        //         map: map
-        //     });
-        // }
-        // for (var key in this.locations) {
-        //     var marker = new google.maps.Marker({
-        //         position: new google.maps.LatLng(this.locations[key].lat, this.locations[key].lng),
-        //         map: map
-        //     });
-        // }
-    }
-
-    setMarkers() {
-        for (var key in this.locations) {
+    getCoordinates() {
+        for (var key in this.yelpResults) {
+            geocoder.geocoder(this.yelpResults[key].address, this.callback);
             var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(this.locations[key].lat, this.locations[key].lng),
+                position: coordinatesObj,
                 map: map
             });
         }
+    }
+
+    callback() {
+        console.log(this.yelpResults[key]);
     }
 }
