@@ -14,14 +14,20 @@ function initializeApp() {
     map = new Maps();
 
     map.initMap();
-  
     var weather = new Weather();
-    var yelp = new Yelp();
+    //var yelp = new Yelp();
+    clickHandler();
+}
+function inputData(event){
+    debugger;
+    console.log(event);
+    var inputText = $("#locationInput").val();
+    var yelp = new Yelp (inputText);
 }
 
 function clickHandler() {
     // $('#submitSearch').on('click', )
-    debugger;
+    $("#submitSearch").on("click", inputData)
     markers = new Maps();
 }
 

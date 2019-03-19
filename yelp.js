@@ -1,7 +1,9 @@
 globalResponse = null;
 
 class Yelp{
-    constructor(){
+    constructor(inputText){
+        debugger;
+        this.inputField = inputText;
         this.handleYelpSuccess = this.handleYelpSuccess.bind(this);
         this.handleYelpError = this.handleYelpError.bind(this);
         this.getDataFromYelp();
