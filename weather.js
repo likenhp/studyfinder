@@ -63,7 +63,6 @@ class Weather {
 
     // }
         // debugger;    
-    }
   
     var icons = new Skycons(),
                 list  = [
