@@ -63,7 +63,10 @@ class Weather {
 
     // }
         // debugger;    
+<<<<<<< HEAD
 //     }
+=======
+>>>>>>> 2b10ea717014dc398aed379c061ccee0c9590924
   
     var icons = new Skycons(),
                 list  = [

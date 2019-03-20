@@ -13,7 +13,7 @@ class TwitterLocation {
             url: 'https://s-apis.learningfuze.com/hackathon/twitter/index.php',
             dataType: 'json',
             method: '', 
-            data: {search_term: 'kanyewest'},
+            data: {search_term: 'irvine', search_term: 'beer', },
             success: function(result){
                 console.log(result);
             }
