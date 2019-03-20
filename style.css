@@ -21,9 +21,20 @@ body {
     width: 100%;
     background-color: whitesmoke;
     border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.documentTitle {
+    height: 100%;
+    width: 84%;
+    text-align: center;
+}
+
+.title {
     font-family: 'Fira Sans', sans-serif;
     font-size: 50px;
-    text-align: center;
 }
 
 #map {
@@ -76,7 +87,7 @@ body {
     align-items: center;
     background-color: whitesmoke;
     overflow-y: scroll;
-    border: 1px solid black;
+    border: 1px solid white;
     background-image: url('images/yelpbackground.jpg');
     background-size: contain;
 }
@@ -171,3 +182,22 @@ body {
     100% { transform: translate(-100%, 0); }
 }
 
+.googleLogo {
+    height: 90%;
+    width: 4%;
+}
+
+.twitterLogo {
+    height: 110%;
+    width: 4%;
+}
+
+.yelpSoloLogo {
+    height: 90%;
+    width: 4%;
+}
+
+.darkskyLogo {
+    height: 100%;
+    width: 4%;
+}
