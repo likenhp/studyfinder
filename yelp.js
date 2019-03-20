@@ -24,6 +24,7 @@ class Yelp{
     }
 
     handleYelpSuccess(response){
+        map.removeMarkers();
         results = response;
         $('#yelp').empty();
         for (var i = 0; i < results.businesses.length; i++){
@@ -49,7 +50,7 @@ class Yelp{
             $("#yelp").append(newDomElement);
         }
 
-        window.map.getCoordinates(results.businesses);
+        map.getCoordinates(results.businesses);
     }
 
     handleYelpError(response){

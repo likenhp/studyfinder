@@ -1,6 +1,7 @@
 $(document).ready(initializeApp);
 
 var results = {};
+var markers = [];
 var twitter = new TwitterLocation(results);
 var search = null;
 var coordinates = null;
@@ -10,18 +11,11 @@ var orangeCountyCoordinates = {
 };
 
 var weather = new Weather();
-var yelp = new Yelp();
-
 
 function initializeApp() {
     map = new Maps();
 
     clickHandler();
-}
-
-function inputData(){
-    var inputText = $("#locationInput").val();
-    var yelp = new Yelp (inputText);
 }
 
 function clickHandler() {
@@ -30,5 +24,10 @@ function clickHandler() {
     })
     // $('#submitSearch').on('click', )
     $("#submitSearch").on("click", inputData)
+}
+
+function inputData(){
+    var inputText = $("#locationInput").val();
+    var yelp = new Yelp (inputText);
 }
 
