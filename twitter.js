@@ -19,7 +19,6 @@ class TwitterLocation {
         });
     }
     getDataSuccess(response){
-        debugger;
         var twitterTextArray = response.tweets.statuses;
         var tempTwitterArray = [];
         console.log(twitterTextArray);
