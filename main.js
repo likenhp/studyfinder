@@ -9,17 +9,17 @@ var orangeCountyCoordinates = {
     lat:33.67, lng:-117.78
 };
 
-var map = null;
+var weather = new Weather();
+var yelp = new Yelp();
+
 
 function initializeApp() {
-    var weather = new Weather();
-    var yelp = new Yelp();
     map = new Maps();
+
     clickHandler();
 }
 
-function inputData(event){
-    console.log(event);
+function inputData(){
     var inputText = $("#locationInput").val();
     var yelp = new Yelp (inputText);
 }
@@ -32,4 +32,3 @@ function clickHandler() {
     $("#submitSearch").on("click", inputData)
 }
 
-var twitter = new TwitterLocation(results);

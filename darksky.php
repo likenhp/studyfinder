@@ -20,6 +20,7 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "GET",
 ));
+
 $response = curl_exec($curl);
 $err = curl_error($curl);
 echo $err;

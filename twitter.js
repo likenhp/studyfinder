@@ -7,11 +7,6 @@ class TwitterLocation {
 
         this.getData();
     }
-getTweetsForBrewery(brewery, location){
-
-}
-
-
 
     getData() {
         $.ajax({
