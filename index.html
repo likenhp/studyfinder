@@ -18,36 +18,30 @@
     </head>
 
     <body>
-            <div class="headerContainer col-xs-12 col-sm-12 col-md-12">
-                <img src="images/google_logo.png" alt="google" class="googleLogo">
-                <img src="images/twitterlogo.png" alt="twitter" class="twitterLogo">
-                Drink & Study
-                <img src="images/yelp_solo_logo.png" alt="yelp" class="yelpSoloLogo">
-                <img src="images/darksky_logo.png" alt="darksky" class="darkskyLogo">
+        <div class="top">
+            <div class="title">Drink & Study</div>
+            <div class="searchBar input-group">
+                <input type="text" placeholder="Yelp Search" id="locationInput">
+                <button id="submitSearch">Enter</button>
             </div>
-            <div class="leftContainer col-xs-12 col-sm-12 col-md-12">
-                <div id="map" class="row col-xs-9 col-sm-9 col-md-9"></div>
-                <div class="location col-xs-6 col-sm-6 col-md-offset-4 col-md-6 col-sm-offset-4 col-xs-offset-4">
-                        <!-- <span class="input-group-prepend">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </span> -->
-                        <input type="text" placeholder="Yelp Search" id="locationInput">
-                        <button id="submitSearch">Enter</button>
-                </div>
-                <!-- <div class="results">Display Results</div> -->
-                <div class="weather col-xs-3 col-sm-3 col-md-3">
-                    <div class="date"></div>
-                    <div class="temp"></div>
-                    <div class="time"></div>
-                    <canvas class="weatherSituation"></canvas>
-                    <div class="summary"></div>
-                </div>
-                <div id="twitter" class="row col-xs-12 col-sm-12 col-md-12 scroll-left">
-                    <div class="twitterFeed"></div>
-                </div>
-                <div id="yelp">
+        </div>
+        <div class="leftContainer row col-xs-12 col-sm-12 col-md-12">
+            <div id="map" class="row col-xs-6 col-sm-6 col-md-6"></div>
+
+            <div id="yelp" class="col-xs-6 col-sm-6 col-md-6">
                     <img src="images/yelplogo.png" alt="yelper" class="yelpLogo">
-                </div>
+            </div>
+        </div>
+        <div class="weather col-xs-12 col-sm-12 col-md-12">
+                <div class="date"></div>
+                <div class="temp"></div>
+                <div class="time"></div>
+                <canvas class="weatherSituation"></canvas>
+                <div class="summary"></div>
+        </div>
+
+        <div id="twitter" class="row col-xs-12 col-sm-12 col-md-12 scroll-left">
+                <div class="twitterFeed"></div>
             </div>
     </body>
 </html>
