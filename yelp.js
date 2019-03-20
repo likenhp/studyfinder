@@ -25,7 +25,7 @@ class Yelp{
 
     handleYelpSuccess(response){
         results = response;
-
+        $('#yelp').empty();
         for (var i = 0; i < results.businesses.length; i++){
             var restaurantImage = 'url('+results.businesses[i].image_url+')';
             var restaurantName = results.businesses[i].name;
@@ -34,7 +34,6 @@ class Yelp{
             var restaurantLocation = results.businesses[i].location.display_address[0] + ' ' + results.businesses[i].location.display_address[1] + ', ' 
                 results.businesses[i].location.display_address[1];
             var newDomElement = $("<div>").addClass(restaurantName+' resultDiv');
-
             $(newDomElement).append(
                 $("<div>").addClass('restaurantImage').css({
                     'background-image': restaurantImage,
