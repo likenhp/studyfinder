@@ -12,11 +12,12 @@ var orangeCountyCoordinates = {
 var map = null;
 
 function initializeApp() {
-    map = new Maps();
     var weather = new Weather();
     var yelp = new Yelp();
+    map = new Maps();
     clickHandler();
 }
+
 function inputData(event){
     console.log(event);
     var inputText = $("#locationInput").val();
@@ -29,7 +30,6 @@ function clickHandler() {
     })
     // $('#submitSearch').on('click', )
     $("#submitSearch").on("click", inputData)
-    markers = new Maps();
 }
 
 var twitter = new TwitterLocation(results);
