@@ -21,16 +21,22 @@ class TwitterLocation {
     getDataSuccess(response){
         var twitterTextArray = response.tweets.statuses;
         var tempTwitterArray = [];
-        console.log(twitterTextArray);
         for(var tIndex = 0; tIndex < twitterTextArray.length; tIndex++){
             var twitterText = response.tweets.statuses[tIndex].text;
-            tempTwitterArray.push(twitterText);
-            //var twitterDiv = $("<span>").append(twitterText);
-            //$(".twitterFeed").append(twitterDiv);
+            var twitterDiv = $("<span>").append(twitterText);
+            var twitterImg = $("<img>", {
+                "src": "images/twitterlogo.png",
+                "height": "50px",
+                "width": "50px",
+                "display": "inline-block"
+            });
+            var dynamicTwitterLogo = $("<span>").append(twitterImg[0]);
+            $(".twitterFeed").append(twitterDiv);
+            $(".twitterFeed").append(dynamicTwitterLogo);
         }
-        var twitterJoin = tempTwitterArray.join(" ");
-        var twitterSpan = $("<span>").append(twitterJoin);
-        $(".twitterFeed").append(twitterSpan);
+        //var twitterJoin = tempTwitterArray.join(" ");
+        //var twitterSpan = $("<span>").append(twitterJoin);
+        //$(".twitterFeed").append(twitterSpan);
         //$(".twitterFeed").text(tempTwitterArray);
     }
 }
