@@ -39,29 +39,31 @@ class Weather {
     var summary = $(".summary").append(currentSummary);
 
     //Loop for future dates and weather
-    for( var index = 1; index < response.daily.data.length; index++){
-        var futureUnixWeatherTimeStamp = response.daily.data[index].time;
-        var futureWeatherUnix = new Date (futureUnixWeatherTimeStamp*1000);
-        var futureWeatherDay = futureWeatherUnix.toDateString();
-        var futureDate = $("<div>", {
-            "class": "futureDate"
-        }).append(futureWeatherDay).css("font-weight","bold");
-        $(".weather").append(futureDate);
+    // for( var index = 1; index < response.daily.data.length; index++){
+    //     var futureUnixWeatherTimeStamp = response.daily.data[index].time;
+    //     var futureWeatherUnix = new Date (futureUnixWeatherTimeStamp*1000);
+    //     var futureWeatherDay = futureWeatherUnix.toDateString();
+    //     var futureDate = $("<div>", {
+    //         "class": "futureDate"
+    //     }).append(futureWeatherDay).css("font-weight","bold");
+    //     $(".weather").append(futureDate);
 
-        var futureWeatherCondition = response.daily.data[index].icon;
-        var futureWeatherDiv = $("<canvas>", {
-            "id": futureWeatherCondition
-        });
-        $(".weather").append(futureWeatherDiv);
+    //     var futureWeatherCondition = response.daily.data[index].icon;
+    //     var futureWeatherDiv = $("<canvas>", {
+    //         "id": futureWeatherCondition
+    //     });
+    //     $(".weather").append(futureWeatherDiv);
 
-        var futureSummary = response.daily.data[index].summary;
-        var futureSummaryDisplay =$("<div>", {
-            "class": "futureSummary"
-        }).append(futureSummary);
-        $(".weather").append(futureSummaryDisplay);
+    //     var futureSummary = response.daily.data[index].summary;
+    //     var futureSummaryDisplay =$("<div>", {
+    //         "class": "futureSummary"
+    //     }).append(futureSummary);
+    //     $(".weather").append(futureSummaryDisplay);
 
-        
-    }
+
+    // }
+        // debugger;
+
     var icons = new Skycons(),
                 list  = [
                 "clear-day", "clear-night", "partly-cloudy-day",

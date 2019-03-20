@@ -4,14 +4,18 @@ $proxyURL = "https://api.yelp.com/v3/businesses/search?location=irvine";
 $api_key = 'Authorization: Bearer ' . $_GET['apikey'];
 
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: ". implode(',',$acceptableHeaders));
+// header("Access-Control-Allow-Headers: ". implode(',',$acceptableHeaders));
 
 $headers = apache_request_headers();
 
 $curl = curl_init();
 
+if (isset($_GET['term'])) {
+  $proxyURL = "$proxyURL&term=".$_GET['term'];
+}
+
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "$proxyURL&term=" . $_GET['term'],
+  CURLOPT_URL => $proxyURL,
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
