@@ -12,10 +12,8 @@ body {
 .leftContainer {
     height: 70%;
     background-color: hotpink;
-    /* justify-content: center; */
-    /* display: flex; */
+    
 }
-
 #map {
     height: 100%;
     position: absolute;
@@ -72,3 +70,4 @@ body {
     height: 150px;
     width: 400px;
 } 
+
