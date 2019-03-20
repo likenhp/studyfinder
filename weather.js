@@ -2,8 +2,10 @@ class Weather {
     constructor(){
         this.handleWeatherDataSuccess = this.handleWeatherDataSuccess.bind(this);
         this.handleWeatherDataError = this.handleWeatherDataError.bind(this);
+
         this.handleWeatherData();
     }
+
     handleWeatherData(){
         $.ajax({
             url: "darksky.php",
@@ -13,12 +15,14 @@ class Weather {
             error: this.handleWeatherDataError
         })
     }
+
     handleWeatherDataSuccess(response){
     console.log("it works", response);
     var apparentTemp = response.currently.apparentTemperature;
     var tempF = `Temperature: ${apparentTemp} F ${String.fromCharCode(176)}`
     var icon = response.currently.icon;
     var unixTimestamp = response.currently.time;
+    var currentSummary = response.currently.summary;
     
     var unixTime = new Date(unixTimestamp*1000);
     var day = unixTime.toDateString();
@@ -32,6 +36,7 @@ class Weather {
     var weatherSituation = $(".weatherSituation").attr("id", icon);
     var time = $(".time").append(currentTime);
     var date = $(".date").append(currentDate).css("font-weight","bold");
+    var summary = $(".summary").append(currentSummary);
 
     //Loop for future dates and weather
     for( var index = 1; index < response.daily.data.length; index++){
@@ -49,6 +54,12 @@ class Weather {
         });
         $(".weather").append(futureWeatherDiv);
 
+        var futureSummary = response.daily.data[index].summary;
+        var futureSummaryDisplay =$("<div>", {
+            "class": "futureSummary"
+        }).append(futureSummary);
+        $(".weather").append(futureSummaryDisplay);
+
         
     }
         debugger;
@@ -64,6 +75,7 @@ class Weather {
                 icons.play();
 
     }
+    
     handleWeatherDataError(response){
         console.log(response);
     }
