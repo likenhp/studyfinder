@@ -16,7 +16,10 @@ class Yelp{
                 'term': this.inputField,
             },
             success: this.handleYelpSuccess,
-            error: this.handleYelpError,
+            error: (resp) => {
+                console.log("error response", resp.responseText);
+                this.handleYelpError(resp);
+            },
         })
     }
 
@@ -51,6 +54,7 @@ class Yelp{
     }
 
     handleYelpError(response){
+        console.log(response);
         alert('you reached an error son');
     }
 }
