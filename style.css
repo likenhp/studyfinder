@@ -20,10 +20,13 @@ body {
     height: 12vh;
     width: 100%;
     background-color: whitesmoke;
+    position: fixed;
+    top: 0;
     border: 1px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 6rem;
 }
 
 .documentTitle {
@@ -74,6 +77,8 @@ body {
 }
 
 #twitter{
+    bottom: 0;
+    position: fixed;
     height: 50px;
     color: black;
     font-size: 16px;
@@ -196,11 +201,16 @@ body {
 }
 
 .googleLogo {
+    position: absolute;
+    left: 0;
     height: 90%;
     width: 6%;
+    float: left;
 }
 
 .twitterLogo {
+    float: left;
+    left: 0;
     height: 120%;
     width: 6%;
 }
