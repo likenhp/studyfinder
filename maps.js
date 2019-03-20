@@ -11,7 +11,6 @@ class Maps {
     }
 
     getCoordinates(businesses) {
-        var markers = {};
         for (var key in businesses) {
             var address = businesses[key].location.display_address[0];
 
@@ -28,11 +27,11 @@ class Maps {
                 resultAddress: address
             }
 
-            this.generateMarker(resultInfo, this.map);
+            this.generateMarker(resultInfo, this.map, key);
         }
     }
 
-    generateMarker(resultInfo, map) {
+    generateMarker(resultInfo, map, key) {
         var content = '<h5>' + resultInfo.resultName+'</h5>' + resultInfo.resultAddress;
         var infowindow = new google.maps.InfoWindow({
             content: content,
@@ -42,20 +41,23 @@ class Maps {
         var marker = new google.maps.Marker({
             position: {lat: resultInfo.latitude, lng: resultInfo.longitude},
             map: map,
-        }).addListener('mouseover', function() {
-            // map.setZoom(15);
-            // map.setCenter(this.getPosition());
-            infowindow.open(map, this);
-            // if (infowindowOpen === false) {
-            //     infowindow.open(map, this);
-            //     infowindowOpen = true;
-            // }
-        });
-        
-        infowindow.addListener('mouseout', function() {
-            // map.setZoom(15);
-            // map.setCenter(this.getPosition());
-            infowindow.close();
         })
+        marker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(this.getPosition());
+            infowindow.open(map, this);
+        });
+
+        markers.push(marker);
+    }
+
+    removeMarkers() {
+        this.setMapOnAll(null);
+    }
+
+    setMapOnAll() {
+        for (var i=0; i<markers.length; i++) {
+            markers[i].setMap(null);
+        }
     }
 }
