@@ -18,7 +18,6 @@ function initializeApp() {
     clickHandler();
 }
 function inputData(event){
-    debugger;
     console.log(event);
     var inputText = $("#locationInput").val();
     var yelp = new Yelp (inputText);
@@ -28,7 +27,7 @@ function clickHandler() {
     $('#submitSearch').on('click', function() {
         search = $('#submitSearch').text
     })
-    debugger;
+    
     // $('#submitSearch').on('click', )
     $("#submitSearch").on("click", inputData)
     markers = new Maps();
