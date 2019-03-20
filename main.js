@@ -14,7 +14,7 @@ var map = null;
 function initializeApp() {
     map = new Maps();
     var weather = new Weather();
-    //var yelp = new Yelp();
+    var yelp = new Yelp();
     clickHandler();
 }
 function inputData(event){
@@ -27,7 +27,6 @@ function clickHandler() {
     $('#submitSearch').on('click', function() {
         search = $('#submitSearch').text
     })
-    
     // $('#submitSearch').on('click', )
     $("#submitSearch").on("click", inputData)
     markers = new Maps();
