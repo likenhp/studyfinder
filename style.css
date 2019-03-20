@@ -12,9 +12,8 @@ body {
 .leftContainer {
     height: 70%;
     position: contain;
-    background-color: ;
-    
 }
+
 #map {
     height: 100%;
     position: absolute;
@@ -51,7 +50,7 @@ body {
 #twitter{
     height: 30px;
     color: black;
-
+}
 .twitter{
     height: 100%;
     width: 100%;
