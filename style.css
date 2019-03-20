@@ -47,6 +47,11 @@ body {
     background-size: contain;
     color: aliceblue;
 }
+
+#twitter{
+    height: 30px;
+    color: black;
+
 .twitter{
     height: 100%;
     width: 100%;
@@ -58,6 +63,7 @@ body {
 
 .hide{
     display: none;
+
 }
 #yelp{
     height: 80%;
