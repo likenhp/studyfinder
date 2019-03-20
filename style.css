@@ -30,11 +30,14 @@ body {
     height: 100%;
     width: 84%;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .title {
     font-family: 'Fira Sans', sans-serif;
-    font-size: 50px;
+    font-size: 70px;
 }
 
 #map {
@@ -194,20 +197,20 @@ body {
 
 .googleLogo {
     height: 90%;
-    width: 4%;
+    width: 6%;
 }
 
 .twitterLogo {
-    height: 110%;
-    width: 4%;
+    height: 120%;
+    width: 6%;
 }
 
 .yelpSoloLogo {
     height: 90%;
-    width: 4%;
+    width: 5%;
 }
 
 .darkskyLogo {
     height: 100%;
-    width: 4%;
+    width: 7%;
 }
