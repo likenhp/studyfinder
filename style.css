@@ -1,7 +1,25 @@
 body {
     margin: 0;
     height: 100vh;
-    color: white;
+}
+
+.top {
+    height: 10%;
+    font-size: 6rem;
+    color: black;
+}
+
+.title {
+    display: inline-block;
+    font-family: 'Amatic SC', cursive;
+    padding-left: 10px;
+    text-transform: uppercase;
+}
+
+.searchBar {
+    float: right;
+    height: 100%;
+    top: 0;
 }
 
 .container {
@@ -14,51 +32,13 @@ body {
     position: contain;
     background-color: pink;
     padding: 0;
-}
-
-.headerContainer {
-    height: 12vh;
-    width: 100%;
-    background-color: whitesmoke;
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.documentTitle {
-    height: 100%;
-    width: 84%;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.title {
-    font-family: 'Amatic SC', cursive;
-    font-size: 90px;
-    color: black;
+    margin:0;
 }
 
 #map {
     height: 100%;
-    position: absolute;
     margin: 0;
     padding: 0;
-}
-
-.location {
-    right: 30%;
-    top: 80%;
-    position: absolute;
-}
-
-#locationInput {
-    font-size: 3.5rem;
-    letter-spacing: 3px;
-    text-align: center;
-    /* text-transform: lowercase; */
 }
 
 .results {
@@ -69,39 +49,46 @@ body {
 }
 
 .weather {
-    background-image: url('images/sky.jpg');
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 3rem;
+    font-family: 'Amatic SC', cursive;
     background-size: cover;
-    height: 100%;
+    height: 15%;
     overflow: scroll;
-    color: aliceblue;
+    color: black;
     float: right;
     padding: 0;
     margin: 0;
 }
 
+.weatherSituation {
+    height: 100%;
+}
+
 #twitter{
-    height: 50px;
+    bottom: 0;
+    height: 5%;
     color: black;
     font-size: 16px;
     font-family: 'Times New Roman', Helvetica, serif
 }
 
 #yelp{
-    height: 80%;
-    width: 100%;
+    height: 100%;
     display: flex;
-    padding: 0;
+    margin: 0;
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
     background-color: whitesmoke;
     overflow-y: scroll;
-    border: 1px solid black;
     background-image: url('images/beer.jpg');
     background-repeat: no-repeat;
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -162,6 +149,7 @@ body {
 }
 
 #twitter{
+    margin: 0;
     opacity: .75;
     background-color: black;
     color: lightblue;
@@ -173,20 +161,20 @@ body {
 }
 
 .twitterLogoLeft {
-        height: 30px;
-        width: 30px;
-        float: left;
+    height: 30px;
+    width: 30px;
+    float: left;
 }
 
 .twitterLogoRight {
-        height: 30px;
-        width: 30px;
-        float: right;
+    height: 30px;
+    width: 30px;
+    float: right;
 }
 
 .yelpLogo {
-        height: 30%;
-        float: left;
+    height: 30%;
+    float: left;
 }
 
 #twitter div {
@@ -207,6 +195,8 @@ body {
 }
 
 .twitterLogo {
+    float: left;
+    left: 0;
     height: 120%;
     width: 6%;
 }

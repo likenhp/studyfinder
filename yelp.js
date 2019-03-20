@@ -47,6 +47,11 @@ class Yelp{
                     .append($("<div>").addClass('restaurantRating').text('Rating: ' + restaurantRating))
                 );
 
+            $(newDomElement).on('click', function() {
+                map.map.setZoom(15);
+                map.map.setCenter(markers[0].getPosition());
+            });
+
             $("#yelp").append(newDomElement);
         }
 

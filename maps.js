@@ -60,4 +60,8 @@ class Maps {
             markers[i].setMap(null);
         }
     }
+
+    zoomIntoMarker() {
+        
+    }
 }
