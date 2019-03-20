@@ -2,6 +2,7 @@
 
 class Yelp{
     constructor(inputText){
+       
         this.inputField = inputText;
         this.handleYelpSuccess = this.handleYelpSuccess.bind(this);
         this.handleYelpError = this.handleYelpError.bind(this);
@@ -28,19 +29,27 @@ class Yelp{
             var restaurantRating = results.businesses[i].rating;
             var domImage = $('<img />', {
                 src: restaurantImage
-            }).appendTo(('#yelp'));
-            var domName = $('<h1 />', {
+            }).css({
+                height: '180px',
+                width: '180px'
+            }).appendTo(('.yelpImage'));
+            var domName = $('<p />', {
                 class: 'restName',
                 text: restaurantName
-            }).appendTo(('#yelp'));
+            }).css({
+                height: '100%',
+                width: '100%'
+            }).appendTo(('.yelpName'));
             var domRating = $('<p />', {
                 class: 'rating',
                 text: restaurantRating
-            }).appendTo(('#yelp'));
-            console.log('yep', results);
+            }).css({
+                height: '180px',
+                width: '180px'
+            }).appendTo(('.yelpRating'));
         }
 }
     handleYelpError(response){
-        console.log('nope', response);
+        alert('you reached an error son');
     }
 }
