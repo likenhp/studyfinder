@@ -12,23 +12,24 @@ body {
 .leftContainer {
     height: 70%;
     background-color: hotpink;
-    /* justify-content: center; */
-    /* display: flex; */
+    
 }
-
 #map {
     height: 100%;
     position: absolute;
 }
 
 .location {
+    right: 30%;
+    top: 80%;
     position: absolute;
 }
 
 #locationInput {
     font-size: 3.5rem;
     letter-spacing: 3px;
-    text-transform: lowercase;
+    text-align: center;
+    /* text-transform: lowercase; */
 }
 
 .results {
@@ -46,15 +47,27 @@ body {
 }
 
 #yelp{
-    height: 30%;
+    height: 80%;
+    width: 100%;
     display: flex;
-    flex-direction: column;
     background-color: lightblue;
     overflow: scroll;
 }
 
-.yelpContainer{
-    height: 30%;
-    width: 100%;
+.yelpImage{
+    height: 10%;
+    width: 170px;
 }
+
+.yelpName{
+    height: 150px;
+    width: 400px;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.yelpRating{
+    height: 150px;
+    width: 400px;
+} 
 
