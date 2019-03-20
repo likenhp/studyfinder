@@ -1,5 +1,3 @@
-
-
 class Yelp{
     constructor(inputText){
         this.inputField = inputText;
@@ -7,6 +5,7 @@ class Yelp{
         this.handleYelpError = this.handleYelpError.bind(this);
         this.getDataFromYelp();
     }
+
     getDataFromYelp(){
         $.ajax({
             url: 'yelp.php',
@@ -20,6 +19,7 @@ class Yelp{
             error: this.handleYelpError,
         })
     }
+
     handleYelpSuccess(response){
         results = response;
         for (var i = 0; i < results.businesses.length; i++){
@@ -37,9 +37,14 @@ class Yelp{
                 class: 'rating',
                 text: restaurantRating
             }).appendTo(('#yelp'));
-            console.log('yep', results);
+            // console.log('yep', results);
         }
-}
+
+        debugger;
+
+        map.getCoordinates(results.businesses);
+    }
+
     handleYelpError(response){
         console.log('nope', response);
     }

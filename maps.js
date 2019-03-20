@@ -1,26 +1,25 @@
 class Maps {
-    constructor(yelpResults) {
+    constructor() {
         this.map = new google.maps.Map(document.getElementById('map'), {
             center: orangeCountyCoordinates,
             zoom: 11.5
         });
-        this.yelpResults = results;
         this.geocoder = new google.maps.Geocoder();
+
+        // this.getCoordinates = this.getCoordinates.bind(this);
 
         this.getCoordinates();
     }
 
-    getCoordinates() {
-        for (var key in this.yelpResults) {
-            geocoder.geocoder(this.yelpResults[key].address, this.callback);
+    getCoordinates(businesses) {
+        debugger;
+        var yelpResults = businesses;
+        for (var key in yelpResults) {
+            debugger;
             var marker = new google.maps.Marker({
-                position: coordinatesObj,
-                map: map
-            });
+                position: {lat: yelpResults[key].coordinates.latitude, lng: yelpResults[key].coordinates.longitude},
+                map: this.map,
+            })
         }
-    }
-
-    callback() {
-        console.log(this.yelpResults[key]);
     }
 }
