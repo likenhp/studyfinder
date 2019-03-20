@@ -15,6 +15,17 @@ body {
     background-color: pink;
     
 }
+
+.headerContainer {
+    height: 8%;
+    width: 100%;
+    background-color: whitesmoke;
+    border: 1px solid black;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 50px;
+    text-align: center;
+}
+
 #map {
     height: 100%;
     position: absolute;
@@ -59,18 +70,20 @@ body {
     height: 80%;
     width: 100%;
     display: flex;
-
     padding: 0;
-
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
-
     background-color: whitesmoke;
     overflow-y: scroll;
     border: 1px solid black;
     background-image: url('images/yelpbackground.jpg');
     background-size: contain;
+}
+
+.yelpHeader {
+    height: 10%;
+    background-color: white;
 }
 
 .yelpImage{
