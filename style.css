@@ -50,8 +50,11 @@ body {
     height: 80%;
     width: 100%;
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
     background-color: lightblue;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .yelpImage{
@@ -71,3 +74,29 @@ body {
     width: 400px;
 } 
 
+.restaurantImage {
+    height: 200px;
+}
+
+.resultDiv {
+    width: 50%;
+}
+
+.resultDiv:nth-child(even) {
+    background-color: hotpink;
+}
+
+.resultDiv:nth-child(odd) {
+    background-color: purple;
+}
+
+.restaurantImage {
+    width: 50%;
+    display: inline-block;
+}
+
+.restaurantInfo {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 2rem;
+}
