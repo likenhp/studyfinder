@@ -13,7 +13,7 @@ body {
     height: 70%;
     position: contain;
     background-color: pink;
-    
+    padding: 0;
 }
 
 .headerContainer {
