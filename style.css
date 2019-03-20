@@ -21,14 +21,17 @@ body {
 }
 
 .location {
+    right: 30%;
+    top: 80%;
     position: absolute;
 }
 
 #locationInput {
     font-size: 3.5rem;
     letter-spacing: 3px;
-    text-transform: lowercase;
-} 
+    text-align: center;
+    /* text-transform: lowercase; */
+}
 
 .results {
     bottom: 0;
@@ -42,6 +45,7 @@ body {
     background-color: purple;
     overflow: scroll;
     background-size: contain;
+    color: aliceblue;
 }
 .twitter{
     height: 100%;
@@ -56,17 +60,61 @@ body {
     display: none;
 }
 #yelp{
-    height: 42.8%;
+    height: 80%;
     width: 100%;
     display: flex;
+
     flex-direction: column;
     padding: 0;
+
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+
     background-color: lightblue;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
-.yelpContainer{
-    height: 30%;
-    width: 100%;
+.yelpImage{
+    height: 10%;
+    width: 170px;
 }
- 
+
+.yelpName{
+    height: 150px;
+    width: 400px;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.yelpRating{
+    height: 150px;
+    width: 400px;
+} 
+
+.restaurantImage {
+    height: 200px;
+}
+
+.resultDiv {
+    width: 50%;
+}
+
+.resultDiv:nth-child(even) {
+    background-color: hotpink;
+}
+
+.resultDiv:nth-child(odd) {
+    background-color: purple;
+}
+
+.restaurantImage {
+    width: 50%;
+    display: inline-block;
+}
+
+.restaurantInfo {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 2rem;
+}

@@ -1,5 +1,3 @@
-
-
 class Yelp{
     constructor(inputText){
         this.inputField = inputText;
@@ -7,6 +5,7 @@ class Yelp{
         this.handleYelpError = this.handleYelpError.bind(this);
         this.getDataFromYelp();
     }
+
     getDataFromYelp(){
         $.ajax({
             url: 'yelp.php',
@@ -20,27 +19,38 @@ class Yelp{
             error: this.handleYelpError,
         })
     }
+
     handleYelpSuccess(response){
         results = response;
+
         for (var i = 0; i < results.businesses.length; i++){
-            var restaurantImage = results.businesses[i].image_url;
+            var restaurantImage = 'url('+results.businesses[i].image_url+')';
             var restaurantName = results.businesses[i].name;
             var restaurantRating = results.businesses[i].rating;
-            var domImage = $('<img />', {
-                src: restaurantImage
-            }).appendTo(('#yelp'));
-            var domName = $('<h1 />', {
-                class: 'restName',
-                text: restaurantName
-            }).appendTo(('#yelp'));
-            var domRating = $('<p />', {
-                class: 'rating',
-                text: restaurantRating
-            }).appendTo(('#yelp'));
-            console.log('yep', results);
+            var restaurantPrice = results.businesses[i].price;
+            var restaurantLocation = results.businesses[i].location.display_address[0] + ' ' + results.businesses[i].location.display_address[1] + ', ' 
+                results.businesses[i].location.display_address[1];
+            var newDomElement = $("<div>").addClass(restaurantName+' resultDiv');
+
+            $(newDomElement).append(
+                $("<div>").addClass('restaurantImage').css({
+                    'background-image': restaurantImage,
+                    'background-size': 'cover',
+                    'background-position': 'center'
+                }))
+                .append($("<div>").addClass('restaurantInfo').text(restaurantName)
+                    .append($("<div>").addClass('restaurantLocation').text('Address: ' + restaurantLocation))
+                    .append($("<div>").addClass('restaurantPrice').text('Price: ' + restaurantPrice))
+                    .append($("<div>").addClass('restaurantRating').text('Rating: ' + restaurantRating))
+                );
+
+            $("#yelp").append(newDomElement);
         }
-}
+
+        window.map.getCoordinates(results.businesses);
+    }
+
     handleYelpError(response){
-        console.log('nope', response);
+        alert('you reached an error son');
     }
 }
