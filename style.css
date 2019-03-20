@@ -41,6 +41,7 @@ body {
     background-color: purple;
     overflow: scroll;
     background-size: contain;
+    color: aliceblue;
 }
 
 #yelp{
@@ -56,4 +57,3 @@ body {
     height: 30%;
     width: 100%;
 }
- 
