@@ -44,6 +44,7 @@ body {
     background-color: purple;
     overflow: scroll;
     background-size: contain;
+    color: aliceblue;
 }
 
 #yelp{
