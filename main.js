@@ -20,10 +20,9 @@ function initializeApp() {
 
 function clickHandler() {
     $('#submitSearch').on('click', function() {
-        search = $('#submitSearch').text
+        search = $('#submitSearch').text();
+        inputData();
     })
-    // $('#submitSearch').on('click', )
-    $("#submitSearch").on("click", inputData)
 }
 
 function inputData(){
