@@ -34,14 +34,24 @@ class Yelp{
             var restaurantPrice = results.businesses[i].price;
             var restaurantLocation = results.businesses[i].location.display_address[0] + ' ' + results.businesses[i].location.display_address[1] + ', ' 
                 results.businesses[i].location.display_address[1];
-            var newDomElement = $("<div>").addClass(restaurantName+' resultDiv');
+            var newDomElement = $("<div>", {
+                'height': '55%',
+                'width': '50%',
+                'display': 'inline-block',
+                'margin': '0',
+                'padding': '0',
+            }).addClass(restaurantName+' resultDiv');
             $(newDomElement).append(
                 $("<div>").addClass('restaurantImage').css({
                     'background-image': restaurantImage,
                     'background-size': 'cover',
-                    'background-position': 'center'
+                    'background-position': 'center',
+                    'margin': '5px'
                 }))
-                .append($("<div>").addClass('restaurantInfo').text(restaurantName)
+                .append($("<div>").css({
+                    'margin': '5px',
+                    
+                }).addClass('restaurantInfo').text(restaurantName)
                     .append($("<div>").addClass('restaurantLocation').text('Address: ' + restaurantLocation))
                     .append($("<div>").addClass('restaurantPrice').text('Price: ' + restaurantPrice))
                     .append($("<div>").addClass('restaurantRating').text('Rating: ' + restaurantRating))
