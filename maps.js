@@ -57,7 +57,7 @@ class Maps {
 
     setMapOnAll() {
         for (var key in markers) {
-            markers[key].setMap(null);
+            markers[key].marker.setMap(null);
         }
     }
 
