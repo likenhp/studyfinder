@@ -48,7 +48,7 @@ class Maps {
             infowindow.open(map, this);
         });
 
-        markers.push(marker);
+        markers[resultInfo.resultName] = {marker: marker, infoWindow: infowindow};
     }
 
     removeMarkers() {
@@ -56,8 +56,8 @@ class Maps {
     }
 
     setMapOnAll() {
-        for (var i=0; i<markers.length; i++) {
-            markers[i].setMap(null);
+        for (var key in markers) {
+            markers[key].setMap(null);
         }
     }
 

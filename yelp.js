@@ -41,6 +41,7 @@ class Yelp{
                 'margin': '0',
                 'padding': '0',
             }).addClass(restaurantName+' resultDiv');
+
             $(newDomElement).append(
                 $("<div>").addClass('restaurantImage').css({
                     'background-image': restaurantImage,
@@ -57,12 +58,14 @@ class Yelp{
                     .append($("<div>").addClass('restaurantRating').text('Rating: ' + restaurantRating))
                 );
 
-            $(newDomElement).on('click', function() {
-                map.map.setZoom(15);
-                map.map.setCenter(markers[0].getPosition());
-            });
-
             $("#yelp").append(newDomElement);
+
+            $('.resultDiv').on('click', function() {
+                var placeName = $(event.currentTarget).attr('place');
+                map.map.setZoom(15);
+                map.map.setCenter(markers[placeName].marker.getPosition());
+                markers[placeName].infoWindow.open(map.map, markers[placeName].marker);
+            })
         }
 
         map.getCoordinates(results.businesses);
