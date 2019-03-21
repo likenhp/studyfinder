@@ -34,7 +34,7 @@ class Yelp{
             var restaurantPrice = results.businesses[i].price;
             var restaurantLocation = results.businesses[i].location.display_address[0] + ' ' + results.businesses[i].location.display_address[1] + ', ' 
                 results.businesses[i].location.display_address[1];
-            var newDomElement = $("<div>").addClass(restaurantName+' resultDiv');
+            var newDomElement = $("<div>").addClass('resultDiv').attr('place', restaurantName);
             $(newDomElement).append(
                 $("<div>").addClass('restaurantImage').css({
                     'background-image': restaurantImage,
@@ -47,12 +47,14 @@ class Yelp{
                     .append($("<div>").addClass('restaurantRating').text('Rating: ' + restaurantRating))
                 );
 
-            $(newDomElement).on('click', function() {
-                map.map.setZoom(15);
-                map.map.setCenter(markers[0].getPosition());
-            });
-
             $("#yelp").append(newDomElement);
+
+            $('.resultDiv').on('click', function() {
+                var placeName = $(event.currentTarget).attr('place');
+                map.map.setZoom(15);
+                map.map.setCenter(markers[placeName].marker.getPosition());
+                markers[placeName].infoWindow.open(map.map, markers[placeName].marker);
+            })
         }
 
         map.getCoordinates(results.businesses);

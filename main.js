@@ -1,7 +1,7 @@
 $(document).ready(initializeApp);
 
 var results = {};
-var markers = [];
+var markers = {};
 var twitter = new TwitterLocation(results);
 var search = null;
 var coordinates = null;
@@ -30,4 +30,3 @@ function inputData(){
     var inputText = $("#locationInput").val();
     var yelp = new Yelp (inputText);
 }
-
