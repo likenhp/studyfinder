@@ -61,7 +61,6 @@ class Yelp{
             $("#yelp").append(newDomElement);
 
             $('.resultDiv').on('click', function() {
-                debugger;
                 var placeName = $(event.currentTarget).attr('place');
                 map.map.setZoom(15);
                 map.map.setCenter(markers[placeName].marker.getPosition());
