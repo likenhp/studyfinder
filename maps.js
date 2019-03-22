@@ -27,11 +27,11 @@ class Maps {
                 resultAddress: address
             }
 
-            this.generateMarker(resultInfo, this.map, key);
+            this.generateMarker(resultInfo, this.map);
         }
     }
 
-    generateMarker(resultInfo, map, key) {
+    generateMarker(resultInfo, map) {
         var content = '<h5>' + resultInfo.resultName+'</h5>' + resultInfo.resultAddress;
         var infowindow = new google.maps.InfoWindow({
             content: content,
@@ -57,7 +57,9 @@ class Maps {
 
     setMapOnAll() {
         for (var key in markers) {
+            debugger;
             markers[key].marker.setMap(null);
+            delete markers[key];
         }
     }
 

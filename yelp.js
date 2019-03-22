@@ -26,7 +26,16 @@ class Yelp{
     handleYelpSuccess(response){
         map.removeMarkers();
         results = response;
-        $('#yelp').empty();
+        $('#yelp').remove();
+
+        var yelp = $("<div>").attr('id', 'yelp')
+            .addClass('col-xs-6 col-sm-6 col-md-6')
+            .append($('<img>'), {
+                src: 'images/yelplogo.png',
+                alt: 'yelpLogo',
+                class: 'yelpLogo'
+            });
+
         for (var i = 0; i < results.businesses.length; i++){
             var restaurantImage = 'url('+results.businesses[i].image_url+')';
             var restaurantName = results.businesses[i].name;
@@ -40,7 +49,12 @@ class Yelp{
                 'display': 'inline-block',
                 'margin': '0',
                 'padding': '0',
-            }).addClass('resultDiv').attr('place', restaurantName);
+            }).addClass('resultDiv').attr('place', restaurantName).on('click', function() {
+                var placeName = $(event.currentTarget).attr('place');
+                map.map.setZoom(15);
+                map.map.setCenter(markers[placeName].marker.getPosition());
+                markers[placeName].infoWindow.open(map.map, markers[placeName].marker);
+            });
 
             $(newDomElement).append(
                 $("<div>").addClass('restaurantImage').css({
@@ -58,15 +72,19 @@ class Yelp{
                     .append($("<div>").addClass('restaurantRating').text('Rating: ' + restaurantRating))
                 );
 
-            $("#yelp").append(newDomElement);
+            $(yelp).append(newDomElement);
 
-            $('.resultDiv').on('click', function() {
-                var placeName = $(event.currentTarget).attr('place');
-                map.map.setZoom(15);
-                map.map.setCenter(markers[placeName].marker.getPosition());
-                markers[placeName].infoWindow.open(map.map, markers[placeName].marker);
-            })
+            // $('.resultDiv').on('click', function() {
+            //     var placeName = $(event.currentTarget).attr('place');
+            //     map.map.setZoom(15);
+            //     map.map.setCenter(markers[placeName].marker.getPosition());
+            //     markers[placeName].infoWindow.open(map.map, markers[placeName].marker);
+            // })
         }
+
+        $('#map').removeClass('row col-xs-12 col-sm-12 col-md-12').addClass('row col-xs-6 col-sm-6 col-md-6');
+
+        $('.leftContainer').append(yelp);
 
         map.getCoordinates(results.businesses);
     }
