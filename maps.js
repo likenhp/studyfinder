@@ -2,7 +2,7 @@ class Maps {
     constructor() {
         this.map = new google.maps.Map(document.getElementById('map'), {
             center: orangeCountyCoordinates,
-            zoom: 11.5
+            zoom: 11.5,
         });
 
         this.getCoordinates = this.getCoordinates.bind(this);
@@ -27,11 +27,11 @@ class Maps {
                 resultAddress: address
             }
 
-            this.generateMarker(resultInfo, this.map, key);
+            this.generateMarker(resultInfo, this.map);
         }
     }
 
-    generateMarker(resultInfo, map, key) {
+    generateMarker(resultInfo, map) {
         var content = '<h5>' + resultInfo.resultName+'</h5>' + resultInfo.resultAddress;
         var infowindow = new google.maps.InfoWindow({
             content: content,
@@ -58,6 +58,7 @@ class Maps {
     setMapOnAll() {
         for (var key in markers) {
             markers[key].marker.setMap(null);
+            delete markers[key];
         }
     }
 

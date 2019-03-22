@@ -19,10 +19,23 @@ function initializeApp() {
 }
 
 function clickHandler() {
-    $('#submitSearch').on('click', function() {
-        search = $('#submitSearch').text();
-        inputData();
-    })
+    // $('#submitSearch').on('click', function() {
+    //     search = $('#submitSearch').text();
+    //     inputData();
+    // })
+
+    // $('#submitSearch').on('keypress', function(e) {
+    //     if (e.keyCode === 13) {
+    //         console.log('pressed enter');
+    //     }
+    // })
+
+    $(document).on('keypress', function(e) {
+        if (e.keyCode === 13) {
+            search = $('#submitSearch').text();
+            inputData();
+        }
+    });
 }
 
 function inputData(){
