@@ -37,7 +37,7 @@ body {
 
 .leftContainer {
     height: 70%;
-    background-color: pink;
+    /* background-color: pink; */
     padding: 0;
     margin:0;
 }
@@ -46,6 +46,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    transition: all .35s linear;
 }
 
 .results {
@@ -101,6 +102,8 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    right: 0;
+    transition: all .35 linear;
 }
 
 .yelpHeader {
@@ -130,18 +133,9 @@ body {
 }
 
 .resultDiv {
-    width: 50%;
-}
-
-.resultDiv:nth-child(even) {
-    background-color: lightgray;
+    width: 100%;
     border: 1px solid black;
-    box-sizing: border-box;
-}
-
-.resultDiv:nth-child(odd) {
     background-color: lightgray;
-    border: 1px solid black;
     box-sizing: border-box;
 }
 

@@ -2,7 +2,7 @@ class Maps {
     constructor() {
         this.map = new google.maps.Map(document.getElementById('map'), {
             center: orangeCountyCoordinates,
-            zoom: 11.5
+            zoom: 11.5,
         });
 
         this.getCoordinates = this.getCoordinates.bind(this);
@@ -57,7 +57,6 @@ class Maps {
 
     setMapOnAll() {
         for (var key in markers) {
-            debugger;
             markers[key].marker.setMap(null);
             delete markers[key];
         }

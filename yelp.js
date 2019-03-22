@@ -52,7 +52,7 @@ class Yelp{
             }).addClass('resultDiv').attr('place', restaurantName).on('click', function() {
                 var placeName = $(event.currentTarget).attr('place');
                 map.map.setZoom(15);
-                map.map.setCenter(markers[placeName].marker.getPosition());
+                // map.map.setCenter(markers[placeName].marker.getPosition());
                 markers[placeName].infoWindow.open(map.map, markers[placeName].marker);
             });
 
@@ -73,14 +73,8 @@ class Yelp{
                 );
 
             $(yelp).append(newDomElement);
-
-            // $('.resultDiv').on('click', function() {
-            //     var placeName = $(event.currentTarget).attr('place');
-            //     map.map.setZoom(15);
-            //     map.map.setCenter(markers[placeName].marker.getPosition());
-            //     markers[placeName].infoWindow.open(map.map, markers[placeName].marker);
-            // })
         }
+        map.map.setCenter(orangeCountyCoordinates);
 
         $('#map').removeClass('row col-xs-12 col-sm-12 col-md-12').addClass('row col-xs-6 col-sm-6 col-md-6');
 

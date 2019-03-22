@@ -22,7 +22,6 @@ function clickHandler() {
     $('#submitSearch').on('click', function() {
         search = $('#submitSearch').text();
         inputData();
-        map.map.setCenter(orangeCountyCoordinates);
     })
 }
 
