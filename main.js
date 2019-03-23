@@ -35,6 +35,11 @@ function clickHandler() {
             yelpData = new YelpData (inputText);
         }
     });
+
+    $('#submitSearch').on('click', function(e) {
+        var search = $('#submitSearch').text();
+        yelpData = new YelpData (search);
+    });
 }
 
 // pass in map callback to yelp constructor
