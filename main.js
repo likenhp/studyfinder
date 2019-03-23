@@ -22,9 +22,7 @@ var orangeCountyCoordinates = {
 function initializeApp() {
     map = new Maps(zoomLevels);
     twitter = new TwitterLocation(results);
-    yelpData = new YelpData (inputText);
     weather = new Weather();
-
 
     clickHandler();
 }
@@ -33,13 +31,10 @@ function clickHandler() {
     $(document).on('keypress', function(e) {
         if (e.keyCode === 13) {
             var search = $('#submitSearch').text();
-            inputData();
+            var inputText = $("#locationInput").val();
+            yelpData = new YelpData (inputText);
         }
     });
-}
-
-function inputData(){
-    var inputText = $("#locationInput").val();
 }
 
 // pass in map callback to yelp constructor
