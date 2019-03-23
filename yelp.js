@@ -1,8 +1,9 @@
-class Yelp{
+class YelpData {
     constructor(inputText){
         this.inputField = inputText;
         this.handleYelpSuccess = this.handleYelpSuccess.bind(this);
         this.handleYelpError = this.handleYelpError.bind(this);
+
         this.getDataFromYelp();
     }
 
@@ -22,14 +23,17 @@ class Yelp{
             },
         })
     }
+    
+    // all the css should be in a class, shouldn't be inline
 
     handleYelpSuccess(response){
         map.removeMarkers();
         results = response;
         $('#yelp').remove();
 
-        var yelp = $("<div>").attr('id', 'yelp')
+        var yelpDomElement = $("<div>").attr('id', 'yelp')
             .addClass('col-xs-6 col-sm-6 col-md-6')
+            // remove this inline css
             .append($('<img>'), {
                 src: 'images/yelplogo.png',
                 alt: 'yelpLogo',
@@ -56,6 +60,8 @@ class Yelp{
                 markers[placeName].infoWindow.open(map.map, markers[placeName].marker);
             });
 
+            // click handler needs to be callback (ie openWindow)
+
             $(newDomElement).append(
                 $("<div>").addClass('restaurantImage').css({
                     'background-image': restaurantImage,
@@ -72,7 +78,7 @@ class Yelp{
                     .append($("<div>").addClass('restaurantRating').text('Rating: ' + restaurantRating))
                 );
 
-            $(yelp).append(newDomElement);
+            $(yelpDomElement).append(newDomElement);
         }
         map.map.setCenter(orangeCountyCoordinates);
 
@@ -88,3 +94,9 @@ class Yelp{
         alert('you reached an error son');
     }
 }
+
+
+// dont have yelp directly calling map
+// avoid calling map.map.
+
+// yelp calls coordinates, has callback

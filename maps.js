@@ -1,16 +1,21 @@
 class Maps {
-    constructor() {
+    constructor(zoomLevels) {
+        this.zoomLevels = zoomLevels;
         this.map = new google.maps.Map(document.getElementById('map'), {
             center: orangeCountyCoordinates,
-            zoom: 11.5,
+            zoom: zoomLevels.default,
         });
 
-        this.getCoordinates = this.getCoordinates.bind(this);
+        // pass in option property of zoon levels, check if zoom levels are set
+        // default zoom and marker zoom
 
-        this.getCoordinates();
+        this.getCoordinates = this.getCoordinates.bind(this);
     }
 
-    getCoordinates(businesses) {
+    getCoordinates(businesses, clearMarkers = false) {
+
+        // pass in second para that removes markers if true
+        // if second is passed in as true, it will remove
         for (var key in businesses) {
             var address = businesses[key].location.display_address[0];
 
@@ -43,10 +48,12 @@ class Maps {
             map: map,
         })
         marker.addListener('click', function() {
-            map.setZoom(15);
+            map.setZoom(this.zoomLevels.markers);
             map.setCenter(this.getPosition());
             infowindow.open(map, this);
         });
+
+        // set zoom factors as parameter, pull out of this.zoomlevel
 
         markers[resultInfo.resultName] = {marker: marker, infoWindow: infowindow};
     }
@@ -61,8 +68,22 @@ class Maps {
             delete markers[key];
         }
     }
+    // change all markers to only to map
+    // might need to add callback into yelp
+    // click handler on yelp elements on the right
+    // your map has a move to marker
+    // use object of markers, get location, move to location on map
+    // or
+    // maps needs a callback for when maps is clicked, it calls a funcrtion 
+    // either on global or yelp space that moves to appropriate listing
+    // pass in business name into yelp, yelp scrolls
+    // don't pass into constructork, initalize callback, and then add callbacks
+    // pass it via function
+    // callbacks are kind of like event listeners
+    // on click function === on click callback
+    // callback function yelp to maps zoom to list
+    // callback function map tp yelp move the map to marker
 
     zoomIntoMarker() {
-        
     }
 }

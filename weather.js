@@ -6,6 +6,8 @@ class Weather {
         this.handleWeatherData();
     }
 
+    // all places selecting element directly, pass in as object
+
     handleWeatherData(){
         $.ajax({
             url: "darksky.php",
@@ -16,27 +18,32 @@ class Weather {
         })
     }
 
-    handleWeatherDataSuccess(response){
-    console.log("it works", response);
-    var apparentTemp = response.currently.apparentTemperature;
-    var tempF = `Temperature: ${apparentTemp} F ${String.fromCharCode(176)}`
-    var icon = response.currently.icon;
-    var unixTimestamp = response.currently.time;
-    var currentSummary = response.currently.summary;
-    
-    var unixTime = new Date(unixTimestamp*1000);
-    var day = unixTime.toDateString();
-    var hour = unixTime.getHours();
-    var minutes = unixTime.getMinutes();
-    var currentTime = `Current Time: ${hour}:${minutes}`
-    var currentDate = `${day}`
+    // html entities for degree symbols
+    // clicking on temperature and time will convert between units
 
-    //Appending to div
-    var temp = $(".temp").append(tempF);
-    var weatherSituation = $(".weatherSituation").attr("id", icon);
-    var time = $(".time").append(currentTime);
-    var date = $(".date").append(currentDate).css("font-weight","bold");
-    var summary = $(".summary").append(currentSummary);
+    handleWeatherDataSuccess(response){
+        console.log("it works", response);
+        var apparentTemp = response.currently.apparentTemperature;
+        var tempF = `Temperature: ${apparentTemp} F ${String.fromCharCode(176)}`
+        var icon = response.currently.icon;
+        var unixTimestamp = response.currently.time;
+        var currentSummary = response.currently.summary;
+        
+        var unixTime = new Date(unixTimestamp*1000);
+        var day = unixTime.toDateString();
+        var hour = unixTime.getHours();
+        var minutes = unixTime.getMinutes();
+        var currentTime = `Current Time: ${hour}:${minutes}`
+        var currentDate = `${day}`
+
+        //Appending to div
+        var temp = $(".temp").append(tempF);
+        var weatherSituation = $(".weatherSituation").attr("id", icon);
+        var time = $(".time").append(currentTime);
+        var date = $(".date").append(currentDate).css("font-weight","bold");
+        var summary = $(".summary").append(currentSummary);
+
+    // font weight add in css instead of as inline, don't do it everytime
 
     //Loop for future dates and weather
     // for( var index = 1; index < response.daily.data.length; index++){
@@ -64,17 +71,16 @@ class Weather {
     // }
         // debugger;    
   
-    var icons = new Skycons(),
-                list  = [
-                "clear-day", "clear-night", "partly-cloudy-day",
-                "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
-                "fog"
-            ],
-            i;
-                for(i = list.length; i--; )
-                icons.set(list[i], list[i]);
-                icons.play();
+    var icons = new Skycons();
+    var list  = [
+        "clear-day", "clear-night", "partly-cloudy-day",
+        "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
+        "fog"
+    ];
 
+    for (var i = list.length; i--;)
+        icons.set(list[i], list[i]);
+        icons.play();
     }
     
     handleWeatherDataError(response){
