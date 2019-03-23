@@ -129,10 +129,16 @@ body {
 } 
 
 .restaurantImage {
-    height: 200px;
+    background-size: cover;
+    background-position: center;
+    margin: 5px;
 }
 
 .resultDiv {
+    /* height: 55%; */
+    display: inline-block;
+    margin: 0;
+    padding: 0;
     width: 100%;
     border: 1px solid black;
     background-color: lightgray;
@@ -148,6 +154,7 @@ body {
     display: inline-block;
     vertical-align: top;
     font-size: 2rem;
+    margin: 5px;
 }
 
 #twitter{

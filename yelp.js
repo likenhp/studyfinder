@@ -28,7 +28,8 @@ class YelpData {
 
     handleYelpSuccess(response){
         map.removeMarkers();
-        results = response;
+        debugger;
+        this.results = response.businesses;
         $('#yelp').remove();
 
         var yelpDomElement = $("<div>").attr('id', 'yelp')
@@ -40,39 +41,31 @@ class YelpData {
                 class: 'yelpLogo'
             });
 
-        for (var i = 0; i < results.businesses.length; i++){
-            var restaurantImage = 'url('+results.businesses[i].image_url+')';
-            var restaurantName = results.businesses[i].name;
-            var restaurantRating = results.businesses[i].rating;
-            var restaurantPrice = results.businesses[i].price;
-            var restaurantLocation = results.businesses[i].location.display_address[0] + ' ' + results.businesses[i].location.display_address[1] + ', ' 
-                results.businesses[i].location.display_address[1];
-            var newDomElement = $("<div>", {
-                'height': '55%',
-                'width': '50%',
-                'display': 'inline-block',
-                'margin': '0',
-                'padding': '0',
-            }).addClass('resultDiv').attr('place', restaurantName).on('click', function() {
-                var placeName = $(event.currentTarget).attr('place');
-                map.map.setZoom(15);
-                // map.map.setCenter(markers[placeName].marker.getPosition());
-                markers[placeName].infoWindow.open(map.map, markers[placeName].marker);
-            });
+        for (var i = 0; i < this.results.length; i++){
+            var restaurantImage = 'url('+this.results[i].image_url+')';
+            var restaurantName = this.results[i].name;
+            var restaurantRating = this.results[i].rating;
+            var restaurantPrice = this.results[i].price;
+            var restaurantLocation = this.results[i].location.display_address[0] + ' ' + this.results[i].location.display_address[1] + ', ' 
+                this.results[i].location.display_address[1];
+            
+            var newDomElement = $("<div>").addClass('resultDiv')
+                .attr('place', restaurantName).on('click', function() {
+                    var placeName = $(event.currentTarget).attr('place');
+                    map.map.setZoom(15);
+                    // map.map.setCenter(markers[placeName].marker.getPosition());
+                    markers[placeName].infoWindow.open(map.map, markers[placeName].marker);
+                }
+            );
 
             // click handler needs to be callback (ie openWindow)
 
             $(newDomElement).append(
                 $("<div>").addClass('restaurantImage').css({
                     'background-image': restaurantImage,
-                    'background-size': 'cover',
-                    'background-position': 'center',
-                    'margin': '5px'
                 }))
-                .append($("<div>").css({
-                    'margin': '5px',
-                    
-                }).addClass('restaurantInfo').text(restaurantName)
+                .append($("<div>").addClass('restaurantInfo')
+                    .text(restaurantName)
                     .append($("<div>").addClass('restaurantLocation').text('Address: ' + restaurantLocation))
                     .append($("<div>").addClass('restaurantPrice').text('Price: ' + restaurantPrice))
                     .append($("<div>").addClass('restaurantRating').text('Rating: ' + restaurantRating))
@@ -80,13 +73,14 @@ class YelpData {
 
             $(yelpDomElement).append(newDomElement);
         }
+
         map.map.setCenter(orangeCountyCoordinates);
 
         $('#map').removeClass('row col-xs-12 col-sm-12 col-md-12').addClass('row col-xs-6 col-sm-6 col-md-6');
 
         $('.leftContainer').append(yelp);
 
-        map.getCoordinates(results.businesses);
+        map.getCoordinates(this.results);
     }
 
     handleYelpError(response){

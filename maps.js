@@ -1,10 +1,15 @@
 class Maps {
     constructor(zoomLevels) {
-        this.zoomLevels = zoomLevels;
         this.map = new google.maps.Map(document.getElementById('map'), {
             center: orangeCountyCoordinates,
             zoom: zoomLevels.default,
         });
+
+        if (zoomLevels) {
+            this.zoomLevels = zoomLevels;
+        } else {
+            this.zoomLevels = 11.5;
+        }
 
         // pass in option property of zoon levels, check if zoom levels are set
         // default zoom and marker zoom
@@ -37,6 +42,10 @@ class Maps {
     }
 
     generateMarker(resultInfo, map) {
+        var markerZoom = null;
+        
+        this.zoomLevels ? markerZoom = this.zoomLevels.markers : markerZoom = this.zoomLevels;
+
         var content = '<h5>' + resultInfo.resultName+'</h5>' + resultInfo.resultAddress;
         var infowindow = new google.maps.InfoWindow({
             content: content,
@@ -48,7 +57,7 @@ class Maps {
             map: map,
         })
         marker.addListener('click', function() {
-            map.setZoom(this.zoomLevels.markers);
+            map.setZoom(markerZoom);
             map.setCenter(this.getPosition());
             infowindow.open(map, this);
         });
