@@ -36,6 +36,20 @@ function clickHandler() {
             yelpData = new YelpData (search, map.getCoordinates);
         }
     });
+
+    $('ul li:nth-child(1)').on('click', function() {
+        if ($("#yelp").hasClass('hide')) {
+            $("#yelp").removeClass('hide');
+            $('.tasksContainer').addClass('hide')
+        }
+    })
+
+    $('ul li:nth-child(2)').on('click', function() {
+        if ($('.tasksContainer').hasClass('hide')) {
+            $('#yelp').addClass('hide');
+            $('.tasksContainer').removeClass('hide');
+        }
+    })
 }
 
 // pass in map callback to yelp constructor

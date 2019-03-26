@@ -16,14 +16,9 @@ body {
     text-transform: uppercase;
 }
 
-.searchBar {
-    float: right;
-    height: 100%;
-    top: 0;
-}
-
 #locationInput, #submitSearch {
     font-family: 'Amatic SC', cursive;
+    width: inherit;
 }
 
 #submitSearch {
@@ -32,18 +27,25 @@ body {
 
 .container {
     background-color: pink;
-    height: 70%;
+    height: 80%;
     margin: 0;
     padding: 0;
+    position: relative;
 }
 
 .leftContainer {
-    width: 50%;
     padding: 0;
     margin:0;
     position: relative;
     height: 100%;
     transition: all .35s linear;
+}
+
+.searchContainer {
+    top: 40%;
+    left: 50%;
+    position: absolute;
+    z-index: 1;
 }
 
 #map {
@@ -88,6 +90,7 @@ body {
 }
 
 #yelp{
+    width: 100%;
     height: 100%;
     display: flex;
     margin: 0;
@@ -241,7 +244,10 @@ body {
 }
 
 .rightContainer {
+    margin: 0;
+    padding: 0;
     height: 100%;
+    width: 50%;
     display: inline-block;
 }
 
@@ -258,4 +264,23 @@ body {
 .menu {
     width: 100%;
     background-color: lavender;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    /* display: inline-block; */
+}
+
+ul li {
+    display: inline-block;
+}
+
+.menu {
+    height: 5%;
+}
+
+.tabsContainer {
+    height: 95%;
+    width: 100%;
 }

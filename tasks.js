@@ -14,9 +14,19 @@ class Tasks {
     }
 
     handleAdd() {
-        debugger;
         var task = $('#inputTask').val();
-        $('<tr>').append($('<th>').text(task));
+        $('.tasks').append(
+            $('<tr>')
+                .append($("<th>").text(task))
+                .append($("<th>")
+                    .append(
+                        $("<button>")
+                            .text('Delete')
+                            .on('click', function() {
+                                $(event.currentTarget).parent().parent().remove();
+                            })
+                ))
+        );
         // add to database, update div elements
     }
 
@@ -29,6 +39,6 @@ class Tasks {
     }
 
     appendToDom() {
-        $('.rightContainer').append('<div>').text('Task Manager');
+        // $('.rightContainer').append('<div>').text('Task Manager');
     }
 }

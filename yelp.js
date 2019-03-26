@@ -29,6 +29,8 @@ class YelpData {
     // all the css should be in a class, shouldn't be inline
 
     handleYelpSuccess(response){
+        $('.rightContainer').removeClass('hide');
+
         // yelp automatically returns results in irvine, set it so it only returns when input field is given
         console.log(response);
         this.results = response;
@@ -40,11 +42,7 @@ class YelpData {
                 src: 'images/yelplogo.png',
                 alt: 'yelpLogo',
                 class: 'yelpLogo'
-            })
-            .append($("<div>").addClass('toggleResultWindow')
-                .text('Close Results Window')
-                .on('click', this.toggleResultsWindow)
-            );
+            });
 
         for (var i = 0; i < this.results.businesses.length; i++){
             var restaurantImage = 'url('+this.results.businesses[i].image_url+')';
@@ -75,7 +73,7 @@ class YelpData {
 
         $('.leftContainer').removeClass('row col-xs-12 col-sm-12 col-md-12').addClass('row col-xs-6 col-sm-6 col-md-6');
 
-        $('.rightContainer').addClass('row col-xs-6 col-sm-6 col-md-6').append(yelpDomElement);
+        $('.tabsContainer').append(yelpDomElement);
         
         // is this how you pass in a callback?
         // how do you call map in yelp object?
