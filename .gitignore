@@ -1,2 +1,3 @@
 mysqlcreds.js
-node_modules
+./server/node_modules/
+./server/mysqlcreds.js
