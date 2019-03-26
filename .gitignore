@@ -1,6 +1,2 @@
 mysqlcreds.js
-<<<<<<< HEAD:server/.gitignore
-./node_modules
-=======
 node_modules
->>>>>>> parent of 9608f32... new git ignore:.gitignore
