@@ -5,41 +5,51 @@ var markers = {};
 var twitter = null;
 var yelpData = null;
 var weather = null;
-var zoomLevels = {
-    markers: 15,
-    default: 11.5
-}
+var kanyeQuote = null;
 
 // try to have as little globals as possible and move them into your classes
-
-
-var orangeCountyCoordinates = {
-    lat:33.67, lng:-117.78
-};
 
 // certain beers better for certain weather conditions like hot and cold (blue sky)
 
 function initializeApp() {
-    map = new Maps(zoomLevels);
+    tasks = new Tasks();
+    map = new Maps();
     twitter = new TwitterLocation(results);
-    weather = new Weather();
+    // weather = new Weather();
+    kanyeQuote = new KanyeQuote();
 
     clickHandler();
 }
 
 function clickHandler() {
     $(document).on('keypress', function(e) {
-        if (e.keyCode === 13) {
-            var search = $('#submitSearch').text();
-            var inputText = $("#locationInput").val();
-            yelpData = new YelpData (inputText);
+        var search = $('#locationInput').val();
+        if (e.keyCode === 13 && search !== "") {
+            yelpData = new YelpData (search, map.getCoordinates);
         }
     });
 
     $('#submitSearch').on('click', function(e) {
-        var search = $('#submitSearch').text();
-        yelpData = new YelpData (search);
+        var search = $('#locationInput').val();
+
+        if (search !== "") {
+            yelpData = new YelpData (search, map.getCoordinates);
+        }
     });
+
+    $('ul li:nth-child(1)').on('click', function() {
+        if ($("#yelp").hasClass('hide')) {
+            $("#yelp").removeClass('hide');
+            $('.tasksContainer').addClass('hide')
+        }
+    })
+
+    $('ul li:nth-child(2)').on('click', function() {
+        if ($('.tasksContainer').hasClass('hide')) {
+            $('#yelp').addClass('hide');
+            $('.tasksContainer').removeClass('hide');
+        }
+    })
 }
 
 // pass in map callback to yelp constructor

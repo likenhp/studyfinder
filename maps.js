@@ -1,15 +1,20 @@
 class Maps {
     constructor(zoomLevels) {
+        this.center = {
+            lat:33.67, lng:-117.78
+        };
+        this.zoomLevels = {
+            markers: 15,
+            default: 11.5
+        };
         this.map = new google.maps.Map(document.getElementById('map'), {
-            center: orangeCountyCoordinates,
-            zoom: zoomLevels.default,
+            center: this.center,
+            zoom: this.zoomLevels.default,
         });
 
-        if (zoomLevels) {
-            this.zoomLevels = zoomLevels;
-        } else {
-            this.zoomLevels = 11.5;
-        }
+        this.markers = {};
+
+        this.map.setCenter(this.center);
 
         // pass in option property of zoon levels, check if zoom levels are set
         // default zoom and marker zoom
@@ -17,23 +22,23 @@ class Maps {
         this.getCoordinates = this.getCoordinates.bind(this);
     }
 
-    getCoordinates(businesses, clearMarkers = false) {
+    getCoordinates(response, clearMarkers = false) {
+        var results = response.businesses;
+        this.center = {
+            lat: response.region.center.latitude,
+            lng: response.region.center.longitude
+        };
 
         // pass in second para that removes markers if true
         // if second is passed in as true, it will remove
-        for (var key in businesses) {
-            var address = businesses[key].location.display_address[0];
-
-            if (businesses[key].location.display_address.length === 3) {
-                address += ' ' + businesses[key].location.display_address[1];
-            }
-
-            address += '\n' + businesses[key].location.display_address[businesses[key].location.display_address.length-1];
+        for (var i=0; i<results.length; i++) {
+            var address = results[i].location.address1 + results[i].location.address2 +'\n' + results[i].location.city +
+                ', ' + results[i].location.state + ' ' + results[i].location.zip_code;
 
             var resultInfo = {
-                latitude: businesses[key].coordinates.latitude,
-                longitude: businesses[key].coordinates.longitude,
-                resultName: businesses[key].name,
+                latitude: results[i].coordinates.latitude,
+                longitude: results[i].coordinates.longitude,
+                resultName: results[i].name,
                 resultAddress: address
             }
 
@@ -44,13 +49,15 @@ class Maps {
     generateMarker(resultInfo, map) {
         var markerZoom = null;
         
-        this.zoomLevels ? markerZoom = this.zoomLevels.markers : markerZoom = this.zoomLevels;
+        this.zoomLevels.markers ? markerZoom = this.zoomLevels.markers : markerZoom = this.zoomLevels;
 
-        var content = '<h5>' + resultInfo.resultName+'</h5>' + resultInfo.resultAddress;
-        var infowindow = new google.maps.InfoWindow({
-            content: content,
-            map: map
-        })
+        // var content = '<h5>' + resultInfo.resultName+'</h5>' + resultInfo.resultAddress;
+        // var infowindow = new google.maps.InfoWindow({
+        //     content: content,
+        //     map: map
+        // })
+
+        this.createInfoWindow();
 
         var marker = new google.maps.Marker({
             position: {lat: resultInfo.latitude, lng: resultInfo.longitude},
@@ -59,21 +66,17 @@ class Maps {
         marker.addListener('click', function() {
             map.setZoom(markerZoom);
             map.setCenter(this.getPosition());
-            infowindow.open(map, this);
+            // infowindow.open(map, this);
         });
 
-        // set zoom factors as parameter, pull out of this.zoomlevel
-
-        markers[resultInfo.resultName] = {marker: marker, infoWindow: infowindow};
+        // markers[resultInfo.resultName] = {marker: marker, infoWindow: infowindow};
     }
 
     removeMarkers() {
         this.setMapOnAll(null);
-    }
 
-    setMapOnAll() {
-        for (var key in markers) {
-            markers[key].marker.setMap(null);
+        for (var key in this.markers) {
+            this.markers[key].marker.setMap(null);
             delete markers[key];
         }
     }
@@ -94,5 +97,19 @@ class Maps {
     // callback function map tp yelp move the map to marker
 
     zoomIntoMarker() {
+    }
+
+    createInfoWindow() {
+        // debugger;
+        // var content = '<h5>' + resultInfo.resultName+'</h5>' + resultInfo.resultAddress;
+        // var infowindow = new google.maps.InfoWindow({
+        //     content: content,
+        //     map: map
+        // })
+
+        // var placeName = $(event.currentTarget).attr('place');
+        // this.map.setZoom(15);
+        // this.map.setCenter(markers[placeName].marker.getPosition());
+        // markers[placeName].infoWindow.open(this.map, markers[placeName].marker);
     }
 }

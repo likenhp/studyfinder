@@ -9,6 +9,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMjChvZRTpz-cZMNy4o1dFqhdy63Wq3CA"></script>
         <link rel="stylesheet" href="style.css">
+        <script src="tasks.js"></script>
+        <script src="kanye.js"></script>
         <script src="maps.js"></script>
         <script src="twitter.js"></script>
         <script src="skycons.js"></script>
@@ -18,15 +20,44 @@
     </head>
 
     <body>
-        <div class="top">
+        <!-- <div class="top">
             <div class="title">Drink & Study</div>
             <div class="searchBar input-group">
                 <input type="text" placeholder="Yelp Search" id="locationInput">
                 <button id="submitSearch">Enter</button>
             </div>
-        </div>
-        <div class="leftContainer row col-xs-12 col-sm-12 col-md-12">
-            <div id="map" class="row col-xs-12 col-sm-12 col-md-12"></div>
+        </div> -->
+        <div class="container row col-xs-12 col-sm-12 col-md-12">
+            <div class="searchContainer">
+                <div class="searchBar input-group">
+                        <input type="text" placeholder="Drink 'n Study'" id="locationInput">
+                        <button id="submitSearch">Enter</button>
+                </div>
+            </div>
+            <div class="leftContainer col-xs-12 col-sm-12 col-md-12">
+                <div id="kanyeQuote"></div>
+                <div id="map" class="col-xs-12 col-sm-12 col-md-12"></div>
+            </div>
+            <div class="rightContainer hide">
+                <div class="menu">
+                    <ul class="tabs">
+                        <li>Yelp</li>
+                        <li>Tasks</li>
+                    </ul>
+                </div>
+                <div class="tabsContainer">
+                    <div class="tasksContainer hide">
+                        <div class="inputTasks">
+                            <input type="text" placeholder="Task" id="inputTask">
+                            <button class="addTask">Submit</button>
+                        </div>
+                        <div class="allTasks">
+                            <table class="tasks">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="weather col-xs-12 col-sm-12 col-md-12">
                 <div class="date"></div>

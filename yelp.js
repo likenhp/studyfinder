@@ -1,6 +1,8 @@
 class YelpData {
-    constructor(inputText){
-        this.inputField = inputText;
+    constructor(search, getCoordinatesCallback){
+        this.inputField = search;
+        this.markerCallback = getCoordinatesCallback;
+
         this.handleYelpSuccess = this.handleYelpSuccess.bind(this);
         this.handleYelpError = this.handleYelpError.bind(this);
 
@@ -27,12 +29,14 @@ class YelpData {
     // all the css should be in a class, shouldn't be inline
 
     handleYelpSuccess(response){
-        map.removeMarkers();
-        this.results = response.businesses;
+        $('.rightContainer').removeClass('hide');
+
+        // yelp automatically returns results in irvine, set it so it only returns when input field is given
+        console.log(response);
+        this.results = response;
         $('#yelp').remove();
 
         var yelpDomElement = $("<div>").attr('id', 'yelp')
-            .addClass('col-xs-6 col-sm-6 col-md-6')
             // remove this inline css
             .append($('<img>'), {
                 src: 'images/yelplogo.png',
@@ -40,22 +44,16 @@ class YelpData {
                 class: 'yelpLogo'
             });
 
-        for (var i = 0; i < this.results.length; i++){
-            var restaurantImage = 'url('+this.results[i].image_url+')';
-            var restaurantName = this.results[i].name;
-            var restaurantRating = this.results[i].rating;
-            var restaurantPrice = this.results[i].price;
-            var restaurantLocation = this.results[i].location.display_address[0] + ' ' + this.results[i].location.display_address[1] + ', ' 
-                this.results[i].location.display_address[1];
-            
+        for (var i = 0; i < this.results.businesses.length; i++){
+            var restaurantImage = 'url('+this.results.businesses[i].image_url+')';
+            var restaurantName = this.results.businesses[i].name;
+            var restaurantRating = this.results.businesses[i].rating;
+            var restaurantPrice = this.results.businesses[i].price;
+            var restaurantLocation = this.results.businesses[i].location.display_address[0] + ' ' + this.results.businesses[i].location.display_address[1] + ', ' 
+            this.results.businesses[i].location.display_address[1];
+
             var newDomElement = $("<div>").addClass('resultDiv')
-                .attr('place', restaurantName).on('click', function() {
-                    var placeName = $(event.currentTarget).attr('place');
-                    map.map.setZoom(15);
-                    // map.map.setCenter(markers[placeName].marker.getPosition());
-                    markers[placeName].infoWindow.open(map.map, markers[placeName].marker);
-                }
-            );
+                .attr('place', restaurantName).on('click', map.createInfoWindow);
 
             // click handler needs to be callback (ie openWindow)
 
@@ -73,18 +71,30 @@ class YelpData {
             $(yelpDomElement).append(newDomElement);
         }
 
-        map.map.setCenter(orangeCountyCoordinates);
+        $('.leftContainer').removeClass('row col-xs-12 col-sm-12 col-md-12').addClass('row col-xs-6 col-sm-6 col-md-6');
 
-        $('#map').removeClass('row col-xs-12 col-sm-12 col-md-12').addClass('row col-xs-6 col-sm-6 col-md-6');
-
-        $('.leftContainer').append(yelpDomElement);
-
-        map.getCoordinates(this.results);
+        $('.tabsContainer').append(yelpDomElement);
+        
+        // is this how you pass in a callback?
+        // how do you call map in yelp object?
+        this.markerCallback(this.results);
     }
 
     handleYelpError(response){
         console.log(response);
         alert('you reached an error son');
+    }
+
+    toggleResultsWindow() {
+        debugger;
+        $("#yelp").toggle();
+
+        if ($("#yelp")) {
+            $(".leftContainer").removeClass('row col-xs-12 col-sm-12 col-md-12').addClass('row col-xs-6 col-sm-6 col-md-6');
+        } else {
+            // add button to show yelp results again
+            $(".leftContainer").removeClass('row col-xs-6 col-sm-6 col-md-6').addClass('row col-xs-12 col-sm-12 col-md-12');
+        }
     }
 }
 
