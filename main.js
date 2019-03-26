@@ -12,10 +12,10 @@ var kanyeQuote = null;
 // certain beers better for certain weather conditions like hot and cold (blue sky)
 
 function initializeApp() {
-    debugger;
+    tasks = new Tasks();
     map = new Maps();
     twitter = new TwitterLocation(results);
-    weather = new Weather();
+    // weather = new Weather();
     kanyeQuote = new KanyeQuote();
 
     clickHandler();

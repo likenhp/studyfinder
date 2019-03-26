@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMjChvZRTpz-cZMNy4o1dFqhdy63Wq3CA"></script>
         <link rel="stylesheet" href="style.css">
+        <script src="tasks.js"></script>
         <script src="kanye.js"></script>
         <script src="maps.js"></script>
         <script src="twitter.js"></script>
@@ -31,16 +32,35 @@
                 <div id="kanyeQuote"></div>
                 <div id="map" class="col-xs-12 col-sm-12 col-md-12"></div>
             </div>
-            <div class="rightContainer"></div>
+            <div class="rightContainer">
+                <div class="menu">
+                    <ul>
+                        <li>Yelp</li>
+                        <li>Tasks</li>
+                    </ul>
+                </div>
+                <div class="toggleResultWindow"></div>
+                <div class="tasksConatiner">
+                    <div class="inputTasks">
+                        <input type="text" placeholder="Task" id="inputTask">
+                        <button class="addTask">Submit</button>
+                    </div>
+                    <div class="allTasks">
+                        <table class="tasks">
+                            <thead></thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="weather col-xs-12 col-sm-12 col-md-12">
+        <!-- <div class="weather col-xs-12 col-sm-12 col-md-12">
                 <div class="date"></div>
                 <div class="temp"></div>
                 <div class="time"></div>
                 <canvas class="weatherSituation"></canvas>
                 <div class="summary"></div>
                 <img src="./images/darksky_logo.png" class="darkskyLogo"></img>
-        </div>
+        </div> -->
 
         <div id="twitter" class="row col-xs-12 col-sm-12 col-md-12 scroll-left">
                 <div class="twitterFeed"></div>
