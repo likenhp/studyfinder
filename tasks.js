@@ -15,10 +15,15 @@ class Tasks {
 
     handleAdd() {
         var task = $('#inputTask').val();
+        var date = new Date();
+        debugger;
+        date = date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear();
         $('.tasks').append(
             $('<tr>')
-                .append($("<th>").text(task))
-                .append($("<th>")
+                .append($("<th>").text('In-Progress').addClass('col-xs-3 col-md-3'))
+                .append($("<th>").text(task).addClass('col-xs-5 col-md-5'))
+                .append($("<th>").text(date).addClass('col-xs-4 col-md-4'))
+                .append($("<th>").addClass('col-xs-4 col-md-4')
                     .append(
                         $("<button>")
                             .text('Delete')
