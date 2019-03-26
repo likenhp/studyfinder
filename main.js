@@ -40,14 +40,19 @@ function clickHandler() {
     $('ul li:nth-child(1)').on('click', function() {
         if ($("#yelp").hasClass('hide')) {
             $("#yelp").removeClass('hide');
-            $('.tasksContainer').addClass('hide')
+            $('ul li:nth-child(1)').addClass('active');
+            $('.tasksContainer').addClass('hide');
+            $('ul li:nth-child(2)').removeClass('active');
         }
     })
 
     $('ul li:nth-child(2)').on('click', function() {
         if ($('.tasksContainer').hasClass('hide')) {
+            $('.tasksContainer').removeClass('hide').addClass('active');
+            $('ul li:nth-child(2)').addClass('active');
             $('#yelp').addClass('hide');
-            $('.tasksContainer').removeClass('hide');
+            $('ul li:nth-child(1)').removeClass('active');
+
         }
     })
 }
