@@ -64,7 +64,7 @@ body, .container, .leftContainer, #map, .rightContainer, ul,
 
 .menu {
     height: 5%;
-    background-color: lavender;
+    background-color: white;
 }
 
 ul {
@@ -79,10 +79,17 @@ ul {
 
 ul li {
     width: 50%;
+    text-align: center;
+    font-size: 18px;
+}
+
+ul li:hover {
+    background-color: lightgray;
 }
 
 li.active {
-    background-color: blue;
+    background-color: lavender;
+    text-align: center;
 }
 
 #yelp{
@@ -134,19 +141,18 @@ li.active {
     background-size: cover;
     background-position: center;
     margin: 5px;
+    height: 150px;
+    width: 150px;
+    display: inline-block;
 }
 
 .resultDiv {
     display: inline-block;
     width: 100%;
     border: 1px solid black;
-    background-color: lightgray;
+    background-color: white;
     box-sizing: border-box;
-}
-
-.restaurantImage {
-    width: 50%;
-    display: inline-block;
+    position: relative;
 }
 
 .restaurantInfo {
@@ -154,6 +160,22 @@ li.active {
     vertical-align: top;
     font-size: 2rem;
     margin: 5px;
+}
+
+.restaurantName {
+    font-size: 3rem;
+    font-weight: bolder;
+}
+
+.restaurantLink {
+    float: right;
+    color: darkred;
+    font-size: 18px;
+    margin: 1%;
+    position: absolute;
+    top: 80%;
+    left: 85%;
+    font-family: 'Cabin', sans-serif;
 }
 
 .tabsContainer {
