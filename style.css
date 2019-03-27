@@ -140,8 +140,8 @@ li.active {
 } 
 
 .restaurantImage {
-    background-size: cover;
-    background-position: center;
+    display: inline-block;
+    float: left;
     margin: 5px;
     height: 150px;
     width: 150px;
