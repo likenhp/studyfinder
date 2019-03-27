@@ -46,7 +46,8 @@ class YelpData {
 
         for (var i = 0; i < this.results.businesses.length; i++){
             const resultInfo = {
-                image: 'url('+this.results.businesses[i].image_url+')',
+                image: this.results.businesses[i].image_url,
+                phone: this.results.businesses[i].display_phone,
                 name: this.results.businesses[i].name,
                 rating: this.results.businesses[i].rating,
                 price: this.results.businesses[i].price,
@@ -65,17 +66,32 @@ class YelpData {
                 });
                 
             // click handler needs to be callback (ie openWindow)
+            var categories = "";
+
+            for (var j=0; j<this.results.businesses[i].categories.length; j++) {
+                categories+=this.results.businesses[i].categories[j].title
+                if (j<this.results.businesses[i].categories.length - 1) {
+                    categories+=', '
+                }
+            }
 
             $(newDomElement).append(
-                $("<div>").addClass('restaurantImage').css({
-                    'background-image': resultInfo.image,
-                }))
+                $("<div>")
+                // .addClass('restaurantImage')
+                    // .css({
+                    //     'background-image': resultInfo.image,
+                    // }))
                     .append($("<div>").addClass('restaurantInfo')
-                    .append($("<h1>").addClass('restaurantName').text(resultInfo.name))
-                    .append($("<h4>").addClass('restaurantLocation').text('Address: ' + resultInfo.location))
-                    .append($("<p>").addClass('restaurantPrice').text('Price: ' + resultInfo.price))
-                    .append($("<p>").addClass('restaurantRating').text('Rating: ' + resultInfo.rating))
-                );
+                        .append($("<h1>").addClass('restaurantName').text(resultInfo.name))
+                        .append($("<h4>").addClass('restaurantLocation').text('Address: ' + resultInfo.location))
+                        .append($("<p>").addClass('restaurantLocation').text('Phone: ' + resultInfo.phone))
+                        .append($("<p>").addClass('restaurantPrice').text('Price: ' + resultInfo.price))
+                        .append($("<p>").addClass('restaurantRating').text('Rating: ' + resultInfo.rating))
+                        .append($("<p>").addClass('restaurantCategories')
+                            .text('Category: ' + categories)
+                        )
+                    // <img id="theImg" src="theImg.png" />
+                ).prepend('<img class="restaurantImage" src="'+resultInfo.image+'"/>'));
 
                 $('<a>', {
                     class: 'restaurantLink',
