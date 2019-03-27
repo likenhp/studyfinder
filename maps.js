@@ -16,66 +16,54 @@ class Maps {
 
         this.map.setCenter(this.center);
 
+        this.lastResultClicked = null;
+
         // pass in option property of zoon levels, check if zoom levels are set
         // default zoom and marker zoom
 
-        this.getCoordinates = this.getCoordinates.bind(this);
+        this.generateMarker = this.generateMarker.bind(this);
         this.removeMarkers = this.removeMarkers.bind(this);
+        this.zoomToLocation = this.zoomToLocation.bind(this);
+        // this.closeLastInfowindow = this.closeLastInfowindow.bind(this);
+        // this.markerClickCallback = this.markerClickCallback.bind(this);
     }
 
-    getCoordinates(response, clearMarkers = false) {
-        this.center.lat = response.region.center.latitude;
-        this.center.lng = response.region.center.longitude;
-        var results = response.businesses;
-        this.center = {
-            lat: response.region.center.latitude,
-            lng: response.region.center.longitude
-        };
-
-        // pass in second para that removes markers if true
-        // if second is passed in as true, it will remove
-        for (var i=0; i<results.length; i++) {
-            var address = results[i].location.address1 + results[i].location.address2 +'\n' + results[i].location.city +
-                ', ' + results[i].location.state + ' ' + results[i].location.zip_code;
-
-            var resultInfo = {
-                latitude: results[i].coordinates.latitude,
-                longitude: results[i].coordinates.longitude,
-                resultName: results[i].name,
-                resultAddress: address
-            }
-
-            this.generateMarker(resultInfo, this.map);
-        }
-
-        this.map.setZoom(11);
-        this.map.setCenter(this.center);
-    }
-
-    generateMarker(resultInfo, map) {
-        var markerZoom = null;
+    generateMarker(resultInfo) {
+        // var markerZoom = null;
         
-        this.zoomLevels.markers ? markerZoom = this.zoomLevels.markers : markerZoom = this.zoomLevels;
+        // this.zoomLevels.markers ? markerZoom = this.zoomLevels.markers : markerZoom = this.zoomLevels;
 
-        var content = '<h5>' + resultInfo.resultName+'</h5>' + resultInfo.resultAddress;
+        const content = '<h5>' + resultInfo.name+'</h5>' + resultInfo.location;
         var infowindow = new google.maps.InfoWindow({
             content: content,
-            map: map
+            map: this.map
         })
 
-        this.createInfoWindow();
+        // how do you bind the marker to the Maps class?
+        // can you only bind in the constructor?
 
         var marker = new google.maps.Marker({
-            position: {lat: resultInfo.latitude, lng: resultInfo.longitude},
-            map: map,
-        })
-        marker.addListener('click', function() {
-            map.setZoom(markerZoom);
-            map.setCenter(this.getPosition());
-            infowindow.open(map, this);
+            position: {lat: resultInfo.coordinates.latitude, lng: resultInfo.coordinates.longitude},
+            map: this.map,
         });
 
-        this.markers[resultInfo.resultName] = {marker: marker, infowindow: infowindow};
+        marker.addListener('click', function() {
+            map.closeLastInfowindow(infowindow);
+
+            this.map.setZoom(map.zoomLevels.markers);
+            this.map.setCenter(this.getPosition());
+
+            infowindow.open(map.map, this);
+        });
+
+        this.markers[resultInfo.id] = {
+            marker: marker,
+            infowindow: infowindow,
+            coordinates: {
+                lat: resultInfo.coordinates.latitude,
+                lng: resultInfo.coordinates.longitude
+            }
+        };
     }
 
     removeMarkers() {
@@ -100,20 +88,19 @@ class Maps {
     // callback function yelp to maps zoom to list
     // callback function map tp yelp move the map to marker
 
-    zoomIntoMarker() {
+    zoomToLocation(resultID) {
+        this.closeLastInfowindow(this.markers[resultID].infowindow);
+        
+        this.map.setZoom(this.zoomLevels.markers);
+        this.map.setCenter(this.markers[resultID].coordinates);
+        this.markers[resultID].infowindow.open(this.map, this.markers[resultID].marker);
     }
 
-    createInfoWindow() {
-        // debugger;
-        // var content = '<h5>' + resultInfo.resultName+'</h5>' + resultInfo.resultAddress;
-        // var infowindow = new google.maps.InfoWindow({
-        //     content: content,
-        //     map: map
-        // })
+    closeLastInfowindow(infowindow) {
+        if (map.lastResultClicked !== null) {
+            map.lastResultClicked.close();
+        }
 
-        // var placeName = $(event.currentTarget).attr('place');
-        // this.map.setZoom(15);
-        // this.map.setCenter(markers[placeName].marker.getPosition());
-        // markers[placeName].infoWindow.open(this.map, markers[placeName].marker);
+        map.lastResultClicked = infowindow;
     }
 }

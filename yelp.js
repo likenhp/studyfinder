@@ -1,9 +1,10 @@
 class YelpData {
-    constructor(search, getCoordinatesCallback, removeMarkersCallback){
+    constructor(search, mapCallbacks){
         this.results = null;
         this.inputField = search;
-        this.markerCallback = getCoordinatesCallback;
-        this.removeMarkersCallback = removeMarkersCallback;
+        this.generateMarkerCallback = mapCallbacks.generateMarkerCallback;
+        this.removeMarkersCallback = mapCallbacks.removeMarkersCallback;
+        this.zoomToLocationCallback = mapCallbacks.zoomToLocationCallback;
 
         this.handleYelpSuccess = this.handleYelpSuccess.bind(this);
         this.handleYelpError = this.handleYelpError.bind(this);
@@ -42,45 +43,50 @@ class YelpData {
         $('#yelp').remove();
 
         var yelpDomElement = $("<div>").attr('id', 'yelp')
-            // remove this inline css
-            .append($('<img>'), {
-                src: 'images/yelplogo.png',
-                alt: 'yelpLogo',
-                class: 'yelpLogo'
-            });
 
         for (var i = 0; i < this.results.businesses.length; i++){
-            console.log(this.results.businesses);
-            var restaurantImage = 'url('+this.results.businesses[i].image_url+')';
-            var restaurantName = this.results.businesses[i].name;
-            var restaurantRating = this.results.businesses[i].rating;
-            var restaurantPrice = this.results.businesses[i].price;
-            var restaurantLocation = this.results.businesses[i].location.display_address[0] + ' ' + this.results.businesses[i].location.display_address[1] + ', ' 
+            const resultInfo = {
+                image: 'url('+this.results.businesses[i].image_url+')',
+                name: this.results.businesses[i].name,
+                rating: this.results.businesses[i].rating,
+                price: this.results.businesses[i].price,
+                url: this.results.businesses[i].url,
+                coordinates: this.results.businesses[i].coordinates,
+                id: this.results.businesses[i].id
+            }
+            
+            resultInfo.location = this.results.businesses[i].location.display_address[0] + ' ' + this.results.businesses[i].location.display_address[1] + ', ' 
             this.results.businesses[i].location.display_address[1];
 
             var newDomElement = $("<div>").addClass('resultDiv')
-                .attr('place', restaurantName).on('click', map.createInfoWindow);
+                .attr('resultID', this.results.businesses[i].id)
+                .on('click', () => {
+                    this.zoomToLocationCallback($(event.currentTarget).attr('resultID'));
+                });
                 
             // click handler needs to be callback (ie openWindow)
 
             $(newDomElement).append(
                 $("<div>").addClass('restaurantImage').css({
-                    'background-image': restaurantImage,
+                    'background-image': resultInfo.image,
                 }))
-                .append($("<div>").addClass('restaurantInfo')
-                    .append($("<div>").addClass('restaurantName').text(restaurantName))
-                    .append($("<div>").addClass('restaurantLocation').text('Address: ' + restaurantLocation))
-                    .append($("<div>").addClass('restaurantPrice').text('Price: ' + restaurantPrice))
-                    .append($("<div>").addClass('restaurantRating').text('Rating: ' + restaurantRating))
+                    .append($("<div>").addClass('restaurantInfo')
+                    .append($("<h1>").addClass('restaurantName').text(resultInfo.name))
+                    .append($("<h4>").addClass('restaurantLocation').text('Address: ' + resultInfo.location))
+                    .append($("<p>").addClass('restaurantPrice').text('Price: ' + resultInfo.price))
+                    .append($("<p>").addClass('restaurantRating').text('Rating: ' + resultInfo.rating))
                 );
+
                 $('<a>', {
                     class: 'restaurantLink',
                     text: 'Open in Yelp',
-                    href: this.results.businesses[i].url,
+                    href: resultInfo.url,
                     target: "_blank"
                 }).appendTo(newDomElement);
 
             $(yelpDomElement).append(newDomElement);
+
+            this.generateMarkerCallback(resultInfo);
         }
 
         $('.leftContainer').removeClass('row col-xs-12 col-sm-12 col-md-12').addClass('row col-xs-6 col-sm-6 col-md-6');
@@ -89,7 +95,6 @@ class YelpData {
         
         // is this how you pass in a callback?
         // how do you call map in yelp object?
-        this.markerCallback(this.results);
     }
 
     handleYelpError(response){
