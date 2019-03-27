@@ -221,10 +221,7 @@ li.active {
     height: 5%;
     color: black;
     font-size: 16px;
-    font-family: 'Times New Roman', Helvetica, serif
-}
-
-#twitter{
+    font-family: 'Times New Roman', Helvetica, serif;
     margin: 0;
     opacity: .75;
     background-color: black;
@@ -234,6 +231,13 @@ li.active {
     white-space: nowrap;
     overflow: hidden;
     box-sizing: border-box;
+}
+
+.twitterfeed{
+    background-image: url(images/twitterlogo.png);
+    height: 50px;
+    width: 50px;
+    display: inline-block;
 }
 
 .twitterLogoLeft {
