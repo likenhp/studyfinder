@@ -45,6 +45,7 @@ class YelpData {
             });
 
         for (var i = 0; i < this.results.businesses.length; i++){
+            console.log(this.results.businesses);
             var restaurantImage = 'url('+this.results.businesses[i].image_url+')';
             var restaurantName = this.results.businesses[i].name;
             var restaurantRating = this.results.businesses[i].rating;
@@ -54,7 +55,7 @@ class YelpData {
 
             var newDomElement = $("<div>").addClass('resultDiv')
                 .attr('place', restaurantName).on('click', map.createInfoWindow);
-
+                
             // click handler needs to be callback (ie openWindow)
 
             $(newDomElement).append(
@@ -62,11 +63,17 @@ class YelpData {
                     'background-image': restaurantImage,
                 }))
                 .append($("<div>").addClass('restaurantInfo')
-                    .text(restaurantName)
+                    .append($("<div>").addClass('restaurantName').text(restaurantName))
                     .append($("<div>").addClass('restaurantLocation').text('Address: ' + restaurantLocation))
                     .append($("<div>").addClass('restaurantPrice').text('Price: ' + restaurantPrice))
                     .append($("<div>").addClass('restaurantRating').text('Rating: ' + restaurantRating))
                 );
+                $('<a>', {
+                    class: 'restaurantLink',
+                    text: 'Open in Yelp',
+                    href: this.results.businesses[i].url,
+                    target: "_blank"
+                }).appendTo(newDomElement);
 
             $(yelpDomElement).append(newDomElement);
         }
