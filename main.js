@@ -15,17 +15,23 @@ function initializeApp() {
     tasks = new Tasks();
     map = new Maps();
     twitter = new TwitterLocation(results);
-    weather = new Weather();
+    // weather = new Weather();
     kanyeQuote = new KanyeQuote();
 
     clickHandler();
 }
 
 function clickHandler() {
-    $(document).on('keypress', (e) => {
+    const mapCallbacks = {
+        generateMarkerCallback: map.generateMarker,
+        removeMarkersCallback: map.removeMarkers,
+        zoomToLocationCallback: map.zoomToLocation
+    }
+
+    $('#locationInput').on('keypress', (e) => {
         var search = $('#locationInput').val();
         if (e.keyCode === 13 && search !== "") {
-            yelpData = new YelpData (search, map.getCoordinates, map.removeMarkers);
+            yelpData = new YelpData (search, mapCallbacks);
         }
     });
 
@@ -33,9 +39,11 @@ function clickHandler() {
         var search = $('#locationInput').val();
 
         if (search !== "") {
-            yelpData = new YelpData (search, map.getCoordinates, map.removeMarkers);
+            yelpData = new YelpData (search, mapCallbacks);
         }
     });
+
+    $('.resultDiv')
 
     $('ul li:nth-child(1)').on('click', function() {
         if ($("#yelp").hasClass('hide')) {

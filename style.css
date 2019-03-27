@@ -145,7 +145,7 @@ li.active {
     margin: 5px;
     height: 150px;
     width: 150px;
-    display: inline-block;
+    float: left;
 }
 
 .resultDiv {
