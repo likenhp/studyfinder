@@ -22,18 +22,18 @@ function initializeApp() {
 }
 
 function clickHandler() {
-    $(document).on('keypress', function(e) {
+    $(document).on('keypress', (e) => {
         var search = $('#locationInput').val();
         if (e.keyCode === 13 && search !== "") {
             yelpData = new YelpData (search, map.getCoordinates, map.removeMarkers);
         }
     });
 
-    $('#submitSearch').on('click', function(e) {
+    $('.addTask').on('click', () => {
         var search = $('#locationInput').val();
 
         if (search !== "") {
-            yelpData = new YelpData (search, map.getCoordinates);
+            yelpData = new YelpData (search, map.getCoordinates, map.removeMarkers);
         }
     });
 
