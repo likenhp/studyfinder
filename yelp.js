@@ -1,7 +1,9 @@
 class YelpData {
-    constructor(search, getCoordinatesCallback){
+    constructor(search, getCoordinatesCallback, removeMarkersCallback){
+        this.results = null;
         this.inputField = search;
         this.markerCallback = getCoordinatesCallback;
+        this.removeMarkersCallback = removeMarkersCallback;
 
         this.handleYelpSuccess = this.handleYelpSuccess.bind(this);
         this.handleYelpError = this.handleYelpError.bind(this);
@@ -29,11 +31,15 @@ class YelpData {
     // all the css should be in a class, shouldn't be inline
 
     handleYelpSuccess(response){
+        this.removeMarkersCallback();
+        this.results = response;
+
         $('.rightContainer').removeClass('hide');
 
         // yelp automatically returns results in irvine, set it so it only returns when input field is given
         console.log(response);
-        this.results = response;
+
+        // is this needed?
         $('#yelp').remove();
 
         var yelpDomElement = $("<div>").attr('id', 'yelp')

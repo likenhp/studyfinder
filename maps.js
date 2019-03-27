@@ -20,9 +20,12 @@ class Maps {
         // default zoom and marker zoom
 
         this.getCoordinates = this.getCoordinates.bind(this);
+        this.removeMarkers = this.removeMarkers.bind(this);
     }
 
     getCoordinates(response, clearMarkers = false) {
+        this.center.lat = response.region.center.latitude;
+        this.center.lng = response.region.center.longitude;
         var results = response.businesses;
         this.center = {
             lat: response.region.center.latitude,
@@ -44,6 +47,9 @@ class Maps {
 
             this.generateMarker(resultInfo, this.map);
         }
+
+        this.map.setZoom(11);
+        this.map.setCenter(this.center);
     }
 
     generateMarker(resultInfo, map) {
@@ -51,11 +57,11 @@ class Maps {
         
         this.zoomLevels.markers ? markerZoom = this.zoomLevels.markers : markerZoom = this.zoomLevels;
 
-        // var content = '<h5>' + resultInfo.resultName+'</h5>' + resultInfo.resultAddress;
-        // var infowindow = new google.maps.InfoWindow({
-        //     content: content,
-        //     map: map
-        // })
+        var content = '<h5>' + resultInfo.resultName+'</h5>' + resultInfo.resultAddress;
+        var infowindow = new google.maps.InfoWindow({
+            content: content,
+            map: map
+        })
 
         this.createInfoWindow();
 
@@ -66,18 +72,16 @@ class Maps {
         marker.addListener('click', function() {
             map.setZoom(markerZoom);
             map.setCenter(this.getPosition());
-            // infowindow.open(map, this);
+            infowindow.open(map, this);
         });
 
-        // markers[resultInfo.resultName] = {marker: marker, infoWindow: infowindow};
+        this.markers[resultInfo.resultName] = {marker: marker, infowindow: infowindow};
     }
 
     removeMarkers() {
-        this.setMapOnAll(null);
-
         for (var key in this.markers) {
             this.markers[key].marker.setMap(null);
-            delete markers[key];
+            delete this.markers[key];
         }
     }
     // change all markers to only to map
