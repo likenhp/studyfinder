@@ -235,9 +235,13 @@ li.active {
 
 .twitterfeed{
     background-image: url(images/twitterlogo.png);
-    height: 50px;
-    width: 50px;
+    background-size: contain;
+    background-position: center;
+    height: 40px;
+    width: 40px;
     display: inline-block;
+    border: none;
+    color: black;
 }
 
 .twitterLogoLeft {

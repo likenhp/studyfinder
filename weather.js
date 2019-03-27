@@ -1,6 +1,8 @@
 class Weather {
     constructor(){
-        
+        this.tempFlagF = true;
+        this.tempF = null;
+        this.tempC = null;
         this.handleWeatherDataSuccess = this.handleWeatherDataSuccess.bind(this);
         this.handleWeatherDataError = this.handleWeatherDataError.bind(this);
         this.handleTemperature = this.handleTemperature.bind(this);
@@ -11,14 +13,7 @@ class Weather {
     handleClick(){
         $(".temp").on("click", this.clickCallBack);
     }
-    clickCallBack(){
-        console.log(this);
-        // if(tempFlagF === true){
-        //     tempFlagF = false;
-        // }else{
-        //     tempFlagF = true;
-        // }
-    }
+    
     handleWeatherData(){
         $.ajax({
             url: "darksky.php",
@@ -30,23 +25,29 @@ class Weather {
     }
 
     handleTemperature(response){
-    this.clickCallBack();
+    console.log(this);
     var tempArray = [];
-    var tempFlagF = true;
     var apparentTempF = response.currently.apparentTemperature; //is in Farenheight
-    var tempF = "Temperature: "+apparentTempF+" \xB0F";
+    this.tempF = "Temperature: "+apparentTempF+" \xB0F";
     
     var apparentTempC = (apparentTempF - 32)*(5/9);
-    var tempC = "Temperature: "+apparentTempC.toFixed(2)+ " \xB0C";
+    this.tempC = "Temperature: "+apparentTempC.toFixed(2)+ " \xB0C";
     
-    tempArray.push(tempF, tempC);
-    
-    if(tempFlagF === true){
-        $(".temp").append(tempF);
-    } else{
-        $(".temp").append(tempC);
+    //tempArray.push(tempF, tempC);
+    $(".temp").append(this.tempC);
     }
-    
+
+    clickCallBack(){
+        //console.log(this);
+        if(this.tempFlagF === true){
+            this.tempFlagF = false;
+            $(".temp").empty();
+            $(".temp").append(this.tempF);
+        }else{
+            this.tempFlagF = true;
+            $(".temp").empty();
+            $(".temp").append(this.tempC);
+        }
     }
 
     handleWeatherDataSuccess(response){
