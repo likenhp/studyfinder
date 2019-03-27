@@ -29,6 +29,8 @@ body, .container, .leftContainer, #map, .rightContainer, ul,
 }
 
 #kanyeQuote {
+    font-family: 'Rajdhani', sans-serif;
+    margin-left: 20px;
     text-align: center;
     /* font-size: 3.5rem; */
     background-image: linear-gradient(rgba(255, 255, 255, .75), rgba(255, 255, 255, .75));
@@ -63,7 +65,7 @@ body, .container, .leftContainer, #map, .rightContainer, ul,
 }
 
 .menu {
-    height: 5%;
+    height: 3%;
     background-color: white;
 }
 
@@ -156,6 +158,7 @@ li.active {
 }
 
 .restaurantInfo {
+    font-family: 'IBM Plex Sans', sans-serif;
     display: inline-block;
     vertical-align: top;
     font-size: 2rem;
@@ -175,11 +178,11 @@ li.active {
     position: absolute;
     top: 80%;
     left: 85%;
-    font-family: 'Cabin', sans-serif;
+    
 }
 
 .tabsContainer {
-    height: 95%;
+    height: 97%;
     width: 100%;
 }
 
@@ -280,7 +283,7 @@ li.active {
 }
 
 .darkskyLogo {
-    width: 8%;
+    width: 6%;
     position: absolute; 
     right: 0;
 }
@@ -288,4 +291,9 @@ li.active {
 .toggleResultWindow {
     width: 100%;
     background-color: white;
+}
+
+.drinkTitle {
+    font-family: 'Patua One', cursive;
+    font-size: 3rem;
 }

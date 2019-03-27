@@ -22,7 +22,6 @@ class YelpData {
             },
             success: this.handleYelpSuccess,
             error: (resp) => {
-                console.log("error response", resp.responseText);
                 this.handleYelpError(resp);
             },
         })
