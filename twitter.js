@@ -14,8 +14,7 @@ class TwitterLocation {
             dataType: 'json',
             method: '', 
             data: {
-                search_term: 'irvine', 
-                search_term: 'beer', 
+                search_term: 'beer' 
             },
             // only searches for beer
             // put search terms as global, pull from global
