@@ -20,6 +20,6 @@ class KanyeQuote {
     appendKanyeQuote(response) {
         this.quote = response.quote;
 
-        $('#kanyeQuote').text('"' + this.quote + '"');
+        $('#kanyeQuote').text('Kanye says...' + this.quote + '"');
     }
 }

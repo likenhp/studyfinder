@@ -16,7 +16,6 @@ class Tasks {
     handleAdd() {
         var task = $('#inputTask').val();
         var date = new Date();
-        debugger;
         date = date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear();
         $('.tasks').append(
             $('<tr>')
