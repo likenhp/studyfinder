@@ -15,7 +15,7 @@ function initializeApp() {
     tasks = new Tasks();
     map = new Maps();
     twitter = new TwitterLocation(results);
-    // weather = new Weather();
+    weather = new Weather();
     kanyeQuote = new KanyeQuote();
 
     clickHandler();
@@ -25,7 +25,7 @@ function clickHandler() {
     $(document).on('keypress', function(e) {
         var search = $('#locationInput').val();
         if (e.keyCode === 13 && search !== "") {
-            yelpData = new YelpData (search, map.getCoordinates);
+            yelpData = new YelpData (search, map.getCoordinates, map.removeMarkers);
         }
     });
 
