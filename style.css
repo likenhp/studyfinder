@@ -1,5 +1,4 @@
 body {
-    /* width: 100vw; */
     height: 100vh;
 }
 
@@ -10,9 +9,8 @@ body, .container, .leftContainer, #map, .rightContainer, ul,
 }
 
 .top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    width: 100%;
+    position: relative;
     height: 5%;
     color: black;
 }
@@ -33,15 +31,22 @@ body, .container, .leftContainer, #map, .rightContainer, ul,
     font-family: 'Rajdhani', sans-serif;
     margin-left: 20px;
     text-align: center;
+    position: absolute;
+    margin: auto;
     background-image: linear-gradient(rgba(255, 255, 255, .75), rgba(255, 255, 255, .75));
 }
 
 .drinkTitle {
     font-family: 'Patua One', cursive;
     font-size: 3rem;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 .searchContainer {
+    position: absolute;
+    right: 0;
+    top: 0;
     z-index: 1;
     height: 100%;
     box-sizing: border-box;
@@ -150,7 +155,7 @@ li.active {
     margin: 5px;
     height: 254px;
     width: 180px;
-    border-radius: 5%;
+    border-radius: 10px;
 }
 
 .resultDiv {
@@ -159,7 +164,6 @@ li.active {
     border: 1px solid black;
     /* background-color: white; */
     box-sizing: border-box;
-    position: relative;
 }
 
 .restaurantInfo {
@@ -169,12 +173,13 @@ li.active {
     font-size: 2rem;
     margin: 5px;
     width: 76%;
-    border-radius: 2%;
+    border-radius: 10px;
     padding: 5px 0 7px 20px;
     background-color: rgb(218, 218, 218);
     opacity: 0.7;
     filter: alpha(opacity=70);
     transition: 0.3s;
+    position: relative;
 }
 
 .restaurantInfo:hover {
@@ -191,8 +196,7 @@ li.active {
 .restaurantName {
     font-size: 3rem;
     font-weight: bolder;
-    margin-top: 39px;
-    margin-bottom: 50px;
+    margin-top: 10px;
 }
 
 h4 {
@@ -202,11 +206,10 @@ h4 {
 .restaurantLink {
     float: right;
     color: darkred;
-    font-size: 18px;
-    margin: 1%;
+    font-size: 2.5rem;
     position: absolute;
+    right: 2%;
     top: 2%;
-    left: 84%;
     font-family: 'Pacifico', cursive;
     transition: 0.2s;
 }
@@ -301,33 +304,14 @@ h4 {
     background-color: white;
 }
 
-.first, .second, .third, .fourth, .fifth {
+.first, .second, .third, .fourth, .fifth, .sixth {
     background-size: cover;
     width: 100%;
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     position: absolute;
-}
-
-.first {
-    z-index: 6;
-}
-
-.second {
-    z-index: 5;
-}
-
-.third {
-    z-index: 4;
-}
-
-.fourth {
-    z-index: 3;
-}
-
-.fifth {
-    z-index: 2;
+    z-index: 1;
 }
 
 .enter {
@@ -346,4 +330,18 @@ h4 {
 
 .enterTitle {
     font-size: 20rem;
+}
+
+.skipTutorial {
+    z-index: 2;
+    width: 10%;
+    height: 5%;
+    background-color: white;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.resultDiv {
+    position: relative;
 }

@@ -62,7 +62,7 @@ function clickHandler() {
     })
 
     $('.first').on('click', function() {
-        $('.first').fadeOut(250)
+        $('.first').fadeOut(250);
     });
 
     $('.second').on('click', function() {
@@ -83,8 +83,16 @@ function clickHandler() {
 
     });
 
+    $('.sixth').on('click', function() {
+        $('.sixth').fadeOut(250)
+    })
+
     $('.enter').on('click', function() {
         $('.enter').fadeOut(250)
+    })
+
+    $('.skipTutorial').on('click', function() {
+        $('.welcomeScreen').empty();
     })
 }
 
