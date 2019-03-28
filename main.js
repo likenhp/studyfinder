@@ -93,6 +93,7 @@ function clickHandler() {
     })
 
     $('.skipTutorial').on('click', function() {
+        debugger;
         $('.welcomeScreen').remove();
     })
 }
