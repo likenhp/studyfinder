@@ -290,26 +290,6 @@ li.active {
     position: absolute;
 }
 
-.first {
-    z-index: 6;
-}
-
-.second {
-    z-index: 5;
-}
-
-.third {
-    z-index: 4;
-}
-
-.fourth {
-    z-index: 3;
-}
-
-.fifth {
-    z-index: 2;
-}
-
 .enter {
     width: 100%;
     height: 100%;
