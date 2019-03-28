@@ -47,10 +47,34 @@ class Weather {
         var militaryTimeMinutes = date.getMinutes()
         var militaryTimeSeconds = date.getSeconds();
         var militaryTime = `${militaryTimeHours}:${militaryTimeMinutes}:${militaryTimeSeconds}`;
-        $(".time").empty();
-        $(".time").append(militaryTime);
-        this.interval24hr = setInterval(this.handleMilitaryTime, 1000);
-        clearInterval(this.interval12hr);
+
+        if(militaryTimeMinutes < 10 && militaryTimeSeconds < 10){
+            var militaryTime10LessSM = `${militaryTimeHours}:0${militaryTimeMinutes}:0${militaryTimeSeconds}`;
+            $(".time").empty();
+            $(".time").append(militaryTime10LessSM);
+            this.interval24hr = setInterval(this.handleMilitaryTime, 1000);
+            clearInterval(this.interval12hr);
+        } else if (militaryTimeMinutes < 10 && militaryTimeSeconds > 10){
+            var militaryTime10LessM = `${militaryTimeHours}:0${militaryTimeMinutes}:${militaryTimeSeconds}`;
+            $(".time").empty();
+            $(".time").append(militaryTime10LessM);
+            this.interval24hr = setInterval(this.handleMilitaryTime, 1000);
+            clearInterval(this.interval12hr);
+        } else if (militaryTimeMinutes > 10 && militaryTimeSeconds < 10){
+            var militaryTime10LessS = `${militaryTimeHours}:${militaryTimeMinutes}:0${militaryTimeSeconds}`;
+            $(".time").empty();
+            $(".time").append(militaryTime10LessS);
+            this.interval24hr = setInterval(this.handleMilitaryTime, 1000);
+            clearInterval(this.interval12hr);
+        } else if (militaryTimeMinutes > 10 && militaryTimeSeconds > 10){
+            $(".time").empty();
+            $(".time").append(militaryTime);
+            this.interval24hr = setInterval(this.handleMilitaryTime, 1000);
+            clearInterval(this.interval12hr);
+        }
+
+        
+        
     }
 
     handleWeatherData(){
