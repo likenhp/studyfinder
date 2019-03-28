@@ -22,23 +22,25 @@ function clickHandler() {
     const mapCallbacks = {
         generateMarkerCallback: map.generateMarker,
         removeMarkersCallback: map.removeMarkers,
-        zoomToLocationCallback: map.zoomToLocation
+        zoomToLocationCallback: map.zoomToLocation,
+        setCenterCallback: map.setCenter
     }
 
     $('.searchContainer').on('keypress', function(e) {
-        const search = $('#locationInput').val();
+        var search = $('#searchInput').val().replace(' ', '_');
+        var locationInput = $('#locationInput').val().replace(' ', '_');
 
         if (e.keyCode === 13 && search !== "") {
-            yelpData = new YelpData (search, mapCallbacks);
+            yelpData = new YelpData (search, locationInput, mapCallbacks);
         }
     });
 
     $('.submitSearch').on('click', () => {
-        debugger;
-        const search = $('#locationInput').val();
+        var search = $('#searchInput').val().replace(' ', '_');
+        var locationInput = $('#locationInput').val().replace(' ', '_');
 
         if (search !== "") {
-            yelpData = new YelpData (search, mapCallbacks);
+            yelpData = new YelpData (search, locationInput, mapCallbacks);
         }
     });
 
@@ -57,7 +59,6 @@ function clickHandler() {
             $('ul li:nth-child(2)').addClass('active');
             $('#yelp').addClass('hide');
             $('ul li:nth-child(1)').removeClass('active');
-
         }
     })
 
@@ -80,7 +81,6 @@ function clickHandler() {
 
     // $('.fifth').on('click', function() {
     //     $('.fifth').fadeOut(250)
-
     // });
 
     $('.fifth').on('click', function() {
