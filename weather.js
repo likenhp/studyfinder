@@ -4,8 +4,8 @@ class Weather {
         this.localTime = false;
         this.tempF = null;
         this.tempC = null;
-        // this.date = new Date();
-
+        this.interval12hr = null;
+        this.interval24hr = null;
         this.handleWeatherDataSuccess = this.handleWeatherDataSuccess.bind(this);
         this.handleWeatherDataError = this.handleWeatherDataError.bind(this);
         this.handleTemperature = this.handleTemperature.bind(this);
@@ -25,9 +25,11 @@ class Weather {
         if(this.localTime === true){
             this.localTime = false;
             this.handleAmPmTime();
+            
         }else{
             this.localTime = true;
             this.handleMilitaryTime();
+            
         }
     }
 
@@ -35,9 +37,10 @@ class Weather {
         var amPmTime = new Date().toLocaleTimeString();
         $(".time").empty()
         $(".time").append(amPmTime);
-        setInterval(this.handleAmPmTime, 1000);
+        this.interval12hr = setInterval(this.handleAmPmTime, 1000);
+        clearInterval(this.interval24hr);
     }
-/*
+
     handleMilitaryTime(){
         var date = new Date();
         var militaryTimeHours = date.getHours()
@@ -46,9 +49,10 @@ class Weather {
         var militaryTime = `${militaryTimeHours}:${militaryTimeMinutes}:${militaryTimeSeconds}`;
         $(".time").empty();
         $(".time").append(militaryTime);
-        setInterval(this.handleMilitaryTime, 1000);
+        this.interval24hr = setInterval(this.handleMilitaryTime, 1000);
+        clearInterval(this.interval12hr);
     }
-*/
+
     handleWeatherData(){
         $.ajax({
             url: "darksky.php",

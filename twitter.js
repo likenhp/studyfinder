@@ -29,7 +29,8 @@ class TwitterLocation {
             var twitterText = response.tweets.statuses[tIndex].text;
             var twitterDiv = $("<span>").append(twitterText);
             var twitterImg = $("<img>", {
-                class: "twitterfeed"
+                class: "twitterfeed",
+                "src": "images/twitterlogo.png"
             });
             var dynamicTwitterLogo = $("<span>").append(twitterImg[0]);
             $(".twitterFeed").append(twitterDiv);
