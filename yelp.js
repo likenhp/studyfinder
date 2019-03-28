@@ -11,6 +11,7 @@ class YelpData {
         this.handleYelpSuccess = this.handleYelpSuccess.bind(this);
         this.handleBusinessDataSuccess = this.handleBusinessDataSuccess.bind(this);
         this.handleYelpError = this.handleYelpError.bind(this);
+        this.handleBusinessModal = this.handleBusinessModal.bind(this);
 
         this.getDataFromYelp(this.locationInput);
     }
@@ -87,7 +88,7 @@ class YelpData {
             ).prepend(
                 $("<div>")
                     .addClass('imageContainer')
-                    .append('<img class="restaurantImage" src="'+resultInfo.image+'"/>')
+                    .append('<img class="restaurantImage" resultID="'+resultInfo.id+'" src="'+resultInfo.image+'"/>')
             );
             
             $(yelpDomElement).append(newDomElement);
@@ -120,20 +121,21 @@ class YelpData {
     }
 
     getBusinessData() {
-        console.log('div clicked');
-        // $.ajax({
-        //     url: 'yelpid.php',
-        //     dataType: 'json',
-        //     method: 'get',
-        //     data: {
-        //         'apikey': 'dJbz7ePRpBcLEb3zCwg_1tAT3gLiUJKFoMm6EfhSjQZOrd_TJCBeypMPGz6YX5G9hN6tA3A0QQIqOG5c-Sx59kj5--M5xt5YCswAeIc0S4q5EBIbWAULDSiL90OQXHYx',
-        //         'id': id,
-        //     },
-        //     success: this.handleBusinessDataSuccess,
-        //     error: (resp) => {
-        //         this.handleYelpError(resp);
-        //     },
-        // })
+        const resultID = $(this).attr('resultID');
+
+        $.ajax({
+            url: 'yelpid.php',
+            dataType: 'json',
+            method: 'get',
+            data: {
+                'apikey': 'dJbz7ePRpBcLEb3zCwg_1tAT3gLiUJKFoMm6EfhSjQZOrd_TJCBeypMPGz6YX5G9hN6tA3A0QQIqOG5c-Sx59kj5--M5xt5YCswAeIc0S4q5EBIbWAULDSiL90OQXHYx',
+                'id': resultID,
+            },
+            success: yelpData.handleBusinessModal,
+            error: (resp) => {
+                this.handleYelpError(resp);
+            },
+        })
     }
 
     handleBusinessDataSuccess(response) {
@@ -141,7 +143,8 @@ class YelpData {
     }
 
     clickHandler() {
-        $('.restaurantImage').on('click', this.toggleModal);
+        $('.restaurantImage').on('click', this.getBusinessData);
+
         $('.modal-close').on('click', () => {
             $('.modal').css('display', 'none')
         }); 
@@ -151,12 +154,20 @@ class YelpData {
         });
     }
 
-
-    toggleModal(){
-        console.log('image was clicked');
-        $('.modal').css('display', 'block');
+    handleBusinessModal(response) {
+        const photosArray = response.photos;
+        this.toggleModal(photosArray);
+        console.log(photosArray);
     }
 
+    toggleModal(photosArray){
+        $('.modalImagesDiv').empty();
+        $('.modalImagesDiv')
+            .append('<img class="modalImage" class="modalImage" src="'+photosArray[0]+'"/>')
+            .append('<img class="modalImage" class="modalImage" src="'+photosArray[1]+'"/>')
+            .append('<img class="modalImage" class="modalImage" src="'+photosArray[2]+'"/>');
+        $('.modal').css('display', 'block');
+    }
 }
 
 
