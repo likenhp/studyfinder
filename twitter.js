@@ -1,5 +1,5 @@
 class TwitterLocation {
-    constructor(results){
+    constructor(){
         this.screenName = '';
         this.userID = '';
         this.info = {};
