@@ -15,7 +15,7 @@ function initializeApp() {
     tasks = new Tasks();
     map = new Maps();
     twitter = new TwitterLocation(results);
-    // weather = new Weather();
+    weather = new Weather();
     kanyeQuote = new KanyeQuote();
 
     clickHandler();
