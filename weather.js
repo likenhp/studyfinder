@@ -1,19 +1,54 @@
 class Weather {
     constructor(){
         this.tempFlagF = true;
+        this.localTime = false;
         this.tempF = null;
         this.tempC = null;
+        // this.date = new Date();
+
         this.handleWeatherDataSuccess = this.handleWeatherDataSuccess.bind(this);
         this.handleWeatherDataError = this.handleWeatherDataError.bind(this);
         this.handleTemperature = this.handleTemperature.bind(this);
-        this.clickCallBack = this.clickCallBack.bind(this);
+        this.clickCallBackTemp = this.clickCallBackTemp.bind(this);
+        this.clickCallBackTime = this.clickCallBackTime.bind(this);
         this.handleWeatherData();
         this.handleClick();
+        this.handleAmPmTime();
     }
+
     handleClick(){
-        $(".temp").on("click", this.clickCallBack);
+        $(".temp").on("click", this.clickCallBackTemp);
+        $(".time").on("click", this.clickCallBackTime);
     }
     
+    clickCallBackTime(){
+        if(this.localTime === true){
+            this.localTime = false;
+            this.handleAmPmTime();
+        }else{
+            this.localTime = true;
+            this.handleMilitaryTime();
+        }
+    }
+
+    handleAmPmTime(){
+        var amPmTime = new Date().toLocaleTimeString();
+        $(".time").empty()
+        $(".time").append(amPmTime);
+        setInterval(this.handleAmPmTime, 1000);
+    }
+/*
+    handleMilitaryTime(){
+        var date = new Date();
+        var militaryTimeHours = date.getHours()
+        var militaryTimeMinutes = date.getMinutes()
+        var militaryTimeSeconds = date.getSeconds();
+        var militaryTime = `${militaryTimeHours}:${militaryTimeMinutes}:${militaryTimeSeconds}`;
+        $(".time").empty();
+        $(".time").append(militaryTime);
+        setInterval(this.handleMilitaryTime, 1000);
+    }
+*/
     handleWeatherData(){
         $.ajax({
             url: "darksky.php",
@@ -37,7 +72,7 @@ class Weather {
     $(".temp").append(this.tempC);
     }
 
-    clickCallBack(){
+    clickCallBackTemp(){
         //console.log(this);
         if(this.tempFlagF === true){
             this.tempFlagF = false;
@@ -52,23 +87,15 @@ class Weather {
 
     handleWeatherDataSuccess(response){
     this.handleTemperature(response);
-    
-
     var icon = response.currently.icon;
     var unixTimestamp = response.currently.time;
     var currentSummary = response.currently.summary;
-    
     var unixTime = new Date(unixTimestamp*1000);
     var day = unixTime.toDateString();
-    var hour = unixTime.getHours();
-    var minutes = unixTime.getMinutes();
-    var currentTime = `Current Time: ${hour}:${minutes}`
     var currentDate = `${day}`
 
     //Appending to div
-    
     var weatherSituation = $(".weatherSituation").attr("id", icon);
-    var time = $(".time").append(currentTime);
     var date = $(".date").append(currentDate).css("font-weight","bold");
     var summary = $(".summary").append(currentSummary);
 
