@@ -268,13 +268,11 @@ h4 {
 }
 
 .twitterfeed{
-    background-image: url(images/twitterlogo.png);
-    background-size: cover;
-    background-position: center;
-    box-sizing: content-box;
     height: 40px;
     width: 40px;
-    color: black;
+    display: inline-block;
+    border: none;
+
 }
 
 .yelpLogo {
