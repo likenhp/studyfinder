@@ -139,14 +139,22 @@ class YelpData {
     }
 
     clickHandler() {
-        $('.restaurantImage').on('click', function() {
-            console.log('image was clicked');
-        })
+        $('.restaurantImage').on('click', this.toggleModal);
+        $('.modal-close').on('click', () => {
+            $('.modal').css('display', 'none')
+        }); 
 
         $('.restaurantInfo').on('click', () => {
             this.zoomToLocationCallback($(event.currentTarget).attr('resultID'));
         });
     }
+
+
+    toggleModal(){
+        console.log('image was clicked');
+        $('.modal').css('display', 'block');
+    }
+
 }
 
 

@@ -357,3 +357,46 @@ h4 {
 .enterFlex {
     font-size: 20rem;
 }
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 5;
+    padding-top: 200px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.822);
+}
+
+.modal-content {
+    background-color: rgba(0, 0, 0, 0.603);
+    color: white;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid white;
+    width: 80%;
+    height: 50%;
+    text-align: center;
+}
+
+.modal-close {
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+    cursor: pointer;
+    float: right;
+}
+
+.close:hover {
+    color: red;
+}
+
+.show-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visiblity 0.5s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
