@@ -64,13 +64,9 @@ class Weather {
     }
 
     handleTemperature (response) {
-        console.log(this);
+        console.log(response);
         var apparentTempF = response.currently.apparentTemperature; //is in Farenheight
-        this.temp.fahrenheit = response.currently.apparentTemperature;
-        this.temp.celcius = ((response.currently.apparentTemperature - 32)*(5/9)).toFixed(2);
-
         this.tempF = "Temperature: "+apparentTempF+" \xB0F";
-        
         var apparentTempC = (apparentTempF - 32)*(5/9);
         this.tempC = "Temperature: "+apparentTempC.toFixed(2)+ " \xB0C";
         
@@ -93,6 +89,7 @@ class Weather {
 
     handleWeatherDataSuccess(response){
     this.handleTemperature(response);
+
     var icon = response.currently.icon;
     var unixTimestamp = response.currently.time;
     var currentSummary = response.currently.summary;
