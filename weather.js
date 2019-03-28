@@ -60,20 +60,22 @@ class Weather {
             method: "get",
             success: this.handleWeatherDataSuccess,
             error: this.handleWeatherDataError
-        })
+        });
     }
 
-    handleTemperature(response){
-    console.log(this);
-    var tempArray = [];
-    var apparentTempF = response.currently.apparentTemperature; //is in Farenheight
-    this.tempF = "Temperature: "+apparentTempF+" \xB0F";
-    
-    var apparentTempC = (apparentTempF - 32)*(5/9);
-    this.tempC = "Temperature: "+apparentTempC.toFixed(2)+ " \xB0C";
-    
-    //tempArray.push(tempF, tempC);
-    $(".temp").append(this.tempC);
+    handleTemperature (response) {
+        console.log(this);
+        var apparentTempF = response.currently.apparentTemperature; //is in Farenheight
+        this.temp.fahrenheit = response.currently.apparentTemperature;
+        this.temp.celcius = ((response.currently.apparentTemperature - 32)*(5/9)).toFixed(2);
+
+        this.tempF = "Temperature: "+apparentTempF+" \xB0F";
+        
+        var apparentTempC = (apparentTempF - 32)*(5/9);
+        this.tempC = "Temperature: "+apparentTempC.toFixed(2)+ " \xB0C";
+        
+        //tempArray.push(tempF, tempC);
+        $(".temp").append(this.tempC);
     }
 
     clickCallBackTemp(){
@@ -82,7 +84,7 @@ class Weather {
             this.tempFlagF = false;
             $(".temp").empty();
             $(".temp").append(this.tempF);
-        }else{
+        } else {
             this.tempFlagF = true;
             $(".temp").empty();
             $(".temp").append(this.tempC);
@@ -103,16 +105,17 @@ class Weather {
     var date = $(".date").append(currentDate).css("font-weight","bold");
     var summary = $(".summary").append(currentSummary);
 
-    var icons = new Skycons(),
-                list  = [
-                "clear-day", "clear-night", "partly-cloudy-day",
-                "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
-                "fog"
-            ],
-            i;
-                for(i = list.length; i--; )
-                icons.set(list[i], list[i]);
-                icons.play();
+        var icons = new Skycons();
+        var list  = [
+            "clear-day", "clear-night", "partly-cloudy-day",
+            "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
+            "fog"
+        ];
+
+        for (var i = list.length; i--; ) {
+            icons.set(list[i], list[i]);
+            icons.play();
+        }
 
     }
     

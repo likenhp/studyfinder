@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Cabin|Rajdhani|Patua+One|IBM+Plex+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Cabin|Rajdhani|Patua+One|IBM+Plex+Sans|Titillium+Web|Pacifico|Montserrat" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -20,11 +20,25 @@
     </head>
 
     <body>
+        <div class="welcomeScreen">
+            <div class="enter">
+                <div class="enterFlex">
+                    <ul class="enterTitle">
+                            Drink & Task
+                    </ul>
+                </div>
+            </div>
+            <div class="first"><img src="./images/walkthrough/first.png"alt="first"></div>
+            <div class="second"><img src="./images/walkthrough/second.png" class="second" alt="second"></div>
+            <div class="third"><img src="./images/walkthrough/third.png" class="third" alt="third"></div>
+            <div class="fourth"><img src="./images/walkthrough/fourth.png" class="fourth" alt="fourth"></div>
+            <div class="fifth"><img src="./images/walkthrough/fifth.png" class="fifth" alt="fifth"></div>
+        </div>
         <div class="top">
             <div id="kanyeQuote"></div>
             <div class="drinkTitle">Drink & Task</div>
             <div class="searchContainer form-group input-group col-xs-4 col-lg-4">
-                <input type="text" placeholder="Search" class="col-xs-12 col-lg-12" id="locationInput">
+                <input type="text" placeholder="Search Yelp For Beer! (or anything)" class="col-xs-12 col-lg-12" id="locationInput">
                 <span class="input-group-addon addTask">
                     <span class="glyphicon glyphicon glyphicon-search"></span>
                 </span>
@@ -43,13 +57,13 @@
                 </div>
                 <div class="tabsContainer">
                     <div class="tasksContainer hide">
-                        <div class="form-group input-group col-xs-12 col-lg-12">
+                        <div class="form-group input-group col-xs-12 col-lg-12 addTask">
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-th-list"></span>
                             </span>
                             <input type="text" placeholder="New Task" id="inputTask">
-                            <span class="input-group-addon addTask">
-                                <span class="glyphicon glyphicon glyphicon-pushpin">
+                            <span class="input-group-addon submitTask">
+                                <span class="glyphicon glyphicon glyphicon-plus">
                                 </span>
                             </span>
                         </div>

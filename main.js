@@ -1,11 +1,8 @@
 $(document).ready(initializeApp);
 
-var results = {};
-var markers = {};
 var twitter = null;
 var yelpData = null;
 var weather = null;
-var kanyeQuote = null;
 
 // try to have as little globals as possible and move them into your classes
 
@@ -14,7 +11,7 @@ var kanyeQuote = null;
 function initializeApp() {
     tasks = new Tasks();
     map = new Maps();
-    twitter = new TwitterLocation(results);
+    twitter = new TwitterLocation();
     weather = new Weather();
     kanyeQuote = new KanyeQuote();
 
@@ -22,18 +19,26 @@ function initializeApp() {
 }
 
 function clickHandler() {
-    $(document).on('keypress', (e) => {
-        var search = $('#locationInput').val();
+    const mapCallbacks = {
+        generateMarkerCallback: map.generateMarker,
+        removeMarkersCallback: map.removeMarkers,
+        zoomToLocationCallback: map.zoomToLocation
+    }
+
+    $('.searchContainer').on('keypress', function(e) {
+        const search = $('#locationInput').val();
+
         if (e.keyCode === 13 && search !== "") {
-            yelpData = new YelpData (search, map.getCoordinates, map.removeMarkers);
+            yelpData = new YelpData (search, mapCallbacks);
         }
     });
 
-    $('.addTask').on('click', () => {
-        var search = $('#locationInput').val();
+    $('.submitSearch').on('click', () => {
+        debugger;
+        const search = $('#locationInput').val();
 
         if (search !== "") {
-            yelpData = new YelpData (search, map.getCoordinates, map.removeMarkers);
+            yelpData = new YelpData (search, mapCallbacks);
         }
     });
 
@@ -54,6 +59,32 @@ function clickHandler() {
             $('ul li:nth-child(1)').removeClass('active');
 
         }
+    })
+
+    $('.first').on('click', function() {
+        $('.first').fadeOut(250)
+    });
+
+    $('.second').on('click', function() {
+        $('.second').fadeOut(250)
+    });
+
+    $('.third').on('click', function() {
+        $('.third').fadeOut(250)
+
+    });
+
+    $('.fourth').on('click', function() {
+        $('.fourth').fadeOut(250)
+    });
+
+    $('.fifth').on('click', function() {
+        $('.fifth').fadeOut(250)
+
+    });
+
+    $('.enter').on('click', function() {
+        $('.enter').fadeOut(250)
     })
 }
 
