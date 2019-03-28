@@ -1,4 +1,5 @@
 body {
+    width: 100vw;
     height: 100vh;
 }
 
@@ -311,10 +312,7 @@ h4 {
     background-position: center;
     background-repeat: no-repeat;
     position: absolute;
-<<<<<<< HEAD
     z-index: 1;
-=======
->>>>>>> 04792549aaf0a0ed6f3b3b4ba02fa134072ebd8f
 }
 
 .enter {
@@ -331,23 +329,31 @@ h4 {
     font-family: 'Amatic SC', cursive;
 }
 
-.enterTitle {
-    font-size: 20rem;
-<<<<<<< HEAD
-}
-
 .skipTutorial {
+    font-family: 'Amatic SC', cursive;
     z-index: 2;
-    width: 10%;
-    height: 5%;
-    background-color: white;
+    background-image: linear-gradient(rgba(255, 255, 255, .75), rgba(255, 255, 255, .75));
     position: absolute;
-    right: 0;
-    bottom: 0;
+    text-align: center;
+    margin: auto;
+    font-size: 4.5vw;
+    padding: 0 1vw;
+    margin: auto;
+    top: 50%;
+    transform: translate(0, -100%);
+    left: 10%;
 }
 
 .resultDiv {
     position: relative;
-=======
->>>>>>> 1da550e75846817ab310146bc4e6c65e7868ef20
+}
+
+.welcomeScreen {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.enterFlex {
+    font-size: 20rem;
 }
