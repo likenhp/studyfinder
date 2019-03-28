@@ -1,19 +1,21 @@
 class YelpData {
-    constructor(search, mapCallbacks){
+    constructor(search, locationInput, mapCallbacks){
         this.results = null;
+        this.locationInput = locationInput;
         this.inputField = search;
         this.generateMarkerCallback = mapCallbacks.generateMarkerCallback;
         this.removeMarkersCallback = mapCallbacks.removeMarkersCallback;
         this.zoomToLocationCallback = mapCallbacks.zoomToLocationCallback;
+        this.setCenterCallback = mapCallbacks.setCenterCallback;
 
         this.handleYelpSuccess = this.handleYelpSuccess.bind(this);
         this.handleBusinessDataSuccess = this.handleBusinessDataSuccess.bind(this);
         this.handleYelpError = this.handleYelpError.bind(this);
 
-        this.getDataFromYelp();
+        this.getDataFromYelp(this.locationInput);
     }
 
-    getDataFromYelp(){
+    getDataFromYelp(location){
         $.ajax({
             url: 'yelp.php',
             dataType: 'json',
@@ -21,6 +23,7 @@ class YelpData {
             data: {
                 'apikey': 'dJbz7ePRpBcLEb3zCwg_1tAT3gLiUJKFoMm6EfhSjQZOrd_TJCBeypMPGz6YX5G9hN6tA3A0QQIqOG5c-Sx59kj5--M5xt5YCswAeIc0S4q5EBIbWAULDSiL90OQXHYx',
                 'term': this.inputField,
+                'location': location
             },
             success: this.handleYelpSuccess,
             error: (resp) => {
@@ -34,9 +37,7 @@ class YelpData {
         this.results = response;
 
         $('.rightContainer').removeClass('hide');
-
-        // yelp automatically returns results in irvine, set it so it only returns when input field is given
-        // is this needed?
+        
         $('#yelp').remove();
 
         var yelpDomElement = $("<div>").attr('id', 'yelp')
@@ -94,6 +95,8 @@ class YelpData {
             this.generateMarkerCallback(resultInfo);
         }
 
+        this.setCenterCallback(this.results.region.center);
+
         $('.leftContainer').removeClass('row col-xs-12 col-sm-12 col-md-12').addClass('row col-xs-6 col-sm-6 col-md-6');
 
         $('.tabsContainer').append(yelpDomElement);
@@ -117,7 +120,6 @@ class YelpData {
     }
 
     getBusinessData() {
-        debugger;
         console.log('div clicked');
         // $.ajax({
         //     url: 'yelpid.php',

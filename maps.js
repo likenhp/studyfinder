@@ -24,6 +24,7 @@ class Maps {
         this.generateMarker = this.generateMarker.bind(this);
         this.removeMarkers = this.removeMarkers.bind(this);
         this.zoomToLocation = this.zoomToLocation.bind(this);
+        this.setCenter = this.setCenter.bind(this);
         // this.closeLastInfowindow = this.closeLastInfowindow.bind(this);
         // this.markerClickCallback = this.markerClickCallback.bind(this);
     }
@@ -102,5 +103,12 @@ class Maps {
         }
 
         map.lastResultClicked = infowindow;
+    }
+
+    setCenter(region) {        
+        this.map.setCenter({
+            lat: region.latitude,
+            lng: region.longitude
+        })
     }
 }

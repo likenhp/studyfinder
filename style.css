@@ -53,7 +53,7 @@ body, .container, .leftContainer, #map, .rightContainer, ul,
     box-sizing: border-box;
 }
 
-#locationInput {
+#searchInput, #locationInput {
     font-family: 'Amatic SC', cursive;
     font-size: 3rem;
 }
