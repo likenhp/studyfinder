@@ -330,6 +330,7 @@ h4 {
 
 .enterTitle {
     font-size: 20rem;
+<<<<<<< HEAD
 }
 
 .skipTutorial {
@@ -344,4 +345,6 @@ h4 {
 
 .resultDiv {
     position: relative;
+=======
+>>>>>>> 1da550e75846817ab310146bc4e6c65e7868ef20
 }
