@@ -1,21 +1,25 @@
 class Tasks {
     constructor() {
-        // this.domElements = elementConfig;
         this.createTask = [];
 
-        this.addEventHandlers();
-        this.appendToDom();
         this.handleAdd = this.handleAdd.bind(this);
+
+        this.addEventHandlers();
     }
 
     addEventHandlers() {
-        $('.addTask').on('click', this.handleAdd);
+        $('.submitTask').on('click', this.handleAdd);
+        $('.addTask').on('keypress', (e) => {
+            if (e.keyCode === 13 && $('#inputTask').val() !== "") {
+                this.handleAdd();
+            }
+        });
         $('.completedTask').on('click', this.completedTask);
     }
 
     handleAdd() {
-        var task = $('#inputTask').val();
-        var date = new Date();
+        const task = $('#inputTask').val();
+        let date = new Date();
 
         date = date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear();
         $('.tasks').append(
@@ -33,17 +37,5 @@ class Tasks {
                 ))
         );
         // add to database, update div elements
-    }
-
-    completedTask() {
-        // remove from server, but do not remove from DOM
-    }
-
-    displayAllTasks() {
-        // displays all the tasks in the database
-    }
-
-    appendToDom() {
-        // $('.rightContainer').append('<div>').text('Task Manager');
     }
 }

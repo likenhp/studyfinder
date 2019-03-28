@@ -1,9 +1,10 @@
 body {
+    /* width: 100vw; */
     height: 100vh;
 }
 
 body, .container, .leftContainer, #map, .rightContainer, ul,
-#yelp, .resultDiv, .weather, .searchContainer {
+#yelp, .resultDiv, .weather, .searchContainer, #twitter {
     margin: 0;
     padding: 0;
 }
@@ -32,8 +33,12 @@ body, .container, .leftContainer, #map, .rightContainer, ul,
     font-family: 'Rajdhani', sans-serif;
     margin-left: 20px;
     text-align: center;
-    /* font-size: 3.5rem; */
     background-image: linear-gradient(rgba(255, 255, 255, .75), rgba(255, 255, 255, .75));
+}
+
+.drinkTitle {
+    font-family: 'Patua One', cursive;
+    font-size: 3rem;
 }
 
 .searchContainer {
@@ -44,9 +49,7 @@ body, .container, .leftContainer, #map, .rightContainer, ul,
 
 #locationInput {
     font-family: 'Amatic SC', cursive;
-    /* line-height: 3; */
     font-size: 3rem;
-    /* line-height: 6; */
 }
 
 #map {
@@ -140,12 +143,10 @@ li.active {
 } 
 
 .restaurantImage {
-    display: inline-block;
     float: left;
     margin: 5px;
     height: 150px;
     width: 150px;
-    float: left;
 }
 
 .resultDiv {
@@ -222,7 +223,6 @@ li.active {
     color: black;
     font-size: 16px;
     font-family: 'Times New Roman', Helvetica, serif;
-    margin: 0;
     opacity: .75;
     background-color: black;
     color: lightblue;
@@ -230,17 +230,16 @@ li.active {
     line-height: 50px;
     white-space: nowrap;
     overflow: hidden;
-    box-sizing: border-box;
+    border: none;
 }
 
 .twitterfeed{
     background-image: url(images/twitterlogo.png);
-    background-size: contain;
+    background-size: cover;
     background-position: center;
+    box-sizing: content-box;
     height: 40px;
     width: 40px;
-    display: inline-block;
-    border: none;
     color: black;
 }
 
@@ -263,31 +262,12 @@ li.active {
 
 #twitter div {
     display: inline-block;
-    padding-left: 100%;
     animation: twitter 150s linear infinite;
-    
 }
 
 @keyframes twitter {
     0%   { transform: translate(0, 0); }
     100% { transform: translate(-100%, 0); }
-}
-
-.googleLogo {
-    height: 90%;
-    width: 6%;
-}
-
-.twitterLogo {
-    float: left;
-    left: 0;
-    height: 120%;
-    width: 6%;
-}
-
-.yelpSoloLogo {
-    height: 90%;
-    width: 5%;
 }
 
 .darkskyLogo {
@@ -301,7 +281,49 @@ li.active {
     background-color: white;
 }
 
-.drinkTitle {
-    font-family: 'Patua One', cursive;
-    font-size: 3rem;
+.first, .second, .third, .fourth, .fifth {
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+}
+
+.first {
+    z-index: 6;
+}
+
+.second {
+    z-index: 5;
+}
+
+.third {
+    z-index: 4;
+}
+
+.fourth {
+    z-index: 3;
+}
+
+.fifth {
+    z-index: 2;
+}
+
+.enter {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    flex-direction: column;
+    background-color: white;
+    z-index: 7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-family: 'Amatic SC', cursive;
+}
+
+.enterTitle {
+    font-size: 10rem;
 }
