@@ -62,7 +62,7 @@ function clickHandler() {
     })
 
     $('.first').on('click', function() {
-        $('.first').fadeOut(250)
+        $('.first').fadeOut(250);
     });
 
     $('.second').on('click', function() {
@@ -78,13 +78,22 @@ function clickHandler() {
         $('.fourth').fadeOut(250)
     });
 
-    $('.fifth').on('click', function() {
-        $('.fifth').fadeOut(250)
+    // $('.fifth').on('click', function() {
+    //     $('.fifth').fadeOut(250)
 
-    });
+    // });
+
+    $('.fifth').on('click', function() {
+        $('.fifth').fadeOut(250);
+        $('.welcomeScreen').remove();
+    })
 
     $('.enter').on('click', function() {
         $('.enter').fadeOut(250)
+    })
+
+    $('.skipTutorial').on('click', function() {
+        $('.welcomeScreen').remove();
     })
 }
 
