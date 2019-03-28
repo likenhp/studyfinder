@@ -29,8 +29,6 @@ class YelpData {
             },
         })
     }
-    
-    // all the css should be in a class, shouldn't be inline
 
     handleYelpSuccess(response){
         this.removeMarkersCallback();
@@ -39,8 +37,6 @@ class YelpData {
         $('.rightContainer').removeClass('hide');
 
         // yelp automatically returns results in irvine, set it so it only returns when input field is given
-        console.log(response);
-
         // is this needed?
         $('#yelp').remove();
 
@@ -86,10 +82,10 @@ class YelpData {
                     .append($("<div>").addClass('restaurantInfo')
                         .append($("<h1>").addClass('restaurantName').text(resultInfo.name))
                         .append($("<h4>").addClass('restaurantLocation').text('Address: ' + resultInfo.location))
-                        .append($("<p>").addClass('restaurantLocation').text('Phone: ' + resultInfo.phone))
-                        .append($("<p>").addClass('restaurantPrice').text('Price: ' + resultInfo.price))
-                        .append($("<p>").addClass('restaurantRating').text('Rating: ' + resultInfo.rating))
-                        .append($("<p>").addClass('restaurantCategories')
+                        .append($("<h4>").addClass('restaurantLocation').text('Phone: ' + resultInfo.phone))
+                        .append($("<h4>").addClass('restaurantPrice').text('Price: ' + resultInfo.price))
+                        .append($("<h4>").addClass('restaurantRating').text('Rating: ' + resultInfo.rating))
+                        .append($("<h4>").addClass('restaurantCategories')
                             .text('Category: ' + categories)
                         )
                     // <img id="theImg" src="theImg.png" />
