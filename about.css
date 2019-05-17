@@ -1,0 +1,19 @@
+.container {
+    height: 92%;
+    background-color: hotpink;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.person {
+    height: 30%;
+    width: 90%;
+    background-color: white;
+}
+
+.portrait > img {
+    width: 50%;
+    height: auto;
+}
