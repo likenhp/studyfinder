@@ -1,60 +1,58 @@
-/* DEVICE = MOBILE PHONES */
-@media screen and (max-width: 480px) {
-    body {
-        height: 100vh;
-        width: 100vw;
-    }
+/* MOBILE CSS GOES FIRST */
+body {
+    height: 100vh;
+    width: 100vw;
+}
 
-    .top {
-        height: 8%;
-    }
+.top {
+    height: 8%;
+}
 
-    .drinkTitle {
-        font-family: 'Patua One', cursive;
-        font-size: 2rem;
-        text-align: center;
-        text-transform: uppercase;
-    }
+.drinkTitle {
+    font-family: 'Patua One', cursive;
+    font-size: 2rem;
+    text-align: center;
+    text-transform: uppercase;
+}
 
-    .searchContainer {
-        height: 5%;
-        width: 100%;
-        z-index: 1;
-        box-sizing: border-box;
-        position: absolute;
-        transform: translate(-50%, -50%);
-        left: 50%;
-        top: 16%;
-        display: flex;
-        justify-content: space-evenly;
-    }
+.searchContainer {
+    height: 5%;
+    width: 100%;
+    z-index: 1;
+    box-sizing: border-box;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 16%;
+    display: flex;
+    justify-content: space-evenly;
+}
 
-    #searchInput, #locationInput {
-        font-family: 'Amatic SC', cursive;
-        font-size: 2rem;
-        text-align: right;
-        display: inline-block;
-        width: 45%;
-    }
+#searchInput, #locationInput {
+    font-family: 'Amatic SC', cursive;
+    font-size: 2rem;
+    text-align: right;
+    display: inline-block;
+    width: 40%;
+}
 
-    .container {
-        width: 100%;
-        height: 92%;
-    }
+.container {
+    width: 100%;
+    height: 92%;
+}
 
-    .leftContainer {
-        width: 100%;
-        height: 100%;
-    }
+.leftContainer {
+    width: 100%;
+    height: 100%;
+}
 
-    #map {
-        width: 100%;
-        height: 100%;
-    }
+#map {
+    width: 100%;
+    height: 100%;
+}
 
-    .gm-fullscreen-control, .gmnoprint {
-        display: none;
-    }
+.gm-fullscreen-control, .gmnoprint {
+    display: none;
 }
 
 /* DEVICE = TABLETS */
