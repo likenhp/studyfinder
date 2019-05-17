@@ -1,5 +1,5 @@
 class Weather {
-    constructor(){
+    constructor () {
         this.tempFlagF = true;
         this.localTime = false;
         this.tempF = null;
@@ -16,12 +16,12 @@ class Weather {
         this.handleAmPmTime();
     }
 
-    handleClick(){
+    handleClick () {
         $(".temp").on("click", this.clickCallBackTemp);
         $(".time").on("click", this.clickCallBackTime);
     }
     
-    clickCallBackTime(){
+    clickCallBackTime () {
         if(this.localTime === true){
             this.localTime = false;
             this.handleAmPmTime();
@@ -29,11 +29,10 @@ class Weather {
         }else{
             this.localTime = true;
             this.handleMilitaryTime();
-            
         }
     }
 
-    handleAmPmTime(){
+    handleAmPmTime () {
         var amPmTime = new Date().toLocaleTimeString();
         $(".time").empty()
         $(".time").append(amPmTime);
@@ -41,43 +40,40 @@ class Weather {
         clearInterval(this.interval24hr);
     }
 
-    handleMilitaryTime(){
+    handleMilitaryTime () {
         var date = new Date();
         var militaryTimeHours = date.getHours()
         var militaryTimeMinutes = date.getMinutes()
         var militaryTimeSeconds = date.getSeconds();
         var militaryTime = `${militaryTimeHours}:${militaryTimeMinutes}:${militaryTimeSeconds}`;
 
-        if(militaryTimeMinutes < 10 && militaryTimeSeconds < 10){
+        if (militaryTimeMinutes < 10 && militaryTimeSeconds < 10) {
             var militaryTime10LessSM = `${militaryTimeHours}:0${militaryTimeMinutes}:0${militaryTimeSeconds}`;
             $(".time").empty();
             $(".time").append(militaryTime10LessSM);
             this.interval24hr = setInterval(this.handleMilitaryTime, 1000);
             clearInterval(this.interval12hr);
-        } else if (militaryTimeMinutes < 10 && militaryTimeSeconds > 10){
+        } else if (militaryTimeMinutes < 10 && militaryTimeSeconds > 10) {
             var militaryTime10LessM = `${militaryTimeHours}:0${militaryTimeMinutes}:${militaryTimeSeconds}`;
             $(".time").empty();
             $(".time").append(militaryTime10LessM);
             this.interval24hr = setInterval(this.handleMilitaryTime, 1000);
             clearInterval(this.interval12hr);
-        } else if (militaryTimeMinutes > 10 && militaryTimeSeconds < 10){
+        } else if (militaryTimeMinutes > 10 && militaryTimeSeconds < 10) {
             var militaryTime10LessS = `${militaryTimeHours}:${militaryTimeMinutes}:0${militaryTimeSeconds}`;
             $(".time").empty();
             $(".time").append(militaryTime10LessS);
             this.interval24hr = setInterval(this.handleMilitaryTime, 1000);
             clearInterval(this.interval12hr);
-        } else if (militaryTimeMinutes > 10 && militaryTimeSeconds > 10){
+        } else if (militaryTimeMinutes > 10 && militaryTimeSeconds > 10) {
             $(".time").empty();
             $(".time").append(militaryTime);
             this.interval24hr = setInterval(this.handleMilitaryTime, 1000);
             clearInterval(this.interval12hr);
         }
-
-        
-        
     }
 
-    handleWeatherData(){
+    handleWeatherData () {
         $.ajax({
             url: "darksky.php",
             dataType: "json",
@@ -88,18 +84,15 @@ class Weather {
     }
 
     handleTemperature (response) {
-        console.log(response);
-        var apparentTempF = response.currently.apparentTemperature; //is in Farenheight
+        var apparentTempF = response.currently.apparentTemperature;
         this.tempF = "Temperature: "+apparentTempF+" \xB0F";
         var apparentTempC = (apparentTempF - 32)*(5/9);
         this.tempC = "Temperature: "+apparentTempC.toFixed(2)+ " \xB0C";
         
-        //tempArray.push(tempF, tempC);
         $(".temp").append(this.tempC);
     }
 
-    clickCallBackTemp(){
-        //console.log(this);
+    clickCallBackTemp () {
         if(this.tempFlagF === true){
             this.tempFlagF = false;
             $(".temp").empty();
@@ -111,7 +104,7 @@ class Weather {
         }
     }
 
-    handleWeatherDataSuccess(response){
+    handleWeatherDataSuccess (response) {
     this.handleTemperature(response);
 
     var icon = response.currently.icon;
@@ -121,7 +114,6 @@ class Weather {
     var day = unixTime.toDateString();
     var currentDate = `${day}`
 
-    //Appending to div
     var weatherSituation = $(".weatherSituation").attr("id", icon);
     var date = $(".date").append(currentDate).css("font-weight","bold");
     var summary = $(".summary").append(currentSummary);
@@ -140,8 +132,6 @@ class Weather {
 
     }
     
-    handleWeatherDataError(response){
-        console.log(response);
+    handleWeatherDataError (response) {
     }
 }
-

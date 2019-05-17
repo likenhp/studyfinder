@@ -36,6 +36,5 @@ class Tasks {
                             })
                 ))
         );
-        // add to database, update div elements
     }
 }
