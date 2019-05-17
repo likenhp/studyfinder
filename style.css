@@ -1,6 +1,67 @@
-body {
-    width: 100vw;
-    height: 100vh;
+/* DEVICE = MOBILE PHONES */
+@media screen and (max-width: 480px) {
+    body {
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .top {
+        height: 8%;
+    }
+
+    .drinkTitle {
+        font-family: 'Patua One', cursive;
+        font-size: 2rem;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .searchContainer {
+        height: 5%;
+        width: 100%;
+        z-index: 1;
+        box-sizing: border-box;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        left: 50%;
+        top: 16%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    #searchInput, #locationInput {
+        font-family: 'Amatic SC', cursive;
+        font-size: 2rem;
+        text-align: right;
+        display: inline-block;
+        width: 45%;
+    }
+
+    .container {
+        width: 100%;
+        height: 92%;
+    }
+
+    .leftContainer {
+        width: 100%;
+        height: 100%;
+    }
+
+    #map {
+        width: 100%;
+        height: 100%;
+    }
+
+    .gm-fullscreen-control, .gmnoprint {
+        display: none;
+    }
+}
+
+/* DEVICE = TABLETS */
+@media screen and (max-width: 600px) {
+    /* body {
+        background-color: lightblue;
+    } */
 }
 
 body, .container, .leftContainer, #map, .rightContainer, ul,
@@ -9,68 +70,8 @@ body, .container, .leftContainer, #map, .rightContainer, ul,
     padding: 0;
 }
 
-.top {
-    width: 100%;
-    position: relative;
-    height: 5%;
-    color: black;
-}
-
-.container {
-    background-color: pink;
-    height: 80%;
-    position: relative;
-}
-
-.leftContainer {
-    position: relative;
-    height: 100%;
-    transition: all .35s linear;
-}
-
-#kanyeQuote {
-    font-family: 'Rajdhani', sans-serif;
-    margin-left: 20px;
-    text-align: center;
-    position: absolute;
-    margin: auto;
-    background-image: linear-gradient(rgba(255, 255, 255, .75), rgba(255, 255, 255, .75));
-}
-
-.drinkTitle {
-    font-family: 'Patua One', cursive;
-    font-size: 3rem;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.searchContainer {
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: 1;
-    height: 100%;
-    box-sizing: border-box;
-}
-
-#searchInput, #locationInput {
-    font-family: 'Amatic SC', cursive;
-    font-size: 3rem;
-}
-
-#map {
-    width: 100%;
-    height: 100%;
-}
-
 .hide {
     display: none;
-}
-
-.rightContainer {
-    height: 100%;
-    width: 50%;
-    display: inline-block;
 }
 
 .menu {
@@ -163,7 +164,6 @@ li.active {
     display: inline-block;
     width: 100%;
     border: 1px solid black;
-    /* background-color: white; */
     box-sizing: border-box;
 }
 
@@ -257,57 +257,8 @@ h4 {
     background-color: white;
 }
 
-.first, .second, .third, .fourth, .fifth, .sixth {
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: absolute;
-    z-index: 1;
-}
-
-.enter {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    flex-direction: column;
-    background-color: white;
-    z-index: 7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-transform: uppercase;
-    font-family: 'Amatic SC', cursive;
-}
-
-.skipTutorial {
-    font-family: 'Amatic SC', cursive;
-    z-index: 2;
-    background-image: linear-gradient(rgba(255, 255, 255, .75), rgba(255, 255, 255, .75));
-    position: absolute;
-    text-align: center;
-    margin: auto;
-    font-size: 4.5vw;
-    padding: 0 1vw;
-    margin: auto;
-    top: 50%;
-    transform: translate(0, -100%);
-    left: 10%;
-}
-
 .resultDiv {
     position: relative;
-}
-
-.welcomeScreen {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.enterFlex {
-    font-size: 20rem;
 }
 
 .modal {
@@ -368,3 +319,4 @@ h4 {
     background-size: cover;
     padding-bottom: 20px;
 }
+
