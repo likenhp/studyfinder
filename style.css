@@ -4,7 +4,7 @@ body {
 }
 
 body, .container, .leftContainer, #map, .rightContainer, ul,
-#yelp, .resultDiv, .weather, .searchContainer, #twitter {
+#yelp, .resultDiv, .searchContainer {
     margin: 0;
     padding: 0;
 }
@@ -241,57 +241,9 @@ h4 {
     font-family: 'IBM Plex Sans', sans-serif;
 }
 
-.weather {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    font-size: 3rem;
-    font-family: 'Amatic SC', cursive;
-    background-size: cover;
-    height: 10%;
-    overflow: scroll;
-    color: black;
-    float: right;
-}
-
-.weatherSituation {
-    height: 100%;
-}
-
-#twitter{
-    bottom: 0;
-    height: 5%;
-    color: black;
-    font-family: 'Times New Roman', Helvetica, serif;
-    opacity: .75;
-    width: 100%;
-    line-height: 50px;
-    white-space: nowrap;
-    overflow: hidden;
-    border: none;
-}
-
-.twitterfeed{
-    height: 40px;
-    width: 40px;
-    display: inline-block;
-    border: none;
-
-}
-
 .yelpLogo {
     height: 30%;
     float: left;
-}
-
-#twitter div {
-    display: inline-block;
-    animation: twitter 150s linear infinite;
-}
-
-@keyframes twitter {
-    0%   { transform: translate(0, 0); }
-    100% { transform: translate(-100%, 0); }
 }
 
 .darkskyLogo {

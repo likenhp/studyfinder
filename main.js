@@ -1,13 +1,10 @@
 $(document).ready(initializeApp);
 
-var twitter = null;
 var yelpData = null;
-var weather = null;
 
 function initializeApp () {
     tasks = new Tasks();
     map = new Maps();
-    // weather = new Weather();
 
     clickHandler();
 }
