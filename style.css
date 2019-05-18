@@ -69,6 +69,8 @@ a:hover {
     width: 75%;
     padding: 0 10px;
     text-transform: uppercase;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px grey;
 }
 
 .container {
@@ -101,6 +103,15 @@ body, .container, .leftContainer, #map, .rightContainer, ul,
 #yelp, .resultDiv, .searchContainer {
     margin: 0;
     padding: 0;
+}
+
+.leftContainer {
+    height: 100%;
+    transition: all 0.5s ease-out;
+}
+
+.leftContainer.active {
+    height: 60%;
 }
 
 .hide {
@@ -149,17 +160,17 @@ li.active {
     flex-wrap: wrap;
     align-items: center;
     overflow-y: scroll;
-    background-image: url('images/beer.jpg');
-    background-repeat: no-repeat;
+    /* background-image: url('images/beer.jpg'); */
+    /* background-repeat: no-repeat;
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center; */
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     right: 0;
-    transition: all .35 linear;
+    /* transition: all .35 linear; */
     overflow: scroll;
 }
 
@@ -185,18 +196,24 @@ li.active {
     width: 400px;
 } 
 
+.imageContainer {
+    height: 200px;
+    width: 200px;
+    display: inline-block;
+    padding: 5px;
+}
+
 .restaurantImage {
     float: left;
-    margin: 5px;
-    height: 254px;
-    width: 180px;
+    height: 100%;
+    width: 100%;
     border-radius: 10px;
 }
 
 .resultDiv {
     display: inline-block;
     width: 100%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     box-sizing: border-box;
 }
 
@@ -204,23 +221,23 @@ li.active {
     font-family: 'IBM Plex Sans', sans-serif;
     display: inline-block;
     vertical-align: top;
-    font-size: 2rem;
+    font-size: 1rem;
     margin: 5px;
     width: 76%;
     border-radius: 10px;
     padding: 5px 0 7px 20px;
-    background-color: rgb(218, 218, 218);
+    background-color: white;
     opacity: 0.7;
     filter: alpha(opacity=70);
     transition: 0.3s;
     position: relative;
 }
 
-.restaurantInfo:hover {
+/* .restaurantInfo:hover {
     opacity: 0.8;
     filter: alpha(opacity=80);
-    background-color: white;
-}
+    background-color: rgb(218, 218, 218);
+} */
 
 .restaurantInfo * {
     color: black;
@@ -228,7 +245,7 @@ li.active {
 }
 
 .restaurantName {
-    font-size: 3rem;
+    font-size: 1.3rem;
     font-weight: bolder;
     margin-top: 10px;
 }
@@ -240,12 +257,16 @@ h4 {
 .restaurantLink {
     float: right;
     color: darkred;
-    font-size: 2.5rem;
+    font-size: 1rem;
     position: absolute;
     right: 2%;
     top: 2%;
     font-family: 'Pacifico', cursive;
     transition: 0.2s;
+}
+
+.restaurantDivider {
+    border-top: 1px solid #8c8b8b;
 }
 
 .restaurantLink:hover {

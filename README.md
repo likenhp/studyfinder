@@ -1,1 +1,1 @@
-# Drink n' Task
+# Study Finder
