@@ -1,8 +1,8 @@
 class YelpData {
-    constructor(search, locationInput, mapCallbacks){
+    constructor(locationInput, mapCallbacks){
         this.results = null;
         this.locationInput = locationInput;
-        this.inputField = search;
+        // this.inputField = search;
         this.generateMarkerCallback = mapCallbacks.generateMarkerCallback;
         this.removeMarkersCallback = mapCallbacks.removeMarkersCallback;
         this.zoomToLocationCallback = mapCallbacks.zoomToLocationCallback;
@@ -22,11 +22,14 @@ class YelpData {
             dataType: 'json',
             method: 'get',
             data: {
-                'apikey': 'dJbz7ePRpBcLEb3zCwg_1tAT3gLiUJKFoMm6EfhSjQZOrd_TJCBeypMPGz6YX5G9hN6tA3A0QQIqOG5c-Sx59kj5--M5xt5YCswAeIc0S4q5EBIbWAULDSiL90OQXHYx',
-                'term': this.inputField,
+                'apikey': '_OTDIm5KUtFhOupgc4hIxc-3pHB_Ksl5BQvHSkkZoLUN_OlZZ8Yz1bX0FojgG7N76q8JtoyKS8y7eFtsSgYVD4eGCgfSr5Qz4C00lsHg2TvqiQWHwG8VXgi5A3bgXHYx',
+                // 'term': this.inputField,
+                'term': 'study+library+coffee+coffeeshop',
                 'location': location
             },
-            success: this.handleYelpSuccess,
+            success: (resp) => {
+                this.handleYelpSuccess(resp)
+            },
             error: (resp) => {
                 this.handleYelpError(resp);
             },
@@ -34,6 +37,7 @@ class YelpData {
     }
 
     handleYelpSuccess(response){
+        debugger;
         this.removeMarkersCallback();
         this.results = response;
 
@@ -106,8 +110,8 @@ class YelpData {
     }
 
     handleYelpError(response){
-        console.log(response);
-        alert('you reached an error son');
+        console.log('yelp error response', response);
+        alert('yelp error');
     }
 
     toggleResultsWindow() {

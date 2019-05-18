@@ -18,11 +18,11 @@ function clickHandler () {
     }
 
     $('.searchContainer').on('keypress', function (e) {
-        var search = $('#searchInput').val().replace(' ', '_');
+        // var search = $('#searchInput').val().replace(' ', '_');
         var locationInput = $('#locationInput').val().replace(' ', '_');
 
-        if (e.keyCode === 13 && search !== "") {
-            yelpData = new YelpData (search, locationInput, mapCallbacks);
+        if (e.keyCode === 13 && locationInput !== "") {
+            yelpData = new YelpData (locationInput, mapCallbacks);
         }
     });
 
