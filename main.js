@@ -23,6 +23,7 @@ function clickHandler () {
 
         if (e.keyCode === 13 && locationInput !== "") {
             yelpData = new YelpData (locationInput, mapCallbacks);
+            $(".leftContainer").toggleClass("active");
         }
     });
 

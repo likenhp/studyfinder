@@ -24,7 +24,7 @@ class YelpData {
             data: {
                 'apikey': '_OTDIm5KUtFhOupgc4hIxc-3pHB_Ksl5BQvHSkkZoLUN_OlZZ8Yz1bX0FojgG7N76q8JtoyKS8y7eFtsSgYVD4eGCgfSr5Qz4C00lsHg2TvqiQWHwG8VXgi5A3bgXHYx',
                 // 'term': this.inputField,
-                'term': 'study+library+coffee+coffeeshop',
+                'term': 'study',
                 'location': location
             },
             success: (resp) => {
@@ -37,7 +37,6 @@ class YelpData {
     }
 
     handleYelpSuccess(response){
-        debugger;
         this.removeMarkersCallback();
         this.results = response;
 
@@ -62,7 +61,7 @@ class YelpData {
             resultInfo.location = this.results.businesses[i].location.display_address[0] + ' ' + this.results.businesses[i].location.display_address[1] + ', ' 
             this.results.businesses[i].location.display_address[1];
 
-            var newDomElement = $("<div>").addClass('resultDiv');
+            var newDomElement = $("<div>").addClass('resultDiv restaurantDivider');
             var categories = "";
 
             for (var j=0; j<this.results.businesses[i].categories.length; j++) {
