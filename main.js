@@ -36,19 +36,19 @@ function clickHandler () {
     });
 
     $('ul li:nth-child(1)').on('click', function() {
-        if ($("#yelp").hasClass('hide')) {
-            $("#yelp").removeClass('hide');
+        if ($("#yelp").css('display','none')) {
+            $("#yelp").show();
             $('ul li:nth-child(1)').addClass('active');
-            $('.tasksContainer').addClass('hide');
+            $('.tasksContainer').hide();
             $('ul li:nth-child(2)').removeClass('active');
         }
     })
 
     $('ul li:nth-child(2)').on('click', function() {
-        if ($('.tasksContainer').hasClass('hide')) {
-            $('.tasksContainer').removeClass('hide').addClass('active');
+        if ($('.tasksContainer').css('display','none')) {
+            $('.tasksContainer').show().addClass('active');
             $('ul li:nth-child(2)').addClass('active');
-            $('#yelp').addClass('hide');
+            $('#yelp').hide();
             $('ul li:nth-child(1)').removeClass('active');
         }
     })
