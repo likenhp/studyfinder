@@ -250,11 +250,16 @@ li.active {
     margin-top: 10px;
 }
 
+.restaurantName:hover {
+    color: darkblue;
+    text-decoration: none;
+}
+
 h4 {
     margin: 5px;
 }
 
-.restaurantLink {
+/* .restaurantLink {
     float: right;
     color: darkred;
     font-size: 1rem;
@@ -263,16 +268,16 @@ h4 {
     top: 2%;
     font-family: 'Pacifico', cursive;
     transition: 0.2s;
-}
+} */
 
 .restaurantDivider {
     border-top: 1px solid #8c8b8b;
 }
 
-.restaurantLink:hover {
+/* .restaurantLink:hover {
     color: darkblue;
     text-decoration: none;
-}
+} */
 
 .tabsContainer {
     height: 97%;
