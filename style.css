@@ -6,12 +6,45 @@ body {
 
 .top {
     height: 8%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
 }
 
 .drinkTitle {
-    font-family: 'Patua One', cursive;
+    /* font-family: 'Patua One', cursive;
     font-size: 2rem;
     text-align: center;
+    text-transform: uppercase; */
+    display: flex;
+    align-items: center;
+}
+
+.aboutTitle {
+    display: flex;
+    align-items: center;
+}
+
+.drinkTitle > span {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: grey;
+}
+
+.aboutTitle > span {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
+    font-size: 1.5rem;
     text-transform: uppercase;
 }
 
@@ -25,15 +58,17 @@ body {
     left: 50%;
     top: 16%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 #searchInput, #locationInput {
-    font-family: 'Amatic SC', cursive;
-    font-size: 2rem;
-    text-align: right;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    text-align: left;
     display: inline-block;
-    width: 40%;
+    width: 75%;
+    padding: 0 10px;
+    text-transform: uppercase;
 }
 
 .container {
