@@ -2,16 +2,16 @@ class YelpData {
     constructor(locationInput, mapCallbacks){
         this.results = null;
         this.locationInput = locationInput;
-        // this.inputField = search;
         this.generateMarkerCallback = mapCallbacks.generateMarkerCallback;
         this.removeMarkersCallback = mapCallbacks.removeMarkersCallback;
         this.zoomToLocationCallback = mapCallbacks.zoomToLocationCallback;
         this.setCenterCallback = mapCallbacks.setCenterCallback;
 
         this.handleYelpSuccess = this.handleYelpSuccess.bind(this);
-        this.handleBusinessDataSuccess = this.handleBusinessDataSuccess.bind(this);
         this.handleYelpError = this.handleYelpError.bind(this);
         this.handleBusinessModal = this.handleBusinessModal.bind(this);
+        this.handleBusinessModal = this.handleBusinessModal.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
 
         this.getDataFromYelp(this.locationInput);
     }
@@ -20,19 +20,16 @@ class YelpData {
         $.ajax({
             url: 'yelp.php',
             dataType: 'json',
-            method: 'get',
+            method: 'GET',
             data: {
                 'apikey': '_OTDIm5KUtFhOupgc4hIxc-3pHB_Ksl5BQvHSkkZoLUN_OlZZ8Yz1bX0FojgG7N76q8JtoyKS8y7eFtsSgYVD4eGCgfSr5Qz4C00lsHg2TvqiQWHwG8VXgi5A3bgXHYx',
-                // 'term': this.inputField,
                 'term': 'study',
                 'location': location
             },
-            success: (resp) => {
-                this.handleYelpSuccess(resp)
+            success: resp => {
+                this.handleYelpSuccess(resp);
             },
-            error: (resp) => {
-                this.handleYelpError(resp);
-            },
+            error: this.handleYelpError
         })
     }
 
@@ -110,6 +107,7 @@ class YelpData {
 
     handleYelpError(response){
         console.log('yelp error response', response);
+
         alert('yelp error');
     }
 
@@ -129,20 +127,18 @@ class YelpData {
         $.ajax({
             url: 'yelpid.php',
             dataType: 'json',
-            method: 'get',
+            method: 'GET',
             data: {
-                'apikey': 'dJbz7ePRpBcLEb3zCwg_1tAT3gLiUJKFoMm6EfhSjQZOrd_TJCBeypMPGz6YX5G9hN6tA3A0QQIqOG5c-Sx59kj5--M5xt5YCswAeIc0S4q5EBIbWAULDSiL90OQXHYx',
-                'id': resultID,
+                'apikey': '_OTDIm5KUtFhOupgc4hIxc-3pHB_Ksl5BQvHSkkZoLUN_OlZZ8Yz1bX0FojgG7N76q8JtoyKS8y7eFtsSgYVD4eGCgfSr5Qz4C00lsHg2TvqiQWHwG8VXgi5A3bgXHYx',
+                'id': resultID
             },
-            success: yelpData.handleBusinessModal,
-            error: (resp) => {
-                this.handleYelpError(resp);
+            success: (resp) => {
+                yelpData.handleBusinessModal(resp);
             },
-        })
-    }
-
-    handleBusinessDataSuccess(response) {
-        console.log(response);
+            error: () => {
+                console.log('Unable to retrieve business data.')
+            }
+        }) 
     }
 
     clickHandler() {
@@ -157,10 +153,11 @@ class YelpData {
         });
     }
 
-    handleBusinessModal(response) {
+    handleBusinessModal (response) {
         const photosArray = response.photos;
         this.toggleModal(photosArray);
-        console.log(photosArray);
+
+        console.log(response);
     }
 
     toggleModal(photosArray){
@@ -172,9 +169,3 @@ class YelpData {
         $('.modal').css('display', 'block');
     }
 }
-
-
-// dont have yelp directly calling map
-// avoid calling map.map.
-
-// yelp calls coordinates, has callback

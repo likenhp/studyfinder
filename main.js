@@ -18,7 +18,6 @@ function clickHandler () {
     }
 
     $('.searchContainer').on('keypress', function (e) {
-        // var search = $('#searchInput').val().replace(' ', '_');
         var locationInput = $('#locationInput').val().replace(' ', '_');
 
         if (e.keyCode === 13 && locationInput !== "") {
