@@ -15,14 +15,14 @@ a:hover {
 }
 
 .searchContainer {
-    height: 5%;
+    height: 40px;
     width: 100%;
     z-index: 1;
     box-sizing: border-box;
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
-    top: 10%;
+    top: 80px;
     display: flex;
     justify-content: center;
 }
@@ -31,7 +31,7 @@ a:hover {
     font-family: 'Roboto', sans-serif;
     font-size: 1.5rem;
     text-align: left;
-    width: 75%;
+    width: 80%;
     padding: 0 10px;
     text-transform: uppercase;
     border-radius: 10px;
@@ -334,7 +334,7 @@ h4 {
 }
 
 /* DEVICE = TABLET, DESKTOP */
-@media screen and (min-width: 601px) {
+@media screen and (min-width: 769px) {
     .rightContainer {
         position: absolute;
         right: 0;
@@ -347,5 +347,12 @@ h4 {
         height: 100%;
         width: 50%;
     }
+}
 
+@media (min-width: 768px) and (max-width: 1024px) {
+}
+
+/* Portrait, iPad Pro */
+@media screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
+    
 }

@@ -98,8 +98,6 @@ class YelpData {
 
         this.setCenterCallback(this.results.region.center);
 
-        $('.leftContainer').removeClass('row col-xs-12 col-sm-12 col-md-12').addClass('row col-xs-6 col-sm-6 col-md-6');
-
         $('.tabsContainer').append(yelpDomElement);
 
         this.clickHandler();
