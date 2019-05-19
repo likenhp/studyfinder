@@ -84,12 +84,12 @@ class YelpData {
                         href: resultInfo.url,
                         target: "_blank"
                     }))
-                    .append($("<h4>").addClass('restaurantLocation').text('Address: ' + displayAddress))
-                    .append($("<h4>").addClass('restaurantLocation').text('Phone: ' + resultInfo.phone))
-                    .append($("<h4>").addClass('restaurantPrice').text('Price: ' + resultInfo.price))
-                    .append($("<h4>").addClass('restaurantRating').text('Rating: ' + resultInfo.rating))
+                    .append($("<p>").addClass('restaurantLocation').text('Address: ' + displayAddress))
+                    .append($("<p>").addClass('restaurantLocation').text('Phone: ' + resultInfo.phone))
+                    .append($("<p>").addClass('restaurantPrice').text('Price: ' + resultInfo.price))
+                    .append($("<p>").addClass('restaurantRating').text('Rating: ' + resultInfo.rating))
                     .append(
-                        $("<h4>")
+                        $("<p>")
                             .addClass('restaurantCategories')
                             .text('Category: ' + categories))
                     
