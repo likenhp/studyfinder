@@ -56,16 +56,15 @@ a:hover {
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
-    top: 16%;
+    top: 10%;
     display: flex;
     justify-content: center;
 }
 
-#searchInput, #locationInput {
+#locationInput {
     font-family: 'Roboto', sans-serif;
     font-size: 1.5rem;
     text-align: left;
-    display: inline-block;
     width: 75%;
     padding: 0 10px;
     text-transform: uppercase;
@@ -81,22 +80,12 @@ a:hover {
 .leftContainer {
     width: 100%;
     height: 100%;
+    position: relative;
 }
 
 #map {
     width: 100%;
     height: 100%;
-}
-
-.gm-fullscreen-control, .gmnoprint {
-    display: none;
-}
-
-/* DEVICE = TABLETS */
-@media screen and (max-width: 600px) {
-    /* body {
-        background-color: lightblue;
-    } */
 }
 
 body, .container, .leftContainer, #map, .rightContainer, ul,
@@ -106,7 +95,6 @@ body, .container, .leftContainer, #map, .rightContainer, ul,
 }
 
 .leftContainer {
-    height: 100%;
     transition: all 0.5s ease-out;
 }
 
@@ -379,3 +367,19 @@ h4 {
     padding-bottom: 20px;
 }
 
+/* DEVICE = TABLETS */
+@media screen and (min-width: 601px) {
+    .rightContainer {
+        position: absolute;
+        right: 0;
+        top: 8%;
+        height: 92%;
+        width: 50%;
+    }
+
+    .leftContainer.active {
+        height: 100%;
+        width: 50%;
+    }
+
+}
