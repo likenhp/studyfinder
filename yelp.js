@@ -73,7 +73,12 @@ class YelpData {
 
             $(newDomElement).append(
                 $("<div>").addClass('restaurantInfo').attr('resultID', this.results.businesses[i].id)
-                    .append($("<h3>").addClass('restaurantName').text(resultInfo.name))
+                    .append($("<a>", {
+                        class: 'restaurantName',
+                        text: resultInfo.name,
+                        href: resultInfo.url,
+                        target: "_blank"
+                    }))
                     .append($("<h4>").addClass('restaurantLocation').text('Address: ' + resultInfo.location))
                     .append($("<h4>").addClass('restaurantLocation').text('Phone: ' + resultInfo.phone))
                     .append($("<h4>").addClass('restaurantPrice').text('Price: ' + resultInfo.price))
@@ -82,12 +87,7 @@ class YelpData {
                         $("<h4>")
                             .addClass('restaurantCategories')
                             .text('Category: ' + categories))
-                    .append($("<a>", {
-                        class: 'restaurantLink',
-                        text: 'Open in Yelp',
-                        href: resultInfo.url,
-                        target: "_blank"
-                    }))
+                    
             ).prepend(
                 $("<div>")
                     .addClass('imageContainer')
