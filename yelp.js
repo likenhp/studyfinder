@@ -33,7 +33,7 @@ class YelpData {
         })
     }
 
-    handleYelpSuccess(response){
+    handleYelpSuccess (response) {
         this.removeMarkersCallback();
         this.results = response;
 
@@ -43,7 +43,7 @@ class YelpData {
 
         var yelpDomElement = $("<div>").attr('id', 'yelp')
 
-        for (var i = 0; i < this.results.businesses.length; i++){
+        for (var i = 0; i < this.results.businesses.length; i++) {
             const resultInfo = {
                 image: this.results.businesses[i].image_url,
                 phone: this.results.businesses[i].display_phone,
@@ -54,9 +54,17 @@ class YelpData {
                 coordinates: this.results.businesses[i].coordinates,
                 id: this.results.businesses[i].id
             }
-            
-            resultInfo.location = this.results.businesses[i].location.display_address[0] + ' ' + this.results.businesses[i].location.display_address[1] + ', ' 
-            this.results.businesses[i].location.display_address[1];
+
+            const address = this.results.businesses[i].location.display_address;
+            let displayAddress = '';
+
+            for (let j = 0; j <= address.length-1; j++) {
+                if (j != address.length-1) {
+                    displayAddress += address[j] + ', ';
+                } else {
+                    displayAddress += address[j]
+                }
+            }
 
             var newDomElement = $("<div>").addClass('resultDiv restaurantDivider');
             var categories = "";
@@ -76,7 +84,7 @@ class YelpData {
                         href: resultInfo.url,
                         target: "_blank"
                     }))
-                    .append($("<h4>").addClass('restaurantLocation').text('Address: ' + resultInfo.location))
+                    .append($("<h4>").addClass('restaurantLocation').text('Address: ' + displayAddress))
                     .append($("<h4>").addClass('restaurantLocation').text('Phone: ' + resultInfo.phone))
                     .append($("<h4>").addClass('restaurantPrice').text('Price: ' + resultInfo.price))
                     .append($("<h4>").addClass('restaurantRating').text('Rating: ' + resultInfo.rating))
@@ -87,8 +95,7 @@ class YelpData {
                     
             ).prepend(
                 $("<div>")
-                    .addClass('imageContainer')
-                    .append('<img class="restaurantImage" resultID="'+resultInfo.id+'" src="'+resultInfo.image+'"/>')
+                    .addClass('imageContainer').append('<img class="restaurantImage" resultID="'+resultInfo.id+'" src="'+resultInfo.image+'"/>')
             );
             
             $(yelpDomElement).append(newDomElement);
@@ -154,8 +161,6 @@ class YelpData {
     handleBusinessModal (response) {
         const photosArray = response.photos;
         this.toggleModal(photosArray);
-
-        console.log(response);
     }
 
     toggleModal(photosArray){
