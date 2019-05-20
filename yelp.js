@@ -149,7 +149,7 @@ class YelpData {
         $('.restaurantImage').on('click', this.getBusinessData);
         
         $('.modal-close').on('click', () => {
-            $('.modal').css('display', 'none')
+            $('#modalCarousel').css('display', 'none')
         }); 
 
         $('.restaurantInfo').on('click', () => {
@@ -163,14 +163,27 @@ class YelpData {
     }
 
     toggleModal(photosArray){
-        
-        $('.modalImagesDiv').empty();
-        $('.modalImagesDiv')
-            .append('<img class="modalImage" class="modalImage" src="'+photosArray[0]+'"/>')
-            .append('<img class="modalImage" class="modalImage" src="'+photosArray[1]+'"/>')
-            .append('<img class="modalImage" class="modalImage" src="'+photosArray[2]+'"/>');
-        $('.modal').css('display', 'block').append(".modalImagesDiv");
-        $("#yelp").append(".modal");
-        ;
+        var content = $('.modal-content').empty();
+        console.log(photosArray);
+        var image = "";
+        for(var index=0; index<photosArray.length; index++){
+            image = '<img class="modalImage d-block w-100" src="'+photosArray[index]+'"/>';
+            if(index===0){
+                var modalImage = $("<div>").addClass("modalImagesDiv").addClass("item").addClass("active");
+            }else{
+                var modalImage = $("<div>").addClass("modalImagesDiv").addClass("item");
+            }
+            modalImage.append(image);
+            content.append(modalImage);
+        }
+        console.log(image)
+
+        //     .append()
+        //     .append('<img class="modalImage" class="modalImage" src="'+photosArray[1]+'"/>')
+        //     .append('<img class="modalImage" class="modalImage" src="'+photosArray[2]+'"/>');
+        $('.modal').css('display', 'block');
+        $(".carousel").carousel({
+            interval: 2000
+        });
     }
 }
