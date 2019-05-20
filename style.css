@@ -114,17 +114,11 @@ li.active {
     flex-wrap: wrap;
     align-items: center;
     overflow-y: scroll;
-    /* background-image: url('images/beer.jpg'); */
-    /* background-repeat: no-repeat;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center; */
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     right: 0;
-    /* transition: all .35 linear; */
     overflow: scroll;
 }
 
