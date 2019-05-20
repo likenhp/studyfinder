@@ -164,7 +164,6 @@ class YelpData {
 
     toggleModal(photosArray){
         var content = $('.carousel-inner').empty();
-        console.log(photosArray);
         for(var index=0; index<photosArray.length; index++){
             var image = '<img src="'+photosArray[index]+'"/>';
             if(index===0){
@@ -175,14 +174,7 @@ class YelpData {
             modalImage.append(image);
             content.append(modalImage);
         }
-        console.log(image)
-
-        //     .append()
-        //     .append('<img class="modalImage" class="modalImage" src="'+photosArray[1]+'"/>')
-        //     .append('<img class="modalImage" class="modalImage" src="'+photosArray[2]+'"/>');
         $('#modalCarousel').css('display', 'block');
-        // $(".carousel").carousel({
-        //     interval: 2000
-        // });
+
     }
 }
