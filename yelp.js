@@ -128,7 +128,6 @@ class YelpData {
 
     getBusinessData() {
         const resultID = $(this).attr('resultID');
-
         $.ajax({
             url: 'yelpid.php',
             dataType: 'json',
@@ -148,7 +147,7 @@ class YelpData {
 
     clickHandler() {
         $('.restaurantImage').on('click', this.getBusinessData);
-
+        
         $('.modal-close').on('click', () => {
             $('.modal').css('display', 'none')
         }); 
@@ -164,11 +163,14 @@ class YelpData {
     }
 
     toggleModal(photosArray){
+        
         $('.modalImagesDiv').empty();
         $('.modalImagesDiv')
             .append('<img class="modalImage" class="modalImage" src="'+photosArray[0]+'"/>')
             .append('<img class="modalImage" class="modalImage" src="'+photosArray[1]+'"/>')
             .append('<img class="modalImage" class="modalImage" src="'+photosArray[2]+'"/>');
-        $('.modal').css('display', 'block');
+        $('.modal').css('display', 'block').append(".modalImagesDiv");
+        $("#yelp").append(".modal");
+        ;
     }
 }
