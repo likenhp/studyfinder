@@ -47,7 +47,8 @@ function clickHandler () {
 
     $('ul li:nth-child(2)').on('click', function() {
         if ($('.tasksContainer').css('display','none')) {
-            $('.tasksContainer').show().addClass('active');
+            $('.tasksContainer').show()
+            $('.tasksContainer').addClass('active');
             $('ul li:nth-child(2)').addClass('active');
             $('#yelp').hide();
             $('ul li:nth-child(1)').removeClass('active');
