@@ -40,7 +40,7 @@ a:hover {
     /* box-shadow: 3px 3px 3px grey; */
 }
 
-.input-group-addon{
+.input-group-addon.submitSearch{
     position: relative;
     right: 10%;
 }
@@ -229,6 +229,7 @@ li.active {
     width: 100%;
     background-color: white;
     z-index: 2;
+    display: none;
 }
 
 #inputTask {

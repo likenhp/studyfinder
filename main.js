@@ -46,6 +46,7 @@ function clickHandler () {
     })
 
     $('ul li:nth-child(2)').on('click', function() {
+        debugger;
         if ($('.tasksContainer').css('display','none')) {
             $('.tasksContainer').show().addClass('active');
             $('ul li:nth-child(2)').addClass('active');
