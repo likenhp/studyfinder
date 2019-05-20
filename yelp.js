@@ -163,15 +163,14 @@ class YelpData {
     }
 
     toggleModal(photosArray){
-        var content = $('.modal-content').empty();
+        var content = $('.carousel-inner').empty();
         console.log(photosArray);
-        var image = "";
         for(var index=0; index<photosArray.length; index++){
-            image = '<img class="modalImage d-block w-100" src="'+photosArray[index]+'"/>';
+            var image = '<img src="'+photosArray[index]+'"/>';
             if(index===0){
-                var modalImage = $("<div>").addClass("modalImagesDiv").addClass("item").addClass("active");
+                var modalImage = $("<div>").addClass("item").addClass("active");
             }else{
-                var modalImage = $("<div>").addClass("modalImagesDiv").addClass("item");
+                var modalImage = $("<div>").addClass("item");
             }
             modalImage.append(image);
             content.append(modalImage);
@@ -181,9 +180,9 @@ class YelpData {
         //     .append()
         //     .append('<img class="modalImage" class="modalImage" src="'+photosArray[1]+'"/>')
         //     .append('<img class="modalImage" class="modalImage" src="'+photosArray[2]+'"/>');
-        $('.modal').css('display', 'block');
-        $(".carousel").carousel({
-            interval: 2000
-        });
+        $('#modalCarousel').css('display', 'block');
+        // $(".carousel").carousel({
+        //     interval: 2000
+        // });
     }
 }
