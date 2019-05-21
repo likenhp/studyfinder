@@ -75,6 +75,10 @@ a:hover {
     height: 60%;
 }
 
+.rightContainer {
+    padding: 0 10px;
+}
+
 .hide {
     display: none;
 }
@@ -216,13 +220,14 @@ li.active {
 }
 
 .restaurantDivider {
-    border-top: 1px solid #8c8b8b;
+    border-bottom: 1px solid #8c8b8b;
 }
 
 .tabsContainer {
     height: 97%;
     width: 100%;
     background-color: white;
+    border-top: 1px solid lightgrey;
 }
 
 .tasksContainer {
@@ -230,6 +235,46 @@ li.active {
     background-color: white;
     z-index: 2;
     display: none;
+}
+
+.delete-task-btn {
+    color: red;
+    padding: 15px;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+}
+
+.delete-task-btn:hover {
+    cursor: pointer;
+    color: darkred;
+}
+
+.visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 2s linear;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 2s, opacity 2s linear;
+}
+
+.tasks-header {
+    text-transform: uppercase;
+    border-bottom: 1px solid grey;
+    font-size: 1.7rem;
+}
+
+.new-task-row {
+    border-bottom: 1px solid lightgrey;
+}
+
+.input-group-addon {
+    border: none;
 }
 
 #inputTask {
@@ -332,6 +377,7 @@ img {
         top: 8%;
         height: 92%;
         width: 50%;
+        padding: 0 15px;
     }
 
     .leftContainer.active {
