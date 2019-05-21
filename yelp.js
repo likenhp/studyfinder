@@ -165,8 +165,12 @@ class YelpData {
 
     toggleModal(photosArray){
         $('.carousel-inner').empty();
+      
         for(var index=0; index<photosArray.length; index++){
-            var image = '<img src="'+photosArray[index]+'"/>';
+            var image = $("<div>", {
+                "style": 'background-image: url('+photosArray[index]+')',
+                "class": "image"
+            })
             if(index===0){
                 var modalImage = $("<div>").addClass("item").addClass("active");
             }else{
