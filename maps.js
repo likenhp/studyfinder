@@ -25,7 +25,8 @@ class Maps {
     }
 
     generateMarker (resultInfo) {
-        const content = '<h4 class="infowindow">' + resultInfo.name+'</h4>' + resultInfo.location;
+        console.log('map result info: ', resultInfo);
+        const content = '<h4 class="infowindow">' + resultInfo.name+'</h4>';
         var infowindow = new google.maps.InfoWindow({
             content: content,
             map: this.map
@@ -43,6 +44,20 @@ class Maps {
             this.map.setCenter(this.getPosition());
 
             infowindow.open(map.map, this);
+
+            $('.infowindow').click(() => {
+                let div1 = $('.restaurantInfo');
+                for (let i = 0; i < div1.length; i++){
+                    const yelpID = div1[i].getAttribute('resultid');
+                    if (yelpID === resultInfo.id){
+                        console.log('offset: ', div1.filter("[resultID = " + yelpID + "]"));
+                        $('#yelp').animate({
+                            scrollTop: div1.filter("[resultID = " + yelpID + "]").offset().top
+                        }, 500)
+                        return
+                    }
+                }
+            })
         });
 
         this.markers[resultInfo.id] = {
