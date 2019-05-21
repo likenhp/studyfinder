@@ -36,6 +36,7 @@ class YelpData {
     handleYelpSuccess (response) {
         this.removeMarkersCallback();
         this.results = response;
+        console.log('yelp results: ', this.results);
 
         $('.rightContainer').removeClass('hide');
         
@@ -85,7 +86,7 @@ class YelpData {
                         target: "_blank"
                     }))
                     .append($("<p>").addClass('restaurantLocation').text('Address: ' + displayAddress))
-                    .append($("<p>").addClass('restaurantLocation').text('Phone: ' + resultInfo.phone))
+                    .append($("<p>").addClass('restaurantPhone').text('Phone: ' + resultInfo.phone))
                     .append($("<p>").addClass('restaurantPrice').text('Price: ' + resultInfo.price))
                     .append($("<p>").addClass('restaurantRating').text('Rating: ' + resultInfo.rating))
                     .append(
@@ -163,7 +164,7 @@ class YelpData {
     }
 
     toggleModal(photosArray){
-        var content = $('.carousel-inner').empty();
+        $('.carousel-inner').empty();
         for(var index=0; index<photosArray.length; index++){
             var image = '<img src="'+photosArray[index]+'"/>';
             if(index===0){
@@ -172,7 +173,7 @@ class YelpData {
                 var modalImage = $("<div>").addClass("item");
             }
             modalImage.append(image);
-            content.append(modalImage);
+            $('.carousel-inner').append(modalImage);
         }
         $('#modalCarousel').css('display', 'block');
 

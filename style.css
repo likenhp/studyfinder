@@ -69,6 +69,7 @@ a:hover {
 
 .leftContainer {
     transition: all 0.5s ease-out;
+    padding: 0 5px 5px 5px;
 }
 
 .leftContainer.active {
@@ -76,7 +77,7 @@ a:hover {
 }
 
 .rightContainer {
-    padding: 0 10px;
+    padding: 0 5px 5px 5px;
 }
 
 .hide {
@@ -115,6 +116,11 @@ ul li:hover {
 li.active {
     background-color: lightgray;
     text-align: center;
+}
+
+.infowindow:hover {
+    cursor: pointer;
+    color: darkblue;
 }
 
 #yelp{
@@ -200,12 +206,18 @@ li.active {
 
 .restaurantInfo > p {
     margin: 0 auto;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
+    padding-top: 3px;
 }
 
 .restaurantInfo * {
     color: black;
     font-family: 'Montserrat', sans-serif;
+}
+
+.restaurantLocation:hover {
+    cursor: pointer;
+    color: darkblue;
 }
 
 .restaurantName {

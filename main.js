@@ -19,7 +19,9 @@ function clickHandler () {
     $('.searchContainer').on('keypress', function (e) {
         var locationInput = $('#locationInput').val().replace(' ', '_');
 
-        if (e.keyCode === 13 && locationInput !== "") {
+        if (e.keyCode === 13 && locationInput !== "" && $(".leftContainer").hasClass("active")) {
+            yelpData = new YelpData (locationInput, mapCallbacks);
+        } else if (e.keyCode === 13 && locationInput !== "") {
             yelpData = new YelpData (locationInput, mapCallbacks);
             $(".leftContainer").toggleClass("active");
             $(".searchContainer").toggleClass("active");
