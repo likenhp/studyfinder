@@ -5,7 +5,6 @@ var yelpData = null;
 function initializeApp () {
     tasks = new Tasks();
     map = new Maps();
-
     clickHandler();
 }
 

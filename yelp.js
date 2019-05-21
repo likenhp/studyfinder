@@ -128,7 +128,6 @@ class YelpData {
 
     getBusinessData() {
         const resultID = $(this).attr('resultID');
-
         $.ajax({
             url: 'yelpid.php',
             dataType: 'json',
@@ -148,9 +147,9 @@ class YelpData {
 
     clickHandler() {
         $('.restaurantImage').on('click', this.getBusinessData);
-
+        
         $('.modal-close').on('click', () => {
-            $('.modal').css('display', 'none')
+            $('#modalCarousel').css('display', 'none')
         }); 
 
         $('.restaurantInfo').on('click', () => {
@@ -164,11 +163,18 @@ class YelpData {
     }
 
     toggleModal(photosArray){
-        $('.modalImagesDiv').empty();
-        $('.modalImagesDiv')
-            .append('<img class="modalImage" class="modalImage" src="'+photosArray[0]+'"/>')
-            .append('<img class="modalImage" class="modalImage" src="'+photosArray[1]+'"/>')
-            .append('<img class="modalImage" class="modalImage" src="'+photosArray[2]+'"/>');
-        $('.modal').css('display', 'block');
+        var content = $('.carousel-inner').empty();
+        for(var index=0; index<photosArray.length; index++){
+            var image = '<img src="'+photosArray[index]+'"/>';
+            if(index===0){
+                var modalImage = $("<div>").addClass("item").addClass("active");
+            }else{
+                var modalImage = $("<div>").addClass("item");
+            }
+            modalImage.append(image);
+            content.append(modalImage);
+        }
+        $('#modalCarousel').css('display', 'block');
+
     }
 }
