@@ -163,16 +163,20 @@ class YelpData {
     }
 
     toggleModal(photosArray){
-        var content = $('.carousel-inner').empty();
+        $('.carousel-inner').empty();
+        $("#modalCarousel").attr("data-ride", "carousel");
         for(var index=0; index<photosArray.length; index++){
-            var image = '<img src="'+photosArray[index]+'"/>';
+            var image = $("<div>", {
+                "style": 'background-image: url('+photosArray[index]+')',
+                "class": "image"
+            })
             if(index===0){
                 var modalImage = $("<div>").addClass("item").addClass("active");
             }else{
                 var modalImage = $("<div>").addClass("item");
             }
             modalImage.append(image);
-            content.append(modalImage);
+            $('.carousel-inner').append(modalImage);
         }
         $('#modalCarousel').css('display', 'block');
 
