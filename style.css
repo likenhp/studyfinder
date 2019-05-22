@@ -250,7 +250,6 @@ li.active {
     width: 100%;
     background-color: white;
     z-index: 2;
-    display: none;
 }
 
 .delete-task-btn {
@@ -311,7 +310,6 @@ li.active {
 }
 
 .saved {
-    display: none;
     height: 100%;
     overflow: scroll;
 }
