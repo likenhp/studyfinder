@@ -25,7 +25,7 @@ class Maps {
     }
     
     generateMarker (resultInfo) {
-        const content = `<h4 class="infowindow" href="#${resultInfo.id}">` + resultInfo.name+'</h4>';
+        const content = `<h4 class="infowindow" href="#${resultInfo.id}">` + resultInfo.name+'</h4><p>' + resultInfo.address + '</p>';
 
       var infowindow = new google.maps.InfoWindow({
             content: content,

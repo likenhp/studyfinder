@@ -73,6 +73,8 @@ class YelpData {
                 }
             }
 
+            resultInfo['address'] = displayAddress;
+
             var newDomElement = $("<div>").attr("href", `#${resultInfo.id}`).addClass('resultDiv restaurantDivider');
             var categories = "";
 
