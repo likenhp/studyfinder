@@ -53,38 +53,46 @@ function clickHandler () {
     });
 
     $('ul li:nth-child(1)').on('click', function() {
-        if ($("#yelp").css('display','none')) {
-            $("#yelp").show();
+        if ($("#yelp").hasClass('hide')) {
+            $('.saved').addClass('hide');
+            $('.tasksContainer').addClass('hide');
+            $("#yelp").removeClass('hide');
             $('ul li:nth-child(1)').addClass('active');
-            $('.tasksContainer').hide();
             $('ul li:nth-child(2)').removeClass('active');
-            $('.saved').hide();
+            $('ul li:nth-child(3)').removeClass('active');
         }
     })
 
     $('ul li:nth-child(2)').on('click', function() {
-        if ($('.tasksContainer').css('display','none')) {
-            $('.tasksContainer').show().addClass('active');
-            $('ul li:nth-child(2)').addClass('active');
-            $('#yelp').hide();
+        if ($('.tasksContainer').hasClass('hide')) {
+            $('#yelp').addClass('hide');
+            $('.saved').addClass('hide');
+            $('.tasksContainer').removeClass('hide');
             $('ul li:nth-child(1)').removeClass('active');
-            $('.saved').hide();
+            $('ul li:nth-child(2)').addClass('active');
+            $('ul li:nth-child(3)').removeClass('active');
         }
     })
 
     $('ul li:nth-child(3)').on('click', function() {
-        if ($('.saved').css('display','none')) {
-            $('.tasksContainer').hide();
-            $('#yelp').hide();
-            $('.saved').show().addClass('active');
+        if ($('.saved').hasClass('hide')) {
+            $('.tasksContainer').addClass('hide');
+            $('#yelp').addClass('hide');
+            $('.saved').removeClass('hide');
             $('ul li:nth-child(1)').removeClass('active');
+            $('ul li:nth-child(2)').removeClass('active');
             $('ul li:nth-child(2)').removeClass('active');
         }
     })
 
     $(".save-btn").on('click', function () {
-        console.log(yelpData.scrollDiv);
         $(".saved").append(yelpData.scrollDiv);
         $(".save-btn").addClass('hide');
+        $("#yelp").addClass("hide");
+        $(".tasksContainer").addClass("hide");
+        $(".saved").removeClass("hide");
+        $('ul li:nth-child(1)').removeClass('active');
+        $('ul li:nth-child(2)').removeClass('active');
+        $('ul li:nth-child(3)').addClass('active');
     });
 }
