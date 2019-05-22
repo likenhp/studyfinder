@@ -2,11 +2,30 @@ $(document).ready(initializeApp);
 
 var yelpData = null;
 
+$(document).on({
+    ajaxStart: () => { 
+        $('.loadingScreen').css('display', 'block');
+        $('body').addClass('loading');
+    },
+    ajaxStop: () => { 
+        $('.loadingScreen').css('display', 'none');
+        $('body').removeClass('loading');
+    } 
+})
+
 function initializeApp () {
     tasks = new Tasks();
     map = new Maps();
-
     clickHandler();
+    
+}
+
+function checkLocalStorage () {
+    for (var index = 0; index < localStorage.length; index++){
+        var saved = localStorage.getItem(localStorage.key(index));
+        var clonedDiv = $("div[href='"+saved+"']");
+        $(".saved").append(clonedDiv);
+    }
 }
 
 function clickHandler () {
@@ -18,13 +37,20 @@ function clickHandler () {
     }
 
     $('.searchContainer').on('keypress', function (e) {
-        // var search = $('#searchInput').val().replace(' ', '_');
         var locationInput = $('#locationInput').val().replace(' ', '_');
 
-        if (e.keyCode === 13 && locationInput !== "") {
+        if (e.keyCode === 13 && locationInput !== "" && $(".leftContainer").hasClass("active")) {
+            yelpData = new YelpData (locationInput, mapCallbacks);
+            $('.yelpTab').addClass('active');
+            $(".tasksTab").removeClass("active");
+            $('.tasksContainer').removeClass('active').css('display', 'none');
+        } else if (e.keyCode === 13 && locationInput !== "") {
             yelpData = new YelpData (locationInput, mapCallbacks);
             $(".leftContainer").toggleClass("active");
+            $(".searchContainer").toggleClass("active");
+            $('.yelpTab').addClass('active');
         }
+
     });
 
     $('.submitSearch').on('click', () => {
@@ -37,21 +63,57 @@ function clickHandler () {
     });
 
     $('ul li:nth-child(1)').on('click', function() {
-        if ($("#yelp").css('display','none')) {
-            $("#yelp").show();
+        if ($("#yelp").hasClass('hide')) {
+            $('.saved').addClass('hide');
+            $('.tasksContainer').addClass('hide');
+            $("#yelp").removeClass('hide');
             $('ul li:nth-child(1)').addClass('active');
-            $('.tasksContainer').hide();
             $('ul li:nth-child(2)').removeClass('active');
+            $('ul li:nth-child(3)').removeClass('active');
         }
     })
 
     $('ul li:nth-child(2)').on('click', function() {
-        if ($('.tasksContainer').css('display','none')) {
-            $('.tasksContainer').show()
-            $('.tasksContainer').addClass('active');
-            $('ul li:nth-child(2)').addClass('active');
-            $('#yelp').hide();
+        if ($('.tasksContainer').hasClass('hide')) {
+            $('#yelp').addClass('hide');
+            $('.saved').addClass('hide');
+            $('.tasksContainer').removeClass('hide');
             $('ul li:nth-child(1)').removeClass('active');
+            $('ul li:nth-child(2)').addClass('active');
+            $('ul li:nth-child(3)').removeClass('active');
         }
+    })
+
+    $('ul li:nth-child(3)').on('click', function() {
+        if ($('.saved').hasClass('hide')) {
+            $('.tasksContainer').addClass('hide');
+            $('#yelp').addClass('hide');
+            $('.saved').removeClass('hide');
+            $('ul li:nth-child(1)').removeClass('active');
+            $('ul li:nth-child(2)').removeClass('active');
+            $('ul li:nth-child(2)').removeClass('active');
+        }
+    })
+
+    $(".save-btn").on('click', function () {
+        var saved = $(yelpData.scrollDiv).attr("href");
+
+        var clonedDiv = $("div[href='"+saved+"']");
+
+        localStorage.setItem(saved, saved);
+
+        $(".saved").append(clonedDiv);
+
+        $(".save-btn").addClass('hide');
+        $("#yelp").addClass("hide");
+        $(".tasksContainer").addClass("hide");
+        $(".saved").removeClass("hide");
+        $('ul li:nth-child(1)').removeClass('active');
+        $('ul li:nth-child(2)').removeClass('active');
+        $('ul li:nth-child(3)').addClass('active');
+    });
+
+    $(".tasksTab").on('click', function () {
+        checkLocalStorage();
     })
 }

@@ -22,17 +22,17 @@ class Tasks {
         let date = new Date();
 
         date = date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear();
-        $('.tasks').append(
-            $('<tr>')
-                .append($("<th>").text('In-Progress').addClass('col-xs-3 col-md-3'))
-                .append($("<th>").text(task).addClass('col-xs-5 col-md-5'))
+        $('.tasks')
+            .append($('<tr>').addClass('new-task-row').css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 'fast')
+                .append($("<th>").text('In-Progress').addClass('col-xs-4 col-md-4'))
+                .append($("<th>").text(task).addClass('col-xs-4 col-md-4'))
                 .append($("<th>").text(date).addClass('col-xs-4 col-md-4'))
                 .append($("<th>").addClass('col-xs-4 col-md-4')
                     .append(
-                        $("<button>")
-                            .text('Delete')
-                            .on('click', function() {
-                                $(event.currentTarget).parent().parent().remove();
+                        $('<div>')
+                            .addClass('glyphicon glyphicon-trash delete-task-btn')
+                            .on('click', () => {
+                                $(event.currentTarget).parent().parent().fadeOut('fast');
                             })
                 ))
         );
