@@ -72,7 +72,7 @@ class YelpData {
                 }
             }
 
-            var newDomElement = $("<div>").addClass('resultDiv restaurantDivider');
+            var newDomElement = $("<div>").attr("href", `#${resultInfo.id}`).addClass('resultDiv restaurantDivider');
             var categories = "";
 
             for (var j=0; j<this.results.businesses[i].categories.length; j++) {

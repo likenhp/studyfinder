@@ -22,11 +22,12 @@ class Maps {
         this.removeMarkers = this.removeMarkers.bind(this);
         this.zoomToLocation = this.zoomToLocation.bind(this);
         this.setCenter = this.setCenter.bind(this);
-    }
+    }]
+    
+    generateMarker (resultInfo) {
+        const content = `<h4 class="infowindow" href="#${resultInfo.id}">` + resultInfo.name+'</h4>';
 
-    generateMarker(resultInfo) {
-        const content = '<h4 class="infowindow">' + resultInfo.name + '</h4>';
-        var infowindow = new google.maps.InfoWindow({
+      var infowindow = new google.maps.InfoWindow({
             content: content,
             map: this.map
         })
@@ -35,26 +36,20 @@ class Maps {
             position: { lat: resultInfo.coordinates.latitude, lng: resultInfo.coordinates.longitude },
             map: this.map,
         });
-
-        marker.addListener('click', function () {
+      
+        marker.addListener('click', function() {
             map.closeLastInfowindow(infowindow);
 
             this.map.setZoom(map.zoomLevels.markers);
             this.map.setCenter(this.getPosition());
 
             infowindow.open(map.map, this);
+          
+            const scrollDiv = $(`div[href="#${resultInfo.id}"`)
 
-            let div1 = $('.restaurantInfo');
-            for (let i = 0; i < div1.length; i++) {
-                const yelpID = div1[i].getAttribute('resultid');
-                if (yelpID === resultInfo.id) {
-                    $('.infowindow').click(() => {
-                        $('#yelp').animate({
-                            scrollTop: div1.filter("[resultID = " + yelpID + "]").offset().top
-                        })
-                    })
-                }
-            }
+            $('#yelp').animate({
+                scrollTop: scrollDiv.position().top
+            }, 650)
         });
 
         this.markers[resultInfo.id] = {
