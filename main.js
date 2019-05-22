@@ -17,6 +17,15 @@ function initializeApp () {
     tasks = new Tasks();
     map = new Maps();
     clickHandler();
+    
+}
+
+function checkLocalStorage () {
+    for (var index = 0; index < localStorage.length; index++){
+        var saved = localStorage.getItem(localStorage.key(index));
+        var clonedDiv = $("div[href='"+saved+"']");
+        $(".saved").append(clonedDiv);
+    }
 }
 
 function clickHandler () {
@@ -41,6 +50,7 @@ function clickHandler () {
             $(".searchContainer").toggleClass("active");
             $('.yelpTab').addClass('active');
         }
+
     });
 
     $('.submitSearch').on('click', () => {
@@ -86,7 +96,14 @@ function clickHandler () {
     })
 
     $(".save-btn").on('click', function () {
-        $(".saved").append(yelpData.scrollDiv);
+        var saved = $(yelpData.scrollDiv).attr("href");
+
+        var clonedDiv = $("div[href='"+saved+"']");
+
+        localStorage.setItem(saved, saved);
+
+        $(".saved").append(clonedDiv);
+
         $(".save-btn").addClass('hide');
         $("#yelp").addClass("hide");
         $(".tasksContainer").addClass("hide");
@@ -95,4 +112,8 @@ function clickHandler () {
         $('ul li:nth-child(2)').removeClass('active');
         $('ul li:nth-child(3)').addClass('active');
     });
+
+    $(".tasksTab").on('click', function () {
+        checkLocalStorage();
+    })
 }
