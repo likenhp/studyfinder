@@ -303,10 +303,12 @@ li.active {
 
 .save-btn {
     position: absolute;
-    background-color: hotpink;
     transform: translate(-50%, -50%);
     bottom: 7%;
     left: 50%;
+    font-size: 2.5rem;
+    border-radius: 8px;
+    padding: 10px 15px;
 }
 
 .saved {
