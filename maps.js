@@ -1,7 +1,7 @@
 class Maps {
-    constructor (zoomLevels) {
+    constructor(zoomLevels) {
         this.center = {
-            lat:33.67, lng:-117.78
+            lat: 33.67, lng: -117.78
         };
         this.zoomLevels = {
             markers: 15,
@@ -24,20 +24,19 @@ class Maps {
         this.setCenter = this.setCenter.bind(this);
     }
 
-    generateMarker (resultInfo) {
-        console.log('map result info: ', resultInfo);
-        const content = '<h4 class="infowindow">' + resultInfo.name+'</h4>';
+    generateMarker(resultInfo) {
+        const content = '<h4 class="infowindow">' + resultInfo.name + '</h4>';
         var infowindow = new google.maps.InfoWindow({
             content: content,
             map: this.map
         })
 
         var marker = new google.maps.Marker({
-            position: {lat: resultInfo.coordinates.latitude, lng: resultInfo.coordinates.longitude},
+            position: { lat: resultInfo.coordinates.latitude, lng: resultInfo.coordinates.longitude },
             map: this.map,
         });
 
-        marker.addListener('click', function() {
+        marker.addListener('click', function () {
             map.closeLastInfowindow(infowindow);
 
             this.map.setZoom(map.zoomLevels.markers);
@@ -45,19 +44,17 @@ class Maps {
 
             infowindow.open(map.map, this);
 
-            $('.infowindow').click(() => {
-                let div1 = $('.restaurantInfo');
-                for (let i = 0; i < div1.length; i++){
-                    const yelpID = div1[i].getAttribute('resultid');
-                    if (yelpID === resultInfo.id){
-                        console.log('offset: ', div1.filter("[resultID = " + yelpID + "]"));
+            let div1 = $('.restaurantInfo');
+            for (let i = 0; i < div1.length; i++) {
+                const yelpID = div1[i].getAttribute('resultid');
+                if (yelpID === resultInfo.id) {
+                    $('.infowindow').click(() => {
                         $('#yelp').animate({
                             scrollTop: div1.filter("[resultID = " + yelpID + "]").offset().top
-                        }, 500)
-                        return
-                    }
+                        })
+                    })
                 }
-            })
+            }
         });
 
         this.markers[resultInfo.id] = {
@@ -70,22 +67,22 @@ class Maps {
         };
     }
 
-    removeMarkers () {
+    removeMarkers() {
         for (var key in this.markers) {
             this.markers[key].marker.setMap(null);
             delete this.markers[key];
         }
     }
 
-    zoomToLocation (resultID) {
+    zoomToLocation(resultID) {
         this.closeLastInfowindow(this.markers[resultID].infowindow);
-        
+
         this.map.setZoom(this.zoomLevels.markers);
         this.map.setCenter(this.markers[resultID].coordinates);
         this.markers[resultID].infowindow.open(this.map, this.markers[resultID].marker);
     }
 
-    closeLastInfowindow (infowindow) {
+    closeLastInfowindow(infowindow) {
         if (map.lastResultClicked !== null) {
             map.lastResultClicked.close();
         }
@@ -93,7 +90,7 @@ class Maps {
         map.lastResultClicked = infowindow;
     }
 
-    setCenter (region) {        
+    setCenter(region) {
         this.map.setCenter({
             lat: region.latitude,
             lng: region.longitude

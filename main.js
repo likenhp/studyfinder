@@ -2,6 +2,37 @@ $(document).ready(initializeApp);
 
 var yelpData = null;
 
+// $(document).on({
+//     ajaxStart: () => { 
+//         $('body').addClass("loading");
+//     },
+//     ajaxStop: () => { 
+//         $('body').removeClass("loading");
+//     } 
+// })
+
+// $(document).on({
+//     ajaxStart: () => { 
+//         $('.spinner').css('display', 'block');
+//         $('body').css('opacity', '0.5');
+//     },
+//     ajaxStop: () => { 
+//         $('.spinner').css('display', 'none');
+//         $('body').css('opacity', '1');
+//     } 
+// })
+
+$(document).on({
+    ajaxStart: () => { 
+        $('.sk-cube-grid').css('display', 'block');
+        $('body').css('opacity', '0.5');
+    },
+    ajaxStop: () => { 
+        // $('.sk-cube-grid').css('display', 'none');
+        $('body').css('opacity', '1');
+    } 
+})
+
 function initializeApp () {
     tasks = new Tasks();
     map = new Maps();
@@ -21,10 +52,14 @@ function clickHandler () {
 
         if (e.keyCode === 13 && locationInput !== "" && $(".leftContainer").hasClass("active")) {
             yelpData = new YelpData (locationInput, mapCallbacks);
+            $('.yelpTab').addClass('active');
+            $(".tasksTab").removeClass("active");
+            $('.tasksContainer').removeClass('active').css('display', 'none');
         } else if (e.keyCode === 13 && locationInput !== "") {
             yelpData = new YelpData (locationInput, mapCallbacks);
             $(".leftContainer").toggleClass("active");
             $(".searchContainer").toggleClass("active");
+            $('.yelpTab').addClass('active');
         }
     });
 
