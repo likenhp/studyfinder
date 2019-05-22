@@ -36,13 +36,18 @@ class YelpData {
     handleYelpSuccess (response) {
         this.removeMarkersCallback();
         this.results = response;
-        console.log('yelp results: ', this.results);
 
         $('.rightContainer').removeClass('hide');
         
         $('#yelp').remove();
 
-        var yelpDomElement = $("<div>").attr('id', 'yelp')
+        var yelpDomElement = $("<div>").attr('id', 'yelp');
+
+        let loadingSpan = $('<span>').addClass('sr-only').text('Loading...');
+        let spinnerDiv = $('<div>').addClass('spinner-border');
+        let loadingContainer = $('<div>').addClass('d-flex justify-content-center loading-container');
+
+        yelpDomElement.append(loadingContainer).append(spinnerDiv).append(loadingSpan);
 
         for (var i = 0; i < this.results.businesses.length; i++) {
             const resultInfo = {
@@ -180,6 +185,5 @@ class YelpData {
             $('.carousel-inner').append(modalImage);
         }
         $('#modalCarousel').css('display', 'block');
-
     }
 }

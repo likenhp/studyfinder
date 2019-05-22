@@ -2,6 +2,17 @@ $(document).ready(initializeApp);
 
 var yelpData = null;
 
+$(document).on({
+    ajaxStart: () => { 
+        $('.loadingScreen').css('display', 'block');
+        $('body').addClass('loading');
+    },
+    ajaxStop: () => { 
+        $('.loadingScreen').css('display', 'none');
+        $('body').removeClass('loading');
+    } 
+})
+
 function initializeApp () {
     tasks = new Tasks();
     map = new Maps();
@@ -21,10 +32,14 @@ function clickHandler () {
 
         if (e.keyCode === 13 && locationInput !== "" && $(".leftContainer").hasClass("active")) {
             yelpData = new YelpData (locationInput, mapCallbacks);
+            $('.yelpTab').addClass('active');
+            $(".tasksTab").removeClass("active");
+            $('.tasksContainer').removeClass('active').css('display', 'none');
         } else if (e.keyCode === 13 && locationInput !== "") {
             yelpData = new YelpData (locationInput, mapCallbacks);
             $(".leftContainer").toggleClass("active");
             $(".searchContainer").toggleClass("active");
+            $('.yelpTab').addClass('active');
         }
     });
 

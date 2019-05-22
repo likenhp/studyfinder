@@ -29,7 +29,7 @@ a:hover {
 
 #locationInput {
     font-family: 'Roboto', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1rem;
     text-align: left;
     width: 80%;
     position: relative;
@@ -69,7 +69,7 @@ a:hover {
 
 .leftContainer {
     transition: all 0.5s ease-out;
-    padding: 0 5px 5px 5px;
+    padding: 0;
 }
 
 .leftContainer.active {
@@ -242,6 +242,10 @@ li.active {
     border-top: 1px solid lightgrey;
 }
 
+.tabs {
+    line-height: 41px;
+}
+
 .tasksContainer {
     width: 100%;
     background-color: white;
@@ -382,7 +386,29 @@ li.active {
     background-size: contain;
 }
 
+.imageContainer {
+    height: 250px;
+    width: 250px;
+}
 
+.loadingScreen {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('images/loading.gif') 
+                50% 50% 
+                no-repeat;
+}
+
+body.loading .loadingScreen {
+    overflow: hidden;   
+    display: block; 
+}
 
 /* DEVICE = TABLET, DESKTOP */
 @media screen and (min-width: 769px) {
@@ -401,10 +427,11 @@ li.active {
     }
 
     .imageContainer {
-        height: 200px;
-        width: 200px;
+        height: 165px;
+        width: 165px;
         display: inline-block;
         padding: 5px;
+        margin-right: 10px;
     }
 
     .restaurantImage {
@@ -416,6 +443,10 @@ li.active {
     .restaurantInfo {
         width: calc(100% - 210px);
         padding: 0;
+    }
+
+    #locationInput {
+        font-size: 1.5rem;
     }
 }
 
