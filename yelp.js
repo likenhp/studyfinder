@@ -1,6 +1,7 @@
 class YelpData {
     constructor(locationInput, mapCallbacks){
         this.results = null;
+        this.scrollDiv = null;
         this.locationInput = locationInput;
         this.generateMarkerCallback = mapCallbacks.generateMarkerCallback;
         this.removeMarkersCallback = mapCallbacks.removeMarkersCallback;

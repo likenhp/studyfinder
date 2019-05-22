@@ -49,12 +49,12 @@ class Maps {
                 $(".save-btn").addClass("hide");
             })
           
-            const scrollDiv = $(`div[href="#${resultInfo.id}"`)
+            yelpData.scrollDiv = $(`div[href="#${resultInfo.id}"`);
 
             $(".save-btn").removeClass("hide");
 
             $('#yelp').animate({
-                scrollTop: scrollDiv.position().top
+                scrollTop: yelpData.scrollDiv.position().top
             }, 650)
         });
 

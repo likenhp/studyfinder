@@ -81,4 +81,10 @@ function clickHandler () {
             $('ul li:nth-child(2)').removeClass('active');
         }
     })
+
+    $(".save-btn").on('click', function () {
+        console.log(yelpData.scrollDiv);
+        $(".saved").append(yelpData.scrollDiv);
+        $(".save-btn").addClass('hide');
+    });
 }
