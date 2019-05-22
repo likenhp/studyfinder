@@ -2,34 +2,14 @@ $(document).ready(initializeApp);
 
 var yelpData = null;
 
-// $(document).on({
-//     ajaxStart: () => { 
-//         $('body').addClass("loading");
-//     },
-//     ajaxStop: () => { 
-//         $('body').removeClass("loading");
-//     } 
-// })
-
-// $(document).on({
-//     ajaxStart: () => { 
-//         $('.spinner').css('display', 'block');
-//         $('body').css('opacity', '0.5');
-//     },
-//     ajaxStop: () => { 
-//         $('.spinner').css('display', 'none');
-//         $('body').css('opacity', '1');
-//     } 
-// })
-
 $(document).on({
     ajaxStart: () => { 
-        $('.sk-cube-grid').css('display', 'block');
-        $('body').css('opacity', '0.5');
+        $('.loadingScreen').css('display', 'block');
+        $('body').addClass('loading');
     },
     ajaxStop: () => { 
-        // $('.sk-cube-grid').css('display', 'none');
-        $('body').css('opacity', '1');
+        $('.loadingScreen').css('display', 'none');
+        $('body').removeClass('loading');
     } 
 })
 
