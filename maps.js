@@ -22,7 +22,7 @@ class Maps {
         this.removeMarkers = this.removeMarkers.bind(this);
         this.zoomToLocation = this.zoomToLocation.bind(this);
         this.setCenter = this.setCenter.bind(this);
-    }]
+    }
     
     generateMarker (resultInfo) {
         const content = `<h4 class="infowindow" href="#${resultInfo.id}">` + resultInfo.name+'</h4>';
@@ -46,6 +46,8 @@ class Maps {
             infowindow.open(map.map, this);
           
             const scrollDiv = $(`div[href="#${resultInfo.id}"`)
+
+            console.log(scrollDiv);
 
             $('#yelp').animate({
                 scrollTop: scrollDiv.position().top
