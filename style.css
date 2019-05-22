@@ -302,6 +302,14 @@ li.active {
     font-family: 'IBM Plex Sans', sans-serif;
 }
 
+.save-btn {
+    position: absolute;
+    background-color: hotpink;
+    transform: translate(-50%, -50%);
+    bottom: 7%;
+    left: 50%;
+}
+
 .saved {
     display: none;
     height: 100%;

@@ -44,10 +44,14 @@ class Maps {
             this.map.setCenter(this.getPosition());
 
             infowindow.open(map.map, this);
+
+            infowindow.addListener('closeclick', () => {
+                $(".save-btn").addClass("hide");
+            })
           
             const scrollDiv = $(`div[href="#${resultInfo.id}"`)
 
-            console.log(scrollDiv);
+            $(".save-btn").removeClass("hide");
 
             $('#yelp').animate({
                 scrollTop: scrollDiv.position().top
