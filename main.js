@@ -58,6 +58,7 @@ function clickHandler () {
             $('ul li:nth-child(1)').addClass('active');
             $('.tasksContainer').hide();
             $('ul li:nth-child(2)').removeClass('active');
+            $('.saved').hide();
         }
     })
 
@@ -67,6 +68,17 @@ function clickHandler () {
             $('ul li:nth-child(2)').addClass('active');
             $('#yelp').hide();
             $('ul li:nth-child(1)').removeClass('active');
+            $('.saved').hide();
+        }
+    })
+
+    $('ul li:nth-child(3)').on('click', function() {
+        if ($('.saved').css('display','none')) {
+            $('.tasksContainer').hide();
+            $('#yelp').hide();
+            $('.saved').show().addClass('active');
+            $('ul li:nth-child(1)').removeClass('active');
+            $('ul li:nth-child(2)').removeClass('active');
         }
     })
 }
