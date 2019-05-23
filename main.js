@@ -24,6 +24,17 @@ function checkLocalStorage () {
     for (var index = 0; index < localStorage.length; index++){
         var saved = localStorage.getItem(localStorage.key(index));
         var clonedDiv = $("div[href='"+saved+"']");
+        var deleteBtn = $("<span/>")
+            .addClass("deleteSave").addClass("glyphicon").addClass("glyphicon-trash")
+            .on("click", function () {
+                var savedItem = $(this).parent().attr("href");
+                var savedDiv = $(this).parent();
+                localStorage.removeItem(savedItem);
+                $(savedDiv).remove();
+            });
+        if(!clonedDiv.has(".deleteSave").length){
+            $(clonedDiv).append(deleteBtn);
+        }
         $(".saved").append(clonedDiv);
     }
 }
@@ -97,13 +108,20 @@ function clickHandler () {
 
     $(".save-btn").on('click', function () {
         var saved = $(yelpData.scrollDiv).attr("href");
-
         var clonedDiv = $("div[href='"+saved+"']");
-
+        var deleteBtn = $("<span/>")
+            .addClass("deleteSave").addClass("glyphicon").addClass("glyphicon-trash")
+            .on("click", function () {
+                var savedItem = $(this).parent().attr("href");
+                var savedDiv = $(this).parent();
+                localStorage.removeItem(savedItem);
+                $(savedDiv).remove();
+            });
         localStorage.setItem(saved, saved);
-
+        if(!clonedDiv.has(".deleteSave").length){
+            $(clonedDiv).append(deleteBtn);
+        }
         $(".saved").append(clonedDiv);
-
         $(".save-btn").addClass('hide');
         $("#yelp").addClass("hide");
         $(".tasksContainer").addClass("hide");
@@ -113,7 +131,11 @@ function clickHandler () {
         $('ul li:nth-child(3)').addClass('active');
     });
 
-    $(".tasksTab").on('click', function () {
+    $(".tasksTab").one('click', function () {
         checkLocalStorage();
+    })
+
+    $(".deleteSave").on("click", function () {
+        console.log(saved);
     })
 }
