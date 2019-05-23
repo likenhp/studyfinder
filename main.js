@@ -35,7 +35,7 @@ function checkLocalStorage () {
             })
         
         if (!clonedDiv.has(".deleteSave").length) {
-            $(clonedDiv).append(deleteBtn);
+            $(".restaurantInfo").append(deleteBtn);
         }
         
         $(".saved").append(clonedDiv);
@@ -124,7 +124,7 @@ function clickHandler () {
         localStorage.setItem(saved, saved);
         
         if (!clonedDiv.has(".deleteSave").length) {
-            $(clonedDiv).append(deleteBtn);
+            $(".restaurantInfo").append(deleteBtn);
         }
         
         $(".saved").append(clonedDiv);

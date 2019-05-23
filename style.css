@@ -167,6 +167,7 @@ li.active {
 .restaurantInfo * {
     color: black;
     font-family: 'Montserrat', sans-serif;
+    position: relative;
 }
 
 .restaurantLocation:hover {
@@ -349,11 +350,14 @@ body.loading .loadingScreen {
 }
 
 .deleteSave {
-    position: absolute;
-    top: 250px;
+    font-size: 20px;
+    color: red;
+    font-family: "Glyphicons Halflings";
+    margin: 1rem;
 }
 
 /* DEVICE = TABLET, DESKTOP */
+
 @media screen and (min-width: 769px) {
     .rightContainer {
         position: absolute;
@@ -385,6 +389,7 @@ body.loading .loadingScreen {
         width: calc(100% - 265px);
         display: inline-block;
         margin: 10px 5px 5px 10px;
+        position: relative;
     }
 
     #locationInput {
