@@ -1,5 +1,5 @@
 class Maps {
-    constructor(zoomLevels) {
+    constructor (zoomLevels) {
         this.center = {
             lat: 33.67, lng: -117.78
         };
@@ -68,14 +68,14 @@ class Maps {
         };
     }
 
-    removeMarkers() {
+    removeMarkers () {
         for (var key in this.markers) {
             this.markers[key].marker.setMap(null);
             delete this.markers[key];
         }
     }
 
-    zoomToLocation(resultID) {
+    zoomToLocation (resultID) {
         this.closeLastInfowindow(this.markers[resultID].infowindow);
 
         this.map.setZoom(this.zoomLevels.markers);
@@ -83,7 +83,7 @@ class Maps {
         this.markers[resultID].infowindow.open(this.map, this.markers[resultID].marker);
     }
 
-    closeLastInfowindow(infowindow) {
+    closeLastInfowindow (infowindow) {
         if (map.lastResultClicked !== null) {
             map.lastResultClicked.close();
         }
@@ -91,7 +91,7 @@ class Maps {
         map.lastResultClicked = infowindow;
     }
 
-    setCenter(region) {
+    setCenter (region) {
         this.map.setCenter({
             lat: region.latitude,
             lng: region.longitude

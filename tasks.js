@@ -1,5 +1,5 @@
 class Tasks {
-    constructor() {
+    constructor () {
         this.createTask = [];
 
         this.handleAdd = this.handleAdd.bind(this);
@@ -7,21 +7,23 @@ class Tasks {
         this.addEventHandlers();
     }
 
-    addEventHandlers() {
+    addEventHandlers () {
         $('.submitTask').on('click', this.handleAdd);
         $('.addTask').on('keypress', (e) => {
             if (e.keyCode === 13 && $('#inputTask').val() !== "") {
                 this.handleAdd();
             }
         });
+
         $('.completedTask').on('click', this.completedTask);
     }
 
-    handleAdd() {
+    handleAdd () {
         const task = $('#inputTask').val();
         let date = new Date();
 
         date = date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear();
+
         $('.tasks')
             .append($('<tr>').addClass('new-task-row').css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 'fast')
                 .append($("<th>").text('In-Progress').addClass('col-xs-4 col-md-4'))
