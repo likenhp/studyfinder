@@ -119,13 +119,11 @@ class YelpData {
         this.clickHandler();
     }
 
-    handleYelpError(response){
-        console.log('yelp error response', response);
-
+    handleYelpError () {
         alert('yelp error');
     }
 
-    toggleResultsWindow() {
+    toggleResultsWindow () {
         $("#yelp").toggle();
 
         if ($("#yelp")) {
@@ -135,7 +133,7 @@ class YelpData {
         }
     }
 
-    getBusinessData() {
+    getBusinessData () {
         const resultID = $(this).attr('resultID');
         $.ajax({
             url: 'yelpid.php',
@@ -154,7 +152,7 @@ class YelpData {
         }) 
     }
 
-    clickHandler() {
+    clickHandler () {
         $('.restaurantImage').on('click', this.getBusinessData);
         
         $('.modal-close').on('click', () => {
@@ -171,22 +169,26 @@ class YelpData {
         this.toggleModal(photosArray);
     }
 
-    toggleModal(photosArray){
+    toggleModal (photosArray) {
         $('.carousel-inner').empty();
       
-        for(var index=0; index<photosArray.length; index++){
+        for (var index=0; index<photosArray.length; index++) {
             var image = $("<div>", {
                 "style": 'background-image: url('+photosArray[index]+')',
                 "class": "image"
             })
-            if(index===0){
+
+            if (index === 0) {
                 var modalImage = $("<div>").addClass("item").addClass("active");
-            }else{
+            } else {
                 var modalImage = $("<div>").addClass("item");
             }
+            
             modalImage.append(image);
+
             $('.carousel-inner').append(modalImage);
         }
+
         $('#modalCarousel').css('display', 'block');
     }
 }

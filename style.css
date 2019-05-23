@@ -18,26 +18,17 @@ a:hover {
     height: 40px;
     width: 100%;
     z-index: 1;
-    box-sizing: border-box;
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
     top: 80px;
-    /* display: flex; */
-    justify-content: center;
 }
 
 #locationInput {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    text-align: left;
     width: 80%;
-    position: relative;
     left: 10%;
     padding: 0 10px;
     text-transform: uppercase;
-    /* border-radius: 10px; */
-    /* box-shadow: 3px 3px 3px grey; */
 }
 
 .input-group-addon.submitSearch{
@@ -84,27 +75,18 @@ a:hover {
     display: none;
 }
 
-.menu {
-    height: 5%;
-    background-color: white;
-}
-
 ul {
     height: 100%;
-    width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-content: center;
-    text-align: left;
     list-style-type: none;
 }
 
 ul li {
     width: 50%;
-    text-align: center;
     font-size: 16px;
     font-family: 'Titillium Web', sans-serif;
     transition: 0.3s;
+    text-align: center;
 }
 
 ul li:hover {
@@ -115,7 +97,6 @@ ul li:hover {
 
 li.active {
     background-color: lightgray;
-    text-align: center;
 }
 
 .infowindow:hover {
@@ -124,18 +105,11 @@ li.active {
 }
 
 #yelp{
-    width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: center;
-    overflow-y: scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    right: 0;
     overflow: scroll;
 }
 
@@ -162,46 +136,26 @@ li.active {
 } 
 
 .imageContainer {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 5px;
+    height: 100vw;
+    width: 100vw;
 }
 
 .restaurantImage {
-    height: 90%;
-    width: 90%;
-    border-radius: 10px;
+    height: 100%;
+    width: 100%;
     margin: 10px 0 auto;
 }
 
-.resultDiv {
-    display: inline-block;
-    width: 100%;
-    /* border: 1px solid black; */
-    box-sizing: border-box;
-}
-
 .restaurantInfo {
-    font-family: 'IBM Plex Sans', sans-serif;
-    display: inline-block;
-    vertical-align: top;
     font-size: 1rem;
-    margin: 5px;
+    margin: 15px 5px 5px 5px;
     width: 100%;
-    border-radius: 10px;
-    padding: 0 0 7px 20px;
-    background-color: white;
-    opacity: 0.7;
     filter: alpha(opacity=70);
     transition: 0.3s;
-    position: relative;
 }
 
 .restaurantInfo > a {
     font-size: 2.3rem;
-    font-weight: bold;
 }
 
 .restaurantInfo > p {
@@ -237,8 +191,6 @@ li.active {
 
 .tabsContainer {
     height: 95%;
-    width: 100%;
-    background-color: white;
     border-top: 1px solid lightgrey;
 }
 
@@ -290,11 +242,7 @@ li.active {
 
 #inputTask {
     padding: 8px;
-    box-sizing: border-box;
-    line-height: 2;
     width: 100%;
-    font-size: 15px;
-    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .save-btn {
@@ -315,10 +263,6 @@ li.active {
 .toggleResultWindow {
     width: 100%;
     background-color: white;
-}
-
-.resultDiv {
-    position: relative;
 }
 
 #modalCarousel {
@@ -385,11 +329,6 @@ li.active {
     background-size: contain;
 }
 
-.imageContainer {
-    height: 250px;
-    width: 250px;
-}
-
 .loadingScreen {
     display:    none;
     position:   fixed;
@@ -409,6 +348,11 @@ body.loading .loadingScreen {
     display: block; 
 }
 
+.deleteSave {
+    position: absolute;
+    top: 250px;
+}
+
 /* DEVICE = TABLET, DESKTOP */
 @media screen and (min-width: 769px) {
     .rightContainer {
@@ -426,21 +370,21 @@ body.loading .loadingScreen {
     }
 
     .imageContainer {
-        height: 165px;
-        width: 165px;
         display: inline-block;
-        padding: 5px;
+        margin: 15px 0;
+        height: 250px;
+        width: 250px;
+        vertical-align: top;
     }
 
     .restaurantImage {
-        width: 100%;
-        height: 100%;
         margin: 0;
     }
 
     .restaurantInfo {
-        width: calc(100% - 210px);
-        padding: 0;
+        width: calc(100% - 265px);
+        display: inline-block;
+        margin: 10px 5px 5px 10px;
     }
 
     #locationInput {

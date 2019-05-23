@@ -1,115 +1,112 @@
 <!DOCTYPE html>
 
 <html>
+    <head>
+        <title>Study Finder</title>
 
-<head>
-    <title>Study Finder</title>
+        <link rel="shortcut icon" type="image/x-icon" href="./images/icon.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="shortcut icon" type="image/x-icon" href="./images/icon.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Amatic+SC|Cabin|Rajdhani|Patua+One|IBM+Plex+Sans|Titillium+Web|Pacifico|Montserrat"
+            rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Roboto" rel="stylesheet">
 
-    <!-- Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Amatic+SC|Cabin|Rajdhani|Patua+One|IBM+Plex+Sans|Titillium+Web|Pacifico|Montserrat"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Roboto" rel="stylesheet">
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <!-- Google Maps API -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMjChvZRTpz-cZMNy4o1dFqhdy63Wq3CA"></script>
 
-    <!-- Google Maps API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMjChvZRTpz-cZMNy4o1dFqhdy63Wq3CA"></script>
+        <!-- CSS Files -->
+        <link rel="stylesheet" href="top.css">
+        <link rel="stylesheet" href="style.css">
 
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="top.css">
-    <link rel="stylesheet" href="style.css">
+        <!-- jQuery files -->
+        <script src="tasks.js"></script>
+        <script src="maps.js"></script>
+        <script src="yelp.js"></script>
+        <script src="main.js"></script>
+    </head>
 
-    <!-- jQuery files -->
-    <script src="tasks.js"></script>
-    <script src="maps.js"></script>
-    <script src="yelp.js"></script>
-    <script src="main.js"></script>
-</head>
-
-<body>
-
-    <!-- Yelp Photos Modal -->
-    <div id="modalCarousel" class="carousel slide">
-        <ol class="carousel-indicators">
-            <li data-target="#modalCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#modalCarousel" data-slide-to="1"></li>
-            <li data-target="#modalCarousel" data-slide-to="2"></li>
-        </ol>
-        <span class="modal-close">&times;</span>
-        <div class=" carousel-inner"></div>
-        <a class="left carousel-control" href="#modalCarousel" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#modalCarousel" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-    <!-- Yelp Photos Modal End -->
-
-    <div class="top">
-        <div class="pageTitle"><span>Study Finder</span></div>
-        <div class="aboutTitle"><span><a href="about.html">About Us</a></span></div>
-    </div>
-    <div class="container">
-        <div class="leftContainer">
-            <div class="searchContainer">
-                <div class="input-group input-group-lg">
-                    <input type="text" class="form-control" placeholder="what city do you want to study in?"
-                        id="locationInput" onfocus="this.value = ''">
-                    <span class="input-group-addon submitSearch"><i class=" glyphicon glyphicon-search"></i></span>
-                </div>
-            </div>
-            <div id="map"></div>
-            <button class="save-btn btn btn-primary hide">Save Result</button>
+    <body>
+        <!-- Yelp Photos Modal -->
+        <div id="modalCarousel" class="carousel slide">
+            <ol class="carousel-indicators">
+                <li data-target="#modalCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#modalCarousel" data-slide-to="1"></li>
+                <li data-target="#modalCarousel" data-slide-to="2"></li>
+            </ol>
+            <span class="modal-close">&times;</span>
+            <div class=" carousel-inner"></div>
+            <a class="left carousel-control" href="#modalCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#modalCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-        <div class="rightContainer hide">
-            <div class="menu">
-                <ul class="tabs">
-                    <li class="tab yelpTab">Results</li>
-                    <li class="tab tasksTab">My Tasks</li>
-                    <li class="tab tasksTab">Saved Results</li>
-                </ul>
+        <!-- Yelp Photos Modal End -->
+        <div class="top">
+            <div class="pageTitle"><span>Study Finder</span></div>
+            <div class="aboutTitle"><span><a href="about.html">About Us</a></span></div>
+        </div>
+        <div class="container">
+            <div class="leftContainer">
+                <div class="searchContainer">
+                    <div class="input-group input-group-lg">
+                        <input type="text" class="form-control" placeholder="what city do you want to study in?"
+                            id="locationInput" onfocus="this.value = ''">
+                        <span class="input-group-addon submitSearch"><i class=" glyphicon glyphicon-search"></i></span>
+                    </div>
+                </div>
+                <div id="map"></div>
+                <button class="save-btn btn btn-primary hide">Save Result</button>
             </div>
-            <div class="tabsContainer">
-                <div class="tasksContainer hide">
-                    <div class="form-group input-group col-xs-12 col-lg-12 addTask">
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-th-list"></span>
-                        </span>
-                        <input type="text" placeholder="New Task" id="inputTask">
-                        <span class="input-group-addon submitTask">
-                            <span class="glyphicon glyphicon glyphicon-plus">
+            <div class="rightContainer hide">
+                <div class="menu">
+                    <ul class="tabs">
+                        <li class="tab yelpTab">Results</li>
+                        <li class="tab tasksTab">My Tasks</li>
+                        <li class="tab tasksTab">Saved Results</li>
+                    </ul>
+                </div>
+                <div class="tabsContainer">
+                    <div class="tasksContainer hide">
+                        <div class="form-group input-group col-xs-12 col-lg-12 addTask">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-th-list"></span>
                             </span>
-                        </span>
+                            <input type="text" placeholder="New Task" id="inputTask">
+                            <span class="input-group-addon submitTask">
+                                <span class="glyphicon glyphicon glyphicon-plus">
+                                </span>
+                            </span>
+                        </div>
+                        <div class="allTasks">
+                            <table class="tasks">
+                                <thead class="tasks-header">
+                                    <th class="col-xs-4 col-md-4">Progress</th>
+                                    <th class="col-xs-4 col-md-4">Task</th>
+                                    <th class="col-xs-4 col-md-4">Date</th>
+                                    <th class="col-xs-4 col-md-4">Delete</th>
+                                </thead>
+                            </table>
+                        </div>
                     </div>
-                    <div class="allTasks">
-                        <table class="tasks">
-                            <thead class="tasks-header">
-                                <th class="col-xs-4 col-md-4">Progress</th>
-                                <th class="col-xs-4 col-md-4">Task</th>
-                                <th class="col-xs-4 col-md-4">Date</th>
-                                <th class="col-xs-4 col-md-4">Delete</th>
-                            </thead>
-                        </table>
-                    </div>
+                    <div class="saved hide"></div>
                 </div>
-                <div class="saved hide"></div>
             </div>
         </div>
-    </div>
-    <div class="loadingScreen"></div>
-</body>
+        <div class="loadingScreen"></div>
+    </body>
 
 </html>

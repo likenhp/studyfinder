@@ -18,7 +18,6 @@ function initializeApp () {
     map = new Maps();
     
     clickHandler();
-    
 }
 
 function checkLocalStorage () {
@@ -140,9 +139,5 @@ function clickHandler () {
 
     $(".tasksTab").one('click', function () {
         checkLocalStorage();
-    })
-
-    $(".deleteSave").on("click", function () {
-        console.log(saved);
     })
 }
