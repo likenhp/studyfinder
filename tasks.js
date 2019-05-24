@@ -45,8 +45,6 @@ class Tasks {
             date: date,
         }
 
-        debugger;
-
         console.log(newTask);
 
         localStorage.setItem('tasks', JSON.stringify([{newTask}, {...localStorage.tasks}]))
