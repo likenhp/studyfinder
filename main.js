@@ -8,7 +8,7 @@ $(document).on({
         $('body').addClass('loading');
     },
     ajaxStop: () => { 
-        $('.loadingScreen').css('display', 'none');
+        $('.loadingScreen').addClass('hide');
         $('body').removeClass('loading');
     } 
 })
@@ -32,7 +32,6 @@ function checkLocalStorage () {
     for (var index = 0; index < localStorage.length; index++){
         let saved = localStorage.getItem(localStorage.key(index));
         let clonedDiv = $("div[href='"+saved+"']").addClass("localeStoreDiv");
-        debugger;
         let deleteBtn = $("<span/>")
             .addClass("deleteSave").addClass("glyphicon").addClass("glyphicon-trash")
             .on("click", function () {
@@ -65,7 +64,7 @@ function clickHandler () {
             yelpData = new YelpData (locationInput, mapCallbacks);
             $('.yelpTab').addClass('active');
             $(".tasksTab").removeClass("active");
-            $('.tasksContainer').removeClass('active').css('display', 'none');
+            $('.tasksContainer').removeClass('active').addClass('hide');
         } else if (e.keyCode === 13 && locationInput !== "") {
             yelpData = new YelpData (locationInput, mapCallbacks);
             $(".leftContainer").toggleClass("active");
@@ -81,40 +80,15 @@ function clickHandler () {
         if (search !== "") {
             yelpData = new YelpData (search, locationInput, mapCallbacks);
         }
+
+        showYelpTab();
     })
 
-    $('ul li:nth-child(1)').on('click', function() {
-        if ($("#yelp").hasClass('hide')) {
-            $('.saved').addClass('hide');
-            $('.tasksContainer').addClass('hide');
-            $("#yelp").removeClass('hide');
-            $('ul li:nth-child(1)').addClass('active');
-            $('ul li:nth-child(2)').removeClass('active');
-            $('ul li:nth-child(3)').removeClass('active');
-        }
-    })
+    showYelpTab();
 
-    $('ul li:nth-child(2)').on('click', function() {
-        if ($('.tasksContainer').hasClass('hide')) {
-            $('#yelp').addClass('hide');
-            $('.saved').addClass('hide');
-            $('.tasksContainer').removeClass('hide');
-            $('ul li:nth-child(1)').removeClass('active');
-            $('ul li:nth-child(2)').addClass('active');
-            $('ul li:nth-child(3)').removeClass('active');
-        }
-    })
+    showTasksTab();
 
-    $('ul li:nth-child(3)').on('click', function() {
-        if ($('.saved').hasClass('hide')) {
-            $('.tasksContainer').addClass('hide');
-            $('#yelp').addClass('hide');
-            $('.saved').removeClass('hide');
-            $('ul li:nth-child(1)').removeClass('active');
-            $('ul li:nth-child(2)').removeClass('active');
-            $('ul li:nth-child(2)').removeClass('active');
-        }
-    })
+    showSavedResultsTab();
 
     $(".save-btn").on('click', function () {
         let saved = $(yelpData.scrollDiv).attr("href");
@@ -130,7 +104,7 @@ function clickHandler () {
             })
         
         localStorage.setItem(saved, saved);
-        debugger;
+
         if (!clonedDiv.has(".deleteSave").length) {
             $(clonedDiv).append(deleteBtn);
         }
@@ -147,5 +121,44 @@ function clickHandler () {
 
     $(".menu").one('click', function () {
         checkLocalStorage();
+    })
+}
+
+function showYelpTab () {
+    $('ul li:nth-child(1)').on('click', function() {
+        if ($("#yelp").hasClass('hide')) {
+            $('.saved').addClass('hide');
+            $('.tasksContainer').addClass('hide');
+            $("#yelp").removeClass('hide');
+            $('ul li:nth-child(1)').addClass('active');
+            $('ul li:nth-child(2)').removeClass('active');
+            $('ul li:nth-child(3)').removeClass('active');
+        }
+    })
+}
+
+function showTasksTab () {
+    $('ul li:nth-child(2)').on('click', function() {
+        if ($('.tasksContainer').hasClass('hide')) {
+            $('#yelp').addClass('hide');
+            $('.saved').addClass('hide');
+            $('.tasksContainer').removeClass('hide');
+            $('ul li:nth-child(1)').removeClass('active');
+            $('ul li:nth-child(2)').addClass('active');
+            $('ul li:nth-child(3)').removeClass('active');
+        }
+    })
+}
+
+function showSavedResultsTab () {
+    $('ul li:nth-child(3)').on('click', function() {
+        if ($('.saved').hasClass('hide')) {
+            $('.tasksContainer').addClass('hide');
+            $('#yelp').addClass('hide');
+            $('.saved').removeClass('hide');
+            $('ul li:nth-child(1)').removeClass('active');
+            $('ul li:nth-child(2)').removeClass('active');
+            $('ul li:nth-child(2)').removeClass('active');
+        }
     })
 }
