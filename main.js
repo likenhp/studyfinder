@@ -16,16 +16,8 @@ $(document).on({
 function initializeApp () {
     tasks = new Tasks();
     map = new Maps();
-
-    // setLocalStorage();
     
     clickHandler();
-}
-
-function setLocalStorage () {
-    if (localStorage.tasks === undefined) {
-        localStorage.setItem('tasks', "");
-    }
 }
 
 function checkLocalStorage () {
