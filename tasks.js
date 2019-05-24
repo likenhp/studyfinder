@@ -38,5 +38,20 @@ class Tasks {
                             })
                 ))
         );
+
+        const newTask = {
+            progress: 'in-progress',
+            task: task,
+            date: date,
+        }
+
+        debugger;
+
+        console.log(newTask);
+
+        localStorage.setItem('tasks', JSON.stringify([{newTask}, {...localStorage.tasks}]))
+
+        console.log('localstorage after: ', localStorage.tasks);
+        console.log(JSON.parse(localStorage.tasks));
     }
 }
