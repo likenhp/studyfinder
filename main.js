@@ -23,8 +23,8 @@ function initializeApp () {
 function checkLocalStorage () {
     for (var index = 0; index < localStorage.length; index++){
         let saved = localStorage.getItem(localStorage.key(index));
-        let clonedDiv = $("div[href='"+saved+"']");
-        
+        let clonedDiv = $("div[href='"+saved+"']").addClass("localeStoreDiv");
+        debugger;
         let deleteBtn = $("<span/>")
             .addClass("deleteSave").addClass("glyphicon").addClass("glyphicon-trash")
             .on("click", function () {
@@ -35,7 +35,7 @@ function checkLocalStorage () {
             })
         
         if (!clonedDiv.has(".deleteSave").length) {
-            $(".restaurantInfo").append(deleteBtn);
+            $(clonedDiv).append(deleteBtn);
         }
         
         $(".saved").append(clonedDiv);
@@ -110,7 +110,7 @@ function clickHandler () {
 
     $(".save-btn").on('click', function () {
         let saved = $(yelpData.scrollDiv).attr("href");
-        let clonedDiv = $("div[href='"+saved+"']");
+        let clonedDiv = $("div[href='"+saved+"']").addClass("localeStoreDiv");
         
         let deleteBtn = $("<span/>")
             .addClass("deleteSave").addClass("glyphicon").addClass("glyphicon-trash")
@@ -122,9 +122,9 @@ function clickHandler () {
             })
         
         localStorage.setItem(saved, saved);
-        
+        debugger;
         if (!clonedDiv.has(".deleteSave").length) {
-            $(".restaurantInfo").append(deleteBtn);
+            $(clonedDiv).append(deleteBtn);
         }
         
         $(".saved").append(clonedDiv);
@@ -137,7 +137,7 @@ function clickHandler () {
         $('ul li:nth-child(3)').addClass('active');
     })
 
-    $(".tasksTab").one('click', function () {
+    $(".menu").one('click', function () {
         checkLocalStorage();
     })
 }
