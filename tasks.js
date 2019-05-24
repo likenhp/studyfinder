@@ -39,17 +39,27 @@ class Tasks {
                 ))
         );
 
+        debugger;
+
+        let allTasks = [];
+
         const newTask = {
             progress: 'in-progress',
             task: task,
             date: date,
         }
 
-        console.log(newTask);
+        if (localStorage.tasks === undefined) {
+            allTasks.push(newTask);
 
-        localStorage.setItem('tasks', JSON.stringify([{newTask}, {...localStorage.tasks}]))
+            localStorage.setItem('tasks', JSON.stringify(allTasks))
+        } else {
+            allTasks = JSON.parse(localStorage.getItem('tasks'));
+            allTasks.push(newTask);
 
-        console.log('localstorage after: ', localStorage.tasks);
-        console.log(JSON.parse(localStorage.tasks));
+            localStorage.setItem('tasks', JSON.stringify(allTasks));
+        }
+
+        console.log('localstorage after: ', JSON.parse(localStorage.tasks));
     }
 }
