@@ -17,14 +17,14 @@ function initializeApp () {
     tasks = new Tasks();
     map = new Maps();
 
-    setLocalStorage();
+    // setLocalStorage();
     
     clickHandler();
 }
 
 function setLocalStorage () {
     if (localStorage.tasks === undefined) {
-        localStorage.setItem('tasks', []);
+        localStorage.setItem('tasks', "");
     }
 }
 
