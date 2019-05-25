@@ -15,34 +15,30 @@ class Tasks {
                 this.handleAdd();
             }
         });
-
-        // .on('click', (i) => {
-        //     debugger;
-        //     this.handleDelete(i);
-        // })
     }
 
     displayTasks () {
         const tasks = JSON.parse(localStorage.getItem('tasks'));
-
-        for (let i = 0; i < tasks.length; i++) {
-            // console.log('task', i);
-            const {date, progress, task} = tasks[i];
-
-            $('.tasks')
-            .append($('<tr>').addClass('new-task-row').css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 'fast')
-                .append($("<th>").text(progress).addClass('col-xs-4 col-md-4'))
-                .append($("<th>").text(task).addClass('col-xs-4 col-md-4'))
-                .append($("<th>").text(date).addClass('col-xs-4 col-md-4'))
-                .append($("<th>").addClass('col-xs-4 col-md-4')
-                    .append(
-                        $('<div>')
-                            .addClass('glyphicon glyphicon-trash delete-task-btn')
-                            .on('click', (e) => {
-                                this.handleDelete(e);
-                            })
-                ))
-            );
+        
+        if (tasks !== null) {
+            for (let i = 0; i < tasks.length; i++) {
+                const {date, progress, task} = tasks[i];
+    
+                $('.tasks')
+                .append($('<tr>').addClass('new-task-row').css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 'fast')
+                    .append($("<th>").text(progress).addClass('col-xs-4 col-md-4'))
+                    .append($("<th>").text(task).addClass('col-xs-4 col-md-4'))
+                    .append($("<th>").text(date).addClass('col-xs-4 col-md-4'))
+                    .append($("<th>").addClass('col-xs-4 col-md-4')
+                        .append(
+                            $('<div>')
+                                .addClass('glyphicon glyphicon-trash delete-task-btn')
+                                .on('click', (e) => {
+                                    this.handleDelete(e);
+                                })
+                    ))
+                );
+            }
         }
     }
 
@@ -95,8 +91,6 @@ class Tasks {
                 } else {
                     allTasks.splice(i, 1);
                     localStorage.setItem('tasks', JSON.stringify(allTasks));
-
-                    console.log(JSON.parse(localStorage.getItem('tasks')));
                 }
             }
         }
