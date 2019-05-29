@@ -44,6 +44,7 @@ class Tasks {
 
     handleAdd () {
         const task = $('#inputTask').val();
+        $('#inputTask').val('');
         let date = new Date();
 
         date = date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear();
@@ -57,6 +58,9 @@ class Tasks {
                     .append(
                         $('<div>')
                             .addClass('glyphicon glyphicon-trash delete-task-btn')
+                            .on('click', (e) => {
+                                this.handleDelete(e);
+                            })
                 ))
         );
         
@@ -86,12 +90,13 @@ class Tasks {
 
         for (let i = 0; i < allTasks.length; i++) {
             if (allTasks[i].task == task) {
-                if (allTasks.length === 1) {
-                    localStorage.removeItem('tasks');
-                } else {
+                // if (allTasks.length === 1) {
+                //     localStorage.removeItem('tasks');
+                // } else {
                     allTasks.splice(i, 1);
                     localStorage.setItem('tasks', JSON.stringify(allTasks));
-                }
+                    $(e.target).parent().parent().remove();
+                // }
             }
         }
     }
