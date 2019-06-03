@@ -10,6 +10,7 @@ class Maps {
         this.map = new google.maps.Map(document.getElementById('map'), {
             center: this.center,
             zoom: this.zoomLevels.default,
+            gestureHandling: 'greedy'
         });
 
         this.markers = {};
@@ -20,7 +21,7 @@ class Maps {
 
         this.generateMarker = this.generateMarker.bind(this);
         this.removeMarkers = this.removeMarkers.bind(this);
-        this.zoomToLocation = this.zoomToLocation.bind(this);
+        // this.zoomToLocation = this.zoomToLocation.bind(this);
         this.setCenter = this.setCenter.bind(this);
     }
     
@@ -35,6 +36,7 @@ class Maps {
         var marker = new google.maps.Marker({
             position: { lat: resultInfo.coordinates.latitude, lng: resultInfo.coordinates.longitude },
             map: this.map,
+            animation: google.maps.Animation.DROP
         });
       
         marker.addListener('click', function() {
@@ -75,13 +77,13 @@ class Maps {
         }
     }
 
-    zoomToLocation (resultID) {
-        this.closeLastInfowindow(this.markers[resultID].infowindow);
-
-        this.map.setZoom(this.zoomLevels.markers);
-        this.map.setCenter(this.markers[resultID].coordinates);
-        this.markers[resultID].infowindow.open(this.map, this.markers[resultID].marker);
-    }
+    // zoomToLocation (resultID) {
+    //     debugger;
+    //     this.closeLastInfowindow(this.markers[resultID].infowindow);
+    //     this.map.setZoom(this.zoomLevels.markers);
+    //     this.map.setCenter(this.markers[resultID].coordinates);
+    //     this.markers[resultID].infowindow.open(this.map, this.markers[resultID].marker);
+    // }
 
     closeLastInfowindow (infowindow) {
         if (map.lastResultClicked !== null) {
