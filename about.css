@@ -34,6 +34,10 @@
     margin-bottom: 5%;
 }
 
+.btn-info {
+    margin-bottom: 10px;
+}
+
 @media screen and (min-width: 1025px) {
     body {
         /* background-color: hotpink; */
